@@ -1,12 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Threejs demo</title>
-</head>
-<body>
-    
-</body>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+            canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+		<script type="module">
+			// Find the latest version by visiting https://cdn.skypack.dev/three.
+            import * as THREE from 'https://cdn.skypack.dev/three@0.132.2';
+            // import { OrbitControls } from 'https://cdn.skypack.dev/three@0.132.2/examples/jsm/controls/OrbitControls.js';
+
+            // const controls = new OrbitControls();
+
+            import { WEBGL } from 'https://cdn.skypack.dev/three@0.132.2/examples/jsm/WebGL.js';
+
+            if ( WEBGL.isWebGLAvailable() ) {
+
+                // Initiate function or other initializations here
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+                const renderer = new THREE.WebGLRenderer();
+                renderer.setSize( window.innerWidth, window.innerHeight );
+                document.body.appendChild( renderer.domElement );
+
+                const geometry = new THREE.BoxGeometry();
+                const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+                const cube = new THREE.Mesh( geometry, material );
+                scene.add( cube );
+
+                camera.position.z = 5;
+
+                // create an AudioListener and add it to the camera
+                const listener = new THREE.AudioListener();
+                camera.add( listener );
+
+                // create an Audio source
+                const sound = new THREE.Audio( listener );
+
+                // load a sound and set it as the Audio object's buffer
+                const audioLoader = new THREE.AudioLoader();
+                audioLoader.load( 'sounds/bensound-creativeminds.mp3', function( buffer ) {
+                    sound.setBuffer( buffer );
+                    sound.setLoop(true);
+                    sound.setVolume(0.5);
+                    // sound.play();
+                });
+
+                // create an AudioAnalyser, passing in the sound and desired fftSize
+                const analyser = new THREE.AudioAnalyser( sound, 32 );
+                
+                function animate() {
+                    // get the frequency of the sound
+                    var freqData = analyser.getFrequencyData();
+                    console.log(freqData)
+                    requestAnimationFrame( animate );
+
+                    if (freqData[4]>=150) {
+                        cube.rotation.x += 0.1;
+                    }
+                    cube.rotation.x += 0.01;
+                    cube.rotation.y += 0.01;
+
+                    renderer.render( scene, camera );
+                }
+                animate();
+
+            } else {
+
+                const warning = WEBGL.getWebGLErrorMessage();
+                document.getElementById( 'container' ).appendChild( warning );
+
+            }
+		</script>
+	</body>
 </html>
