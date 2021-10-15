@@ -9,8 +9,8 @@ so use your own clientid/secret and whitelist it OR let me know and i will white
 
 PROBLEMS TO FIX ヾ(`ヘ´)ﾉﾞ	
 
-[] Device not automatically obtained upon page load, requires a page reload for it to appear
-[] Mobile responsiveness (to-check)
-[] Fix Spotify Web SDK not working
-[] Complete the modal (mayhaps make it slide out from the right and make it less intrusive)
-[] Store clientID/secret in database
+- [] Device not automatically obtained upon page load, requires a page reload for it to appear
+- [] Mobile responsiveness (to-check)
+- [] Fix Spotify Web SDK not working
+- [] Complete the modal (mayhaps make it slide out from the right and make it less intrusive)
+- [] Store clientID/secret in database
