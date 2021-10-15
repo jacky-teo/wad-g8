@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Web API Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!--===============================================================================================-->
+    <script src="app.js"></script>
+    <!--===============================================================================================-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.png" />
+    <!--===============================================================================================-->
+    <link href="style.css" rel="stylesheet">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+
+</head>
+
+<body onload="onPageLoad()">
+
+    ////////////////////////////////////////////////////////////////
+    // to-do (erlynne): figure out why the web sdk not working TT //
+    ///////////////////////////////////////////////////////////////
+
+    <div class="container-fluid" style="padding:0;">
+
+        <!-- LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN -->
+        <div id="tokenSection" class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+                    <form class="login100-form validate-form flex-sb flex-w">
+                        <span class="login100-form-title p-b-32">
+                            Audiophiles <img src="./images/icons/spotify.png" style="width:7%;">
+                        </span>
+                        <span class="txt-3 mb-5 text-justify">
+                            Login with your Spotify account to grant us access to your playlist and song
+                            information. This will allow
+                            you to play songs you love through Spotify's web playback SDK. Don't worry, we only have
+                            access to the mentioned data and not any of your personal information.
+                        </span>
+
+                        <div class="container-login100-form-btn justify-content-center">
+                            <input class="login100-form-btn" type="button" onclick="requestAuthorization()"
+                                value="Login to Spotify">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN -->
+
+        <!-- ACCESS GRANTED ACCESS GRANTED ACCESS GRANTED ACCESS GRANTED ACCESS GRANTED ACCESS GRANTED -->
+
+        <div id="deviceSection">
+            <!-- As a heading -->
+            <nav class="navbar navbar-light bg-transparent">
+                <div class="container-fluid">
+                    <span class="navbar-brand mb-0 h1">Audiophiles</span>
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </nav>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Playlist - Songs</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ////////////////////////////////////////////////////////////
+                            // to-do (erlynne): add devices, add playlist, add track //
+                            ////////////////////////////////////////////////////////////
+                        </div>
+                    </div>
+                </div>
+            </div>
+            ///////////////////////////////////////////////////////////////
+            // to-do (erlynne): add the playback feature (id="playback") //
+            //////////////////////////////////////////////////////////////
+
+        </div>
+
+        <!-- ACCESS GRANTED ACCESS GRANTED ACCESS GRANTED ACCESS GRANTED ACCESS GRANTED ACCESS GRANTED -->
+
+
+
+    </div>
+
+    </div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
