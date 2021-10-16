@@ -40,9 +40,8 @@
 
 <body onload="onPageLoad()">
 
-    ////////////////////////////////////////////////////////////////
-    // to-do (erlynne): figure out why the web sdk not working TT //
-    ///////////////////////////////////////////////////////////////
+    <!-- SPOTIFY WEBPLAYBACK SDK CDN -->
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
 
     <div class="container-fluid" style="padding:0;">
 
@@ -93,16 +92,45 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            ////////////////////////////////////////////////////////////
-                            // to-do (erlynne): add devices, add playlist, add track //
-                            ////////////////////////////////////////////////////////////
+                            <div class="container">
+                                <div id="deviceSection" class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="devices" class="form-label">Devices</label>
+                                            <select id="devices" class="form-control">
+                                            </select>
+                                        </div>
+                        
+                                        <div class="mb-3">
+                                            <label for="playlists" class="form-label">Playlists</label>
+                                            <select id="playlists" class="form-select" oninput="fetchTracks(), play()">
+                                            </select>                        
+                                        </div>
+                        
+                                        <div class="mb-3">
+                                            <label for="tracks" class="form-label">Tracks</label>
+                                            <select id="tracks" class="form-select" oninput="play()">
+                                            </select>
+                                        </div>
+                        
+                                <div class="row mt-3" id="playback">
+                                    <div class="col">
+                                        <h1> Currently Playing</h1>
+                                            <div class="col-3 my-2">
+                                                <button id="togglePlay" type="button" class="btn btn-dark text-success">Toggle Play</button>
+                                            </div>       
+                                        <div>
+                                            <img id="albumImage" src="" class="w-75">
+                                            <div id="trackTitle"></div>
+                                            <div id="trackArtist"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            ///////////////////////////////////////////////////////////////
-            // to-do (erlynne): add the playback feature (id="playback") //
-            //////////////////////////////////////////////////////////////
 
         </div>
 

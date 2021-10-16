@@ -1,7 +1,10 @@
-var redirect_uri = "http://127.0.0.1/SCRATch_v4%20(2)/index.html";
+var redirect_uri = "http://localhost/is216/is216_project/wad-g8/spotify-files/index.html";
 
-var client_id = "ece08a82494f4921bb6858d4ba594c5d";
-var client_secret = "79de22a949474655a0d85dca4a46df0b"; // In a real app you should not expose your client_secret to the user
+var client_id = "eb7fe60f242a47c99400bbbfae58b595";
+var client_secret = "bd6587ae3ac04e6d94be304b6f5edda7";
+
+// var client_id = "ece08a82494f4921bb6858d4ba594c5d";
+// var client_secret = "79de22a949474655a0d85dca4a46df0b"; // In a real app you should not expose your client_secret to the user
 
 var access_token = null;
 var refresh_token = null;
@@ -45,9 +48,59 @@ function onPageLoad() {
     refreshRadioButtons();
 }
 
-///////////////////////////////////////////////////////////////////
-// to-do (erlynne): figure out how to link to spotify web sdk !! //
-///////////////////////////////////////////////////////////////////
+//spotify web sdk
+window.onSpotifyWebPlaybackSDKReady = () => {
+    //token unique to different users
+    //should get token on behalf of users through user authentication
+    const token = localStorage.access_token;
+    
+    const player = new Spotify.Player({
+        name: 'Play here!',             //device name on spotify app
+        getOAuthToken: cb => { cb(token); },
+        volume: 0.5
+    });
+
+    // Ready
+    player.addListener('ready', ({ device_id }) => {
+        console.log('Ready with Device ID', device_id);
+        refreshDevices();
+    });
+
+    // Not Ready
+    player.addListener('not_ready', ({ device_id }) => {
+        console.log('Device ID has gone offline', device_id);
+        // refreshAccessToken();
+        // player.togglePlay();
+    });
+    
+    //error prevention 
+    player.addListener('initialization_error', ({ message }) => { 
+        console.error(message);
+    });
+
+    player.addListener('authentication_error', ({ message }) => {
+        console.error(message);
+        refreshAccessToken();
+        refreshDevices();
+    });
+
+    player.addListener('account_error', ({ message }) => {
+        console.error(message);
+    });
+
+    //connect new spotify instance
+    player.connect();
+
+    //listen for click on play-pause button 
+    document.getElementById('togglePlay').onclick = function() {
+        player.togglePlay();
+
+    };
+
+    //player instance object
+    console.log(player);
+}
+
 
 function handleRedirect() {
     let code = getCode();
