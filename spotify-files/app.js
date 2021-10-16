@@ -42,7 +42,6 @@ function onPageLoad() {
 
             refreshDevices();
             refreshPlaylists();
-            currentlyPlaying();
         }
     }
     refreshRadioButtons();
@@ -55,7 +54,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     const token = localStorage.access_token;
     
     const player = new Spotify.Player({
-        name: 'Play here!',             //device name on spotify app
+        name: 'Playing here!',             //device name on spotify app
         getOAuthToken: cb => { cb(token); },
         volume: 0.5
     });
@@ -94,6 +93,24 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     //listen for click on play-pause button 
     document.getElementById('togglePlay').onclick = function() {
         player.togglePlay();
+
+    };
+
+    //prev song
+    document.getElementById('prev').onclick = function() {
+        player.previousTrack().then(() => {
+            console.log('Set to previous track!');
+          });
+        setTimeout(currentlyPlaying, 500);
+
+    };
+
+    //next song
+    document.getElementById('next').onclick = function() {
+        player.nextTrack().then(() => {
+            console.log('Skipped to next track!');
+          });
+        setTimeout(currentlyPlaying, 500);
 
     };
 
