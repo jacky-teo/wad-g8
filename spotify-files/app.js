@@ -268,29 +268,6 @@ function play() {
     callApi("PUT", PLAY + "?device_id=" + deviceId(), JSON.stringify(body), handleApiResponse);
 }
 
-function shuffle() {
-    callApi("PUT", SHUFFLE + "?state=true&device_id=" + deviceId(), null, handleApiResponse);
-    play();
-}
-
-function pause() {
-    callApi("PUT", PAUSE + "?device_id=" + deviceId(), null, handleApiResponse);
-}
-
-function next() {
-    callApi("POST", NEXT + "?device_id=" + deviceId(), null, handleApiResponse);
-}
-
-function previous() {
-    callApi("POST", PREVIOUS + "?device_id=" + deviceId(), null, handleApiResponse);
-}
-
-function transfer() {
-    let body = {};
-    body.device_ids = [];
-    body.device_ids.push(deviceId())
-    callApi("PUT", PLAYER, JSON.stringify(body), handleApiResponse);
-}
 
 function handleApiResponse() {
     if (this.status == 200) {
