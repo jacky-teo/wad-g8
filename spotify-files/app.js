@@ -187,6 +187,7 @@ function handleAuthorizationResponse() {
             localStorage.setItem("refresh_token", refresh_token);
         }
         onPageLoad();
+        location.reload();
     }
     else {
         console.log(this.responseText);
