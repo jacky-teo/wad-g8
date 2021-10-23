@@ -1,7 +1,7 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.133.1';
 import { OrbitControls } from 'https://cdn.skypack.dev/three@0.133.1/examples/jsm/controls/OrbitControls.js';
-import { scene2, scaleSphere } from '../visuals/Sphere.js'
-import { scene3 } from '../visuals/Space.js'
+import { scene2, scaleSphere } from '/visuals/Sphere.js'
+import { scene3 } from '/visuals/Space.js'
 
 feather.replace(); 
 
