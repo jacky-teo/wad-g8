@@ -9,7 +9,6 @@ var client_secret = "bd6587ae3ac04e6d94be304b6f5edda7";
 var access_token = null;
 var refresh_token = null;
 var currentPlaylist = "";
-var radioButtons = [];
 
 const AUTHORIZE = "https://accounts.spotify.com/authorize"
 const TOKEN = "https://accounts.spotify.com/api/token";
@@ -68,8 +67,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     // Not Ready
     player.addListener('not_ready', ({ device_id }) => {
         console.log('Device ID has gone offline', device_id);
-        // refreshAccessToken();
-        // player.togglePlay();
+
     });
 
     //error prevention 
@@ -269,15 +267,9 @@ function removeAllItems(elementId) {
 function play() {
     let playlist_id = document.getElementById("playlists").value;
     let trackindex = document.getElementById("tracks").value;
-    // let album = document.getElementById("album").value;
 
     let body = {};
-    // if (album.length > 0) {
-    //     body.context_uri = album;
-    // }
-    // else {
-    //     body.context_uri = "spotify:playlist:" + playlist_id;
-    // }
+
     body.context_uri = "spotify:playlist:" + playlist_id;
 
     body.offset = {};
@@ -388,41 +380,3 @@ function handleCurrentlyPlayingResponse() {
 ////////////////////////////////////////////////////////////////////
 // to-do (erlynne): figure out how to get track analysis response //
 ////////////////////////////////////////////////////////////////////
-
-function saveNewRadioButton() {
-    let item = {};
-    item.deviceId = deviceId();
-    item.playlistId = document.getElementById("playlists").value;
-    radioButtons.push(item);
-    localStorage.setItem("radio_button", JSON.stringify(radioButtons));
-    refreshRadioButtons();
-}
-
-function refreshRadioButtons() {
-    let data = localStorage.getItem("radio_button");
-    if (data != null) {
-        radioButtons = JSON.parse(data);
-        if (Array.isArray(radioButtons)) {
-            removeAllItems("radioButtons");
-            radioButtons.forEach((item, index) => addRadioButton(item, index));
-        }
-    }
-}
-
-function onRadioButton(deviceId, playlistId) {
-    let body = {};
-    body.context_uri = "spotify:playlist:" + playlistId;
-    body.offset = {};
-    body.offset.position = 0;
-    body.offset.position_ms = 0;
-    callApi("PUT", PLAY + "?device_id=" + deviceId, JSON.stringify(body), handleApiResponse);
-    //callApi( "PUT", SHUFFLE + "?state=true&device_id=" + deviceId, null, handleApiResponse );
-}
-
-function addRadioButton(item, index) {
-    let node = document.createElement("button");
-    node.className = "btn btn-primary m-2";
-    node.innerText = index;
-    node.onclick = function () { onRadioButton(item.deviceId, item.playlistId) };
-    document.getElementById("radioButtons").appendChild(node);
-}
