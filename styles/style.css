@@ -1,0 +1,106 @@
+body {
+    margin: 10;
+}
+
+canvas {
+    position: fixed;
+    display: block;
+    z-index: 1;
+}
+
+#music-dropdown {
+    /* position: absolute; */
+    /* left: 10px;
+    bottom: 30px; */
+    appearance: none;
+    border: 0;
+    outline: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 4em 0 1em;
+    background: url("../assets/white-caret-down.svg") no-repeat right 0.8em center / 1.4em, linear-gradient(to left, rgba(255, 255, 255, 0.3) 3em, rgba(255, 255, 255, 0.2) 3em);
+    color: white;
+    border-radius: 0.25em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+#music-dropdown option {
+    color: inherit;
+    background-color: #1a1a1a;
+}
+
+#controls {
+    /* position: absolute; */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    left: 0;
+    right: 0;
+    bottom: 30px;
+    width: 90%;
+    height: 75px;
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#controls div {
+    display: inline-block;
+    cursor: pointer;
+    margin: 0 10px;
+    padding: 5px 7px 10px 7px;
+    border-radius: 4px;
+}
+
+#volume {
+    -webkit-appearance: none;
+    height: 2px;
+    background-color: black;
+    outline: none;
+    margin: 0 10px;
+    border-radius: 4px;
+}
+
+#volume::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius:50%;
+    outline: none;
+}
+
+#volume::-webkit-slider-thumb:hover{
+    background-color: black;
+}
+
+#controls div:hover {
+    background-color: darkgray;
+    color: white;
+}
+
+#sceneControls {
+    list-style-type: none;
+    padding: 0;
+}
+
+#sceneControls li {
+    padding: 2px 5px;
+    cursor: pointer;
+}
+
+#sceneControls li {
+    padding: 2px 5px;
+}
+#sceneControls li svg:hover {
+    fill: white;
+}
+
+[v-cloak] {
+    display: none;
+}
