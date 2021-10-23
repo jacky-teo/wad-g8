@@ -1,11 +1,11 @@
 //var redirect_uri = "http://localhost/is216/is216_project/wad-g8/spotify-files/index.html";
 var redirect_uri = "http://localhost/wad-g8/spotify-files/index.html";
 
-//var client_id = "eb7fe60f242a47c99400bbbfae58b595";
-//var client_secret = "bd6587ae3ac04e6d94be304b6f5edda7";
+var client_id = "eb7fe60f242a47c99400bbbfae58b595";
+var client_secret = "bd6587ae3ac04e6d94be304b6f5edda7";
 
-var client_id = "ece08a82494f4921bb6858d4ba594c5d";
-var client_secret = "79de22a949474655a0d85dca4a46df0b"; // In a real app you should not expose your client_secret to the user
+// var client_id = "ece08a82494f4921bb6858d4ba594c5d";
+// var client_secret = "79de22a949474655a0d85dca4a46df0b"; // In a real app you should not expose your client_secret to the user
 
 var access_token = null;
 var refresh_token = null;
