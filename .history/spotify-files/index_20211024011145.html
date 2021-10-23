@@ -95,13 +95,13 @@
                             <div class="container">
                                 <div id="deviceSection" class="row">
                                     <div class="col">
-                                        <div class="mb-2 d-none">
+                                        <div class="mb-2">
                                             <label for="devices" class="form-label">Devices</label>
                                             <select id="devices" class="form-control">
                                             </select>
                                         </div>
 
-                                        <div class="mt-0 mb-2">
+                                        <div class="mb-2">
                                             <label for="playlists" class="form-label">Playlists</label>
                                             <select id="playlists" class="form-select" oninput="fetchTracks(), play()">
                                             </select>
@@ -114,16 +114,10 @@
                                         </div>
 
                                         <div class="row mt-3" id="playback">
-                                            <div class="wrap-pic-w justify-content-center text-center">
-                                                <img id="albumImage" src="" class="mt-1">
-                                                <p id="trackTitle" style="font-size: 16px;"></p>
-                                                <p id="trackArtist"
-                                                    style="margin-top:-8px; font-size: 12px; font-style: italic;">
-                                                </p>
-                                            </div>
-                                            <div class=" text-center my-2">
+                                            <h1> Currently Playing</h1>
+                                            <div class="row mx-auto my-2">
                                                 <button id="prev" style="width:12%;" type="button"
-                                                    class="btn btn-dark text-light m-r-5 m-l-5">
+                                                    class="btn btn-dark text-light m-r-5">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                         fill="currentColor" class="bi bi-skip-backward"
                                                         viewBox="0 0 16 16">
@@ -132,7 +126,7 @@
                                                     </svg>
                                                 </button>
                                                 <button style="width:12%;" id="togglePlay" type="button"
-                                                    class="btn btn-dark text-success m-r-5 m-l-5">
+                                                    class="btn btn-dark text-success m-r-5">
                                                     <svg v-if="playToggle==true" xmlns="http://www.w3.org/2000/svg"
                                                         width="16" height="16" fill="currentColor" class="bi bi-pause"
                                                         viewBox="0 0 16 16">
@@ -148,7 +142,7 @@
                                                 </button>
 
                                                 <button id="next" type="button" style="width:12%;"
-                                                    class="btn btn-dark text-light m-r-5 m-l-5">
+                                                    class="btn btn-dark text-light m-r-5">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                         fill="currentColor" class="bi bi-skip-forward"
                                                         viewBox="0 0 16 16">
@@ -158,7 +152,11 @@
                                                 </button>
 
                                             </div>
-
+                                            <div>
+                                                <img id="albumImage" src="" class="w-50">
+                                                <div id="trackTitle"></div>
+                                                <div id="trackArtist"></div>
+                                            </div>
 
                                         </div>
                                     </div>

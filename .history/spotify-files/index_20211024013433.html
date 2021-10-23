@@ -101,7 +101,7 @@
                                             </select>
                                         </div>
 
-                                        <div class="mt-0 mb-2">
+                                        <div class="mb-2">
                                             <label for="playlists" class="form-label">Playlists</label>
                                             <select id="playlists" class="form-select" oninput="fetchTracks(), play()">
                                             </select>
@@ -114,12 +114,12 @@
                                         </div>
 
                                         <div class="row mt-3" id="playback">
-                                            <div class="wrap-pic-w justify-content-center text-center">
-                                                <img id="albumImage" src="" class="mt-1">
-                                                <p id="trackTitle" style="font-size: 16px;"></p>
-                                                <p id="trackArtist"
-                                                    style="margin-top:-8px; font-size: 12px; font-style: italic;">
-                                                </p>
+                                            <h3 class="text-center"> Currently Playing</h3>
+                                            <div class="justify-content-center text-center">
+                                                <img id="albumImage" src="" class="mt-2 w-50">
+                                                <div id="trackTitle" style="font-size: 16px;"></div>
+                                                <div id="trackArtist" style="font-size: 12px; font-style: italic;">
+                                                </div>
                                             </div>
                                             <div class=" text-center my-2">
                                                 <button id="prev" style="width:12%;" type="button"

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,16 +8,13 @@
 
     <!-- STYLES -->
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <!-- External CSS -->
     <link rel="stylesheet" href="styles/style.css">
 </head>
-
 <body>
     <div id="app" v-cloak>
-        <div class="container position-fixed text-center"
-            style="width: 100%; left:0; right:0; bottom:30px; z-index: 2;">
+        <div class="container position-fixed text-center" style="width: 100%; left:0; right:0; bottom:30px; z-index: 2;">
             <div class="row">
                 <div class="col-lg-4 py-1">
                     <select id="music-dropdown" v-model="currSong" @change="changeSong">
@@ -36,8 +32,7 @@
                 <div class="col-lg-4 py-1 text-center text-white">
                     <h5>Change Scenes</h5>
                     <ul id="sceneControls" class="d-flex justify-content-center">
-                        <li v-for="scene in scenes"><a @click="changeScene(scene)"><i data-feather="circle"></i></a>
-                        </li>
+                        <li v-for="scene in scenes"><a @click="changeScene(scene)"><i data-feather="circle"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -47,9 +42,7 @@
 
     <!-- SCRIPTS -->
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-        crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <!-- V3 Vue.js -->
     <script src="https://unpkg.com/vue@next"></script>
     <!-- Axios -->
@@ -59,5 +52,4 @@
     <!-- External JS -->
     <script type="module" src="scripts/main.js"></script>
 </body>
-
 </html>
