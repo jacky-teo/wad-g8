@@ -43,7 +43,6 @@ function onPageLoad() {
             refreshPlaylists();
         }
     }
-    refreshRadioButtons();
 }
 
 //spotify web sdk
@@ -89,8 +88,17 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     player.connect();
 
     //auto update currently playing track information
-    player.addListener('player_state_changed', () => {
+    player.addListener('player_state_changed', (state) => {
         currentlyPlaying();
+
+        //change button logo according to playing state
+        if (state.paused) {
+            console.log('paused!!!');
+            playToggle.playToggle = false;
+        } else {
+            playToggle.playToggle = true;
+        }
+        
 
     })
 
@@ -105,7 +113,6 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         player.previousTrack().then(() => {
             console.log('Set to previous track!');
         });
-        setTimeout(currentlyPlaying, 500);
 
     };
 
@@ -114,7 +121,6 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         player.nextTrack().then(() => {
             console.log('Skipped to next track!');
         });
-        setTimeout(currentlyPlaying, 500);
 
     };
 
