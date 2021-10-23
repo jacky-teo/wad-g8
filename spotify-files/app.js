@@ -88,6 +88,12 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     //connect new spotify instance
     player.connect();
 
+    //auto update currently playing track information
+    player.addListener('player_state_changed', () => {
+        currentlyPlaying();
+
+    })
+
     //listen for click on play-pause button 
     document.getElementById('togglePlay').onclick = function () {
         player.togglePlay();
