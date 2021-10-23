@@ -2,22 +2,22 @@ import * as THREE from 'https://cdn.skypack.dev/three@0.133.1';
 
 export let  scene3 = new THREE.Scene();
 
-const geometry = new THREE.SphereGeometry( 15, 32, 16 );
+const geometry = new THREE.SphereGeometry( 75, 32, 16 );
 const material = new THREE.MeshLambertMaterial( { color: 0xF5F5DC } );
 const sphere = new THREE.Mesh( geometry, material );
 scene3.add( sphere );
 
-const torusG = new THREE.TorusGeometry( 20, 1, 16, 100 );
+const torusG = new THREE.TorusGeometry( 100, 1, 16, 100 );
 const torusM = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
 const torus = new THREE.Mesh( torusG, torusM );
 scene3.add( torus );
 
-const light = new THREE.PointLight( 0xffff00, 1, 100 );
-light.position.set( 50, 50, 50 );
+const light = new THREE.PointLight( 0xffff00, 2, 500 );
+light.position.set( 150, 150, 150 );
 scene3.add( light );
 
-const light1 = new THREE.PointLight( 0xffff00, 1, 100 );
-light1.position.set( -50, -50, 50 );
+const light1 = new THREE.PointLight( 0xffff00, 0.5, 500 );
+light1.position.set( -150, -150, 150 );
 scene3.add( light1 );
 
 // controls = new OrbitControls(camera, renderer.domElement);
@@ -38,4 +38,25 @@ let stars = [];
 
 for (let i = 0; i < 300; i++){
     createStar()
+}
+
+export function animateSpace(scale) {
+    if (scale > 1) {
+        torus.scale.set(scale, scale, scale);
+    }
+    torus.rotation.x += 0.01
+    torus.rotation.y += 0.02
+    torus.rotation.z += 0.01
+    
+    for(var i=0; i<stars.length; i++) {
+                    
+        let star = stars[i]; 
+            
+        // and move it forward dependent on the mouseY position. 
+        star.position.z +=  i/50;
+            
+        // if the particle is too close move it to the back
+        if(star.position.z>1000) star.position.z-=2000; 
+        
+    }
 }

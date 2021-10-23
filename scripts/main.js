@@ -1,7 +1,8 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.133.1';
 import { OrbitControls } from 'https://cdn.skypack.dev/three@0.133.1/examples/jsm/controls/OrbitControls.js';
-import { scene2, scaleSphere } from '../visuals/Sphere'
-import { scene3 } from '../visuals/Space'
+import { scene2, scaleSphere } from '../visuals/Sphere.js'
+import { scene3, animateSpace } from '../visuals/Space.js'
+import { scene4, changeColors, spinCircle, boxScaling } from '../visuals/Circle.js'
 
 feather.replace(); 
 
@@ -14,15 +15,17 @@ app = Vue.createApp({
         return {
             isPlaying: false,
             volume: 0.5,
-            currSong: "Creativeminds - Bensound",
+            currSong: "Way Back Home  - SHAUN feat. Conor Maynard",
             songs: [
+                "Way Back Home  - SHAUN feat. Conor Maynard", 
                 "Creativeminds - Bensound", 
                 "Never Gonna Give You Up - Rick Astley", 
                 "Stay - The Kid LAROI, Justin Bieber",
                 "Blackbird", 
-                "Race Into The Night"
+                "Race Into The Night",
+                "Kiss Me More - Doja Cat ft. SZA"
             ], 
-            scenes: ["scene1", "scene2", "scene3"]
+            scenes: ["scene1", "scene2", "scene3", "scene4"]
         }
     },
     methods: {
@@ -98,6 +101,8 @@ app = Vue.createApp({
                 s = scene2;
             } else if (value == "scene3") {
                 s = scene3;
+            } else if (value == "scene4") {
+                s = scene4;
             }
         }
     },
@@ -141,7 +146,11 @@ function animate() {
     if (analyser != undefined) {
         let sUnit = analyser.getAverageFrequency()/75;
         box.scale.set( sUnit, sUnit, sUnit )
-        scaleSphere(sUnit)
+        scaleSphere(sUnit);
+        animateSpace(sUnit);
+        boxScaling(sUnit);
+        changeColors();
+        spinCircle();
     }
 
     renderer.render( s, camera );
