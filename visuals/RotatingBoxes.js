@@ -3,9 +3,9 @@ import * as THREE from 'https://cdn.skypack.dev/three@0.133.1';
 export let  scene4 = new THREE.Scene();
 
 //Allow for resizing 
-const colorsArr = ['#D90452', '#8C0F61', '#3D1773', '#03658C','#000000']
+const colorsArr = ['#D90452', '#8C0F61', '#3D1773', '#03658C','#FFFFFF']
 const numBoxes = 3;
-const positions = [[0,0,0],[-300,0,1],[300,0,1]] // Initial positions of boxes
+const positions = [[0,0,1],[-300,0,1],[300,0,1]] // Initial positions of boxes
 
 // Creating 3 Boxes
 const boxArr = createBoxes(numBoxes)
@@ -13,11 +13,29 @@ const materialArr = createMaterials(numBoxes)
 const BOXES = createObjects(numBoxes)
 
 
-var torusGeo = new THREE.TorusGeometry( 200, 1, 16, 200);
+var torusGeo = new THREE.TorusGeometry( 200, 3, 16, 200);
 var torusMat = new THREE.MeshNormalMaterial();
-var donut = new THREE.Mesh( torusGeo , torusMat );
+var donut1 = new THREE.Mesh( torusGeo , torusMat );
 
-scene4.add( donut );
+var torusGeo2 = new THREE.TorusGeometry( 10, 1, 16, 200);
+var torusMat2 = new THREE.MeshNormalMaterial();
+var donut2 = new THREE.Mesh( torusGeo , torusMat );
+
+var torusGeo3 = new THREE.TorusGeometry( 10, 1, 16, 200);
+var torusMat = new THREE.MeshNormalMaterial();
+var donut3 = new THREE.Mesh( torusGeo , torusMat );
+
+
+
+donut1.position.set(0,0,1);
+donut2.position.set(-300,0,1);
+donut3.position.set(300,0,1);
+
+
+scene4.add( donut1 );
+scene4.add( donut2 );
+scene4.add( donut3 );
+
 
 // Conditions for boxes to bouce
 var [conditionX2,conditionY2,conditionX3,conditionY3, counter,index]= [false,false,false,false,0,0]
@@ -25,9 +43,11 @@ var [conditionX2,conditionY2,conditionX3,conditionY3, counter,index]= [false,fal
 //AUDIO REACTIONS
 export function boxScaling(data){
     for(let i=0;i<BOXES.length;i++){
-        BOXES[i].scale.set(0.5*data,0.5*data)
+        BOXES[i].scale.set(0.5*data,0.5*data,0.5*data)
     }
-    donut.scale.set(data,data)
+    donut1.scale.set(data,data)
+    donut2.scale.set(0.5*data,0.5*data)
+    donut3.scale.set(0.5*data,0.5*data)
 }
 
 // Creating Circles
@@ -74,6 +94,8 @@ export function changeColors(){
 }
 
 export function spinCircle(){
+    BOXES[0].rotation.y += 0.01;
+    BOXES[0].rotation.x += 0.01;
     if(BOXES[1].position.x<300 && conditionX2 == false){
         BOXES[1].position.x += 5; // Move right 
         if(BOXES[1].position.x>=300){
@@ -124,4 +146,6 @@ export function spinCircle(){
             conditionY3 = false
         }
     }
+
+    
 }
