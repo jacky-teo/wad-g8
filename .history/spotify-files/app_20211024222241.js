@@ -126,7 +126,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     };
 
     //player instance object
-    //console.log(player);
+    console.log(player);
 }
 
 
@@ -213,7 +213,7 @@ function refreshDevices() {
 function handleDevicesResponse() {
     if (this.status == 200) {
         var data = JSON.parse(this.responseText);
-        //console.log(data);
+        console.log(data);
         removeAllItems("devices");
         data.devices.forEach(item => addDevice(item));
     }
@@ -249,7 +249,7 @@ function refreshPlaylists() {
 function handlePlaylistsResponse() {
     if (this.status == 200) {
         var data = JSON.parse(this.responseText);
-        //console.log(data);
+        console.log(data);
         removeAllItems("playlists");
         data.items.forEach(item => addPlaylist(item));
         document.getElementById('playlists').value = currentPlaylist;
@@ -353,7 +353,7 @@ function currentlyPlaying() {
 function handleCurrentlyPlayingResponse() {
     if (this.status == 200) {
         var data = JSON.parse(this.responseText);
-        //console.log(data);
+        console.log(data);
         if (data.item != null) {
             document.getElementById("albumImage").src = data.item.album.images[0].url;
             document.getElementById("trackTitle").innerHTML = data.item.name;

@@ -8,37 +8,48 @@
     <title>Audiophiles - Step into a world of music</title>
 
     <!-- STYLES -->
-    <link rel="icon" type="image/png" href="./spotify-files/images/icons/favicon.png" />
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <!-- External CSS -->
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="spotify-files/css/main.css">
-    <link rel="stylesheet" href="spotify-files/css/util.css">
 </head>
 
 <body>
-    <div id="app" v-cloak>
-        <nav class="navbar navbar-light bg-transparent px-3">
-            <div class="container-fluid" style="padding:0 15px 0 15px;">
-                <span class="navbar-brand mb-0 h1 text-light">Audiophiles
-                    <div class="btn-group">
-                        <button type="button" class="text-light btn dropdown-toggle" data-bs-toggle="dropdown">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-list" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                            </svg></button>
-                        <div class="dropdown-menu dropdown-menu-left">
-                            <a href="../index.html" class="dropdown-item active">Home</a>
-                            <a href="spotify-files/index.html" class="dropdown-item">Spotify</a>
-                            <a href="#" class="dropdown-item">Upload</a>
-                        </div>
+    <nav class="navbar navbar-light bg-transparent">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Audiophiles
+                <div class="btn-group">
+                    <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-list" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                        </svg></button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a href="#" class="dropdown-item">Home</a>
+                        <a href="#" class="dropdown-item active">Spotify</a>
+                        <a href="#" class="dropdown-item">Upload</a>
                     </div>
-                </span>
+                </div>
+            </span>
+
+            <div class="topnav-right">
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-music-note-list" viewBox="0 0 16 16">
+                        <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z" />
+                        <path fill-rule="evenodd" d="M12 3v10h-1V3h1z" />
+                        <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z" />
+                        <path fill-rule="evenodd"
+                            d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                </button>
             </div>
-        </nav>
+
+        </div>
+    </nav>
+    <div id="app" v-cloak>
         <div class="container position-fixed text-center"
             style="width: 100%; left:0; right:0; bottom:30px; z-index: 2;">
             <div class="row">
@@ -64,7 +75,7 @@
                 </div>
             </div>
         </div>
-        <canvas id="c" style="z-index:-1;top:0;"> </canvas>
+        <canvas id="c"></canvas>
     </div>
 
     <!-- SCRIPTS -->
