@@ -50,88 +50,87 @@ function onPageLoad() {
 
 //spotify web sdk
 window.onSpotifyWebPlaybackSDKReady = () => {
-    if (access_token != null) {
-        //token unique to different users
-        //should get token on behalf of users through user authentication
-        const token = localStorage.access_token;
+    if (access_token != null) { }
+    //token unique to different users
+    //should get token on behalf of users through user authentication
+    const token = localStorage.access_token;
 
-        const player = new Spotify.Player({
-            name: 'Playing here!',             //device name on spotify app
-            getOAuthToken: cb => { cb(token); },
-            volume: 0.5
+    const player = new Spotify.Player({
+        name: 'Playing here!',             //device name on spotify app
+        getOAuthToken: cb => { cb(token); },
+        volume: 0.5
+    });
+
+    // Ready
+    player.addListener('ready', ({ device_id }) => {
+        console.log('Ready with Device ID', device_id);
+        refreshDevices();
+    });
+
+    // Not Ready
+    player.addListener('not_ready', ({ device_id }) => {
+        console.log('Device ID has gone offline', device_id);
+
+    });
+
+    //error prevention 
+    player.addListener('initialization_error', ({ message }) => {
+        //console.error(message);
+    });
+
+    player.addListener('authentication_error', ({ message }) => {
+        //console.error(message);
+        refreshAccessToken();
+        refreshDevices();
+    });
+
+    player.addListener('account_error', ({ message }) => {
+        //console.error(message);
+    });
+
+    //connect new spotify instance
+    player.connect();
+
+    //auto update currently playing track information
+    player.addListener('player_state_changed', (state) => {
+        currentlyPlaying();
+
+        //change button logo according to playing state
+        if (state.paused) {
+            //console.log('paused!!!');
+            playToggle.playToggle = false;
+        } else {
+            playToggle.playToggle = true;
+        }
+
+
+    })
+
+    //listen for click on play-pause button 
+    document.getElementById('togglePlay').onclick = function () {
+        player.togglePlay();
+
+    };
+
+    //prev song
+    document.getElementById('prev').onclick = function () {
+        player.previousTrack().then(() => {
+            //console.log('Set to previous track!');
         });
 
-        // Ready
-        player.addListener('ready', ({ device_id }) => {
-            console.log('Ready with Device ID', device_id);
-            refreshDevices();
+    };
+
+    //next song
+    document.getElementById('next').onclick = function () {
+        player.nextTrack().then(() => {
+            //console.log('Skipped to next track!');
         });
 
-        // Not Ready
-        player.addListener('not_ready', ({ device_id }) => {
-            console.log('Device ID has gone offline', device_id);
+    };
 
-        });
-
-        //error prevention 
-        player.addListener('initialization_error', ({ message }) => {
-            //console.error(message);
-        });
-
-        player.addListener('authentication_error', ({ message }) => {
-            //console.error(message);
-            refreshAccessToken();
-            refreshDevices();
-        });
-
-        player.addListener('account_error', ({ message }) => {
-            //console.error(message);
-        });
-
-        //connect new spotify instance
-        player.connect();
-
-        //auto update currently playing track information
-        player.addListener('player_state_changed', (state) => {
-            console.log(state)
-            currentlyPlaying();
-
-            //change button logo according to playing state
-            if (state.paused) {
-                //console.log('paused!!!');
-                playToggle.playToggle = false;
-            } else {
-                playToggle.playToggle = true;
-            }
-
-
-        })
-
-        //listen for click on play-pause button 
-        document.getElementById('togglePlay').onclick = function () {
-            player.togglePlay();
-
-        };
-
-        //prev song
-        document.getElementById('prev').onclick = function () {
-            player.previousTrack().then(() => {
-                //console.log('Set to previous track!');
-            });
-
-        };
-
-        //next song
-        document.getElementById('next').onclick = function () {
-            player.nextTrack().then(() => {
-                //console.log('Skipped to next track!');
-            });
-
-        };
-
-        //player instance object
-        //console.log(player);
-    }
+    //player instance object
+    //console.log(player);
+}
 }
 
 

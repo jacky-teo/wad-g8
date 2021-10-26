@@ -9,7 +9,7 @@ var client_secret = "bd6587ae3ac04e6d94be304b6f5edda7";
 // var client_id = "ece08a82494f4921bb6858d4ba594c5d";
 // var client_secret = "79de22a949474655a0d85dca4a46df0b"; // In a real app you should not expose your client_secret to the user
 
-var access_token = null;
+var access_token = "";
 var refresh_token = null;
 var currentPlaylist = "";
 
@@ -50,88 +50,85 @@ function onPageLoad() {
 
 //spotify web sdk
 window.onSpotifyWebPlaybackSDKReady = () => {
-    if (access_token != null) {
-        //token unique to different users
-        //should get token on behalf of users through user authentication
-        const token = localStorage.access_token;
+    //token unique to different users
+    //should get token on behalf of users through user authentication
+    const token = localStorage.access_token;
 
-        const player = new Spotify.Player({
-            name: 'Playing here!',             //device name on spotify app
-            getOAuthToken: cb => { cb(token); },
-            volume: 0.5
+    const player = new Spotify.Player({
+        name: 'Playing here!',             //device name on spotify app
+        getOAuthToken: cb => { cb(token); },
+        volume: 0.5
+    });
+
+    // Ready
+    player.addListener('ready', ({ device_id }) => {
+        console.log('Ready with Device ID', device_id);
+        refreshDevices();
+    });
+
+    // Not Ready
+    player.addListener('not_ready', ({ device_id }) => {
+        console.log('Device ID has gone offline', device_id);
+
+    });
+
+    //error prevention 
+    player.addListener('initialization_error', ({ message }) => {
+        console.error(message);
+    });
+
+    player.addListener('authentication_error', ({ message }) => {
+        console.error(message);
+        refreshAccessToken();
+        refreshDevices();
+    });
+
+    player.addListener('account_error', ({ message }) => {
+        console.error(message);
+    });
+
+    //connect new spotify instance
+    player.connect();
+
+    //auto update currently playing track information
+    player.addListener('player_state_changed', (state) => {
+        currentlyPlaying();
+
+        //change button logo according to playing state
+        if (state.paused) {
+            //console.log('paused!!!');
+            playToggle.playToggle = false;
+        } else {
+            playToggle.playToggle = true;
+        }
+
+
+    })
+
+    //listen for click on play-pause button 
+    document.getElementById('togglePlay').onclick = function () {
+        player.togglePlay();
+
+    };
+
+    //prev song
+    document.getElementById('prev').onclick = function () {
+        player.previousTrack().then(() => {
+            //console.log('Set to previous track!');
         });
 
-        // Ready
-        player.addListener('ready', ({ device_id }) => {
-            console.log('Ready with Device ID', device_id);
-            refreshDevices();
+    };
+
+    //next song
+    document.getElementById('next').onclick = function () {
+        player.nextTrack().then(() => {
+            //console.log('Skipped to next track!');
         });
 
-        // Not Ready
-        player.addListener('not_ready', ({ device_id }) => {
-            console.log('Device ID has gone offline', device_id);
+    };
 
-        });
-
-        //error prevention 
-        player.addListener('initialization_error', ({ message }) => {
-            //console.error(message);
-        });
-
-        player.addListener('authentication_error', ({ message }) => {
-            //console.error(message);
-            refreshAccessToken();
-            refreshDevices();
-        });
-
-        player.addListener('account_error', ({ message }) => {
-            //console.error(message);
-        });
-
-        //connect new spotify instance
-        player.connect();
-
-        //auto update currently playing track information
-        player.addListener('player_state_changed', (state) => {
-            console.log(state)
-            currentlyPlaying();
-
-            //change button logo according to playing state
-            if (state.paused) {
-                //console.log('paused!!!');
-                playToggle.playToggle = false;
-            } else {
-                playToggle.playToggle = true;
-            }
-
-
-        })
-
-        //listen for click on play-pause button 
-        document.getElementById('togglePlay').onclick = function () {
-            player.togglePlay();
-
-        };
-
-        //prev song
-        document.getElementById('prev').onclick = function () {
-            player.previousTrack().then(() => {
-                //console.log('Set to previous track!');
-            });
-
-        };
-
-        //next song
-        document.getElementById('next').onclick = function () {
-            player.nextTrack().then(() => {
-                //console.log('Skipped to next track!');
-            });
-
-        };
-
-        //player instance object
-        //console.log(player);
-    }
+    //player instance object
+    //console.log(player);
 }
 
 
@@ -399,13 +396,13 @@ function handleCurrentlyPlayingResponse() {
 function handleAnalysisResponse() {
     if (this.status == 200) {
         var data = JSON.parse(this.responseText);
-        //console.log(data);
+        console.log(data);
     }
     else if (this.status == 401) {
         refreshAccessToken()
     }
     else {
-        //console.log(this.responseText);
+        console.log(this.responseText);
         alert(this.responseText);
     }
 }
