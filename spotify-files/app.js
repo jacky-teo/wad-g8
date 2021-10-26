@@ -1,5 +1,6 @@
-var redirect_uri = "./index.html";
+// var redirect_uri = "./index.html";
 // var redirect_uri = "http://localhost/wad-g8/spotify-files/index.html";
+var redirect_uri =  "https://vasn.github.io/wad-g8/spotify-files/index.html";
 
 
 var client_id = "eb7fe60f242a47c99400bbbfae58b595";
