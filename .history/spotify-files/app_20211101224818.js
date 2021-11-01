@@ -354,6 +354,15 @@ function currentlyPlaying() {
     callApi("GET", PLAYER + "?market=US", null, handleCurrentlyPlayingResponse);
 }
 
+function trackAnalysis() {
+    if (this.status == 200) {
+        var data = JSON.parse(this.responseText);
+        // add code here
+        track_id = data.item.id;
+        url = ANALYSIS.replace("{id}", track_id);
+        callApi("GET", url, null, handleAnalysisResponse);
+    }
+}
 
 function handleCurrentlyPlayingResponse() {
     if (this.status == 200) {
@@ -363,11 +372,6 @@ function handleCurrentlyPlayingResponse() {
             document.getElementById("albumImage").src = data.item.album.images[0].url;
             document.getElementById("trackTitle").innerHTML = data.item.name;
             document.getElementById("trackArtist").innerHTML = data.item.artists[0].name;
-
-            // add code here
-            track_id = data.item.id;
-            url = ANALYSIS.replace("{id}", track_id);
-            callApi("GET", url, null, handleAnalysisResponse);
         }
 
 
