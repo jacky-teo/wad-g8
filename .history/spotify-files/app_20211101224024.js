@@ -63,13 +63,13 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
         // Ready
         player.addListener('ready', ({ device_id }) => {
-            //console.log('Ready with Device ID', device_id);
+            console.log('Ready with Device ID', device_id);
             refreshDevices();
         });
 
         // Not Ready
         player.addListener('not_ready', ({ device_id }) => {
-            //console.log('Device ID has gone offline', device_id);
+            console.log('Device ID has gone offline', device_id);
 
         });
 
@@ -94,7 +94,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         //auto update currently playing track information
         player.addListener('player_state_changed', (state) => {
             //console.log(state)
-            currentlyPlaying();
+            //currentlyPlaying();
             // add code here
             //change button logo according to playing state
             if (state.paused) {
