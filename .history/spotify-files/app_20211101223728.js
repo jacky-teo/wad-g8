@@ -95,7 +95,6 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         player.addListener('player_state_changed', (state) => {
             //console.log(state)
             //currentlyPlaying();
-            // add code here
             //change button logo according to playing state
             if (state.paused) {
                 //console.log('paused!!!');

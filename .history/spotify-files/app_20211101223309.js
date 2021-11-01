@@ -93,9 +93,8 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
         //auto update currently playing track information
         player.addListener('player_state_changed', (state) => {
-            //console.log(state)
-            //currentlyPlaying();
-            // add code here
+            console.log(state)
+            currentlyPlaying();
             //change button logo according to playing state
             if (state.paused) {
                 //console.log('paused!!!');
@@ -351,6 +350,10 @@ function addTrack(item, index) {
 }
 
 function currentlyPlaying() {
+    // add code here
+    track_id = data.item.id;
+    url = ANALYSIS.replace("{id}", track_id);
+    callApi("GET", url, null, handleAnalysisResponse);
     callApi("GET", PLAYER + "?market=US", null, handleCurrentlyPlayingResponse);
 }
 
