@@ -1,144 +1,197 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<link rel="shortcut icon" href="#">
-		<title>My first three.js app</title>
-		<!-- Bootstrap CSS -->
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+</head>
+
+<!-- Bootstrap -->
+<!-- Latest compiled and minified CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
-		<style>
-			#canvas {
-				width: 80%;
-				height: 80%;
-			}
-		</style>
-	</head>
-	<body>
-		<div id="app">
-			<ul class="nav nav-tabs justify-content-center">
-				<li class="nav-item">
-					<a class="nav-link" aria-current="page" href="/">Playlist Visualizer</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Spotify Visualizer</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link active" href="upload.html">Visualize your audio</a>
-				</li>
-			</ul>
-			<div class="input-group mb-3">
-				<input type="file" class="form-control" id="inputAudio" @change="loadAudio" accept="audio/*">
-				<label class="input-group-text" for="inputAudio">Upload an audio file</label>
-			</div>
-			<canvas id="canvas"></canvas>
-			<audio controls id="player" :src="music"></audio>
-		</div>
 
-        <!-- Three.js library -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.js" integrity="sha512-NLtnLBS9Q2w7GKK9rKxdtgL7rA7CAS85uC/0xd9im4J/yOL4F9ZVlv634NAM7run8hz3wI2GabaA6vv8vJtHiQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" integrity="sha512-UxP+UhJaGRWuMG2YC6LPWYpFQnsSgnor0VUF3BHdD83PS/pOpN+FYbZmrYN+ISX8jnvgVUciqP/fILOXDjZSwg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<body>
+    <div class="container">
+        <div class="row text-center">
+            User Information
+        </div>
 
-		<!-- Vue.js -->
-		<script src="https://unpkg.com/vue@next"></script>
+        
+        <!-- <div class="input-group mb-3">
+            <div class="input-group-append">
+                <span class="input-group-text" >Email</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Email" id='email'>
 
-		<!-- Bootstrap JS -->
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <span class="input-group-text" >Pasword</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Password" id='password'>
+        </div>
+         -->
+        
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <span class="input-group-text" >FileName</span>
+            </div>
+            <div>
+                <label id='extlab'></label>
+            </div>
+            <input type="text" class="form-control" placeholder="File Name" id='fileName'>
+        </div>
+         <div class="progress">
+                <div class="progress-bar" role="progressbar" id="pbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+<hr>    
+        <div class="input-group mb-3">
+            <input type="file" class="form-control" id='file'>
+        </div>
+                <audio controls autoplay muted>
+            <source id='music' src="https://firebasestorage.googleapis.com/v0/b/audiophile-eff2c.appspot.com/o/Music%2FBlackbird.mp3?alt=media&token=a2e6112e-b8cc-413b-ac8c-a0f0791ee9c3" type="audio/mpeg">
+        </audio>
+        <br>
+        <button class='btn btn-warning' id='upload' >Upload</button>
+        <button class='btn btn-success' id='retrieve'>Retrieve</button>
+    </div>
+    
 
-		<!-- Axios API -->
-		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+<!-- Firebase-->
+<script type='module'>
+    import * as THREE from 'https://cdn.skypack.dev/three@0.133.1';
+    import {initializeApp} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js"; //initialize firebase app
+    import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-storage.js" //for firebase storage
+    
 
-		<!-- 2D Dynamic Visualization Library -->
-		<script src="https://cdn.jsdelivr.net/gh/foobar404/wave.js/dist/bundle.iife.js"></script>
-		
-		<!-- Visualization Scripts (if any) -->
-		<!-- <script src="visuals/Boxes.js"></script> -->
+    const firebaseConfig = {
+    apiKey: "AIzaSyDRVQ7r6TGsQhZGvVIXws7y5PTPqlvC2yo",
+    authDomain: "audiophile-eff2c.firebaseapp.com",
+    databaseURL: "https://audiophile-eff2c-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "audiophile-eff2c",
+    storageBucket: "audiophile-eff2c.appspot.com",
+    messagingSenderId: "141435951049",
+    appId: "1:141435951049:web:6308bd4b9fe95fb49bba18",
+    measurementId: "G-LKVP0JH4YH"
+  };
 
-		<script>
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js"
+  import {getDatabase, ref,set,child,update,remove,get } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js"
+  const realdb= getDatabase();
+    
+let reader = new FileReader(),
+files = [];
+let nameBox = document.getElementById('fileName'),
+    upload = document.getElementById('upload'),
+    inputFile = document.getElementById('file'),
+    pbar = document.getElementById('pbar'),
+    retrieve = document.getElementById('retrieve'),
+    music = document.getElementById('music'),
+    ext = document.getElementById('extlab')
 
-			const app = Vue.createApp({
-				data(){
-					return {
-						music: ""
-					}
-				},
-				methods: {
-					loadAudio(event){
-						var audioBlob = URL.createObjectURL(event.target.files[0])
-						this.music = audioBlob
-						let audio = document.getElementById("player")
-						audio.load()
-						
-						var context = new AudioContext();
-						var src = context.createMediaElementSource(audio);
-						var analyser = context.createAnalyser();
+        console.log(inputFile)
+        inputFile.addEventListener('change', function(event){
+            files = event.target.files // file selected by user
+            console.log()
+            var extention = GetFileExt(files[0])
+            var name = GetFileName(files[0])
+            nameBox.value=name
+            extlab.innerHTML = extention; 
+            reader.readAsDataURL(files[0])
+        })
 
-						var canvas = document.getElementById("canvas");
-						canvas.width = window.innerWidth;
-						canvas.height = window.innerHeight;
-						var ctx = canvas.getContext("2d");
+        reader.onload=function(){
+            music.src = reader.result;
+        }
 
-						src.connect(analyser);
-						analyser.connect(context.destination);
+    // Selection
+    function GetFileExt(file){
+        var temp = file.name.split('.');
+        var ext = temp.slice(temp.length-1,temp.length);
+        return '.'+ext[0]
+    }
+    function GetFileName(file){
+        var temp = file.name.split('.');
+        var fname = temp.slice(0,-1).join('.');
+        return fname
+    }
 
-						analyser.fftSize = 256;
+// Upload Process
+async function UploadProcess(){
+    var fileToUpload =files[0];
+    console.log(fileToUpload)
+    var fileToUploadName = nameBox.value +  extlab.innerHTML;
+    if(!ValidateName()){
+        alert('name cannot wrong')
+        return;
+    }
+    const metaData = {
+        contentType: fileToUpload.type
+    }
 
-						var bufferLength = analyser.frequencyBinCount;
-						console.log(bufferLength);
+    const storage = getStorage();
 
-						var dataArray = new Uint8Array(bufferLength);
+    const storageRef =sRef(storage,"Music/"+fileToUploadName);
 
-						var WIDTH = canvas.width;
-						var HEIGHT = canvas.height;
+    const UploadTask = uploadBytesResumable(storageRef,fileToUpload,metaData);
 
-						var barWidth = (WIDTH / bufferLength) * 2.5;
-						var barHeight;
-						var x = 0;
+    UploadTask.on('state-changed',(snapshot)=>{
+        var progress= (snapshot.bytesTransferred/snapshot.totalBytes) * 100;
+        pbar.innerHTML ='Upload' + progress + "%"
+        pbar.style.width= progress+"%"
+    },
 
-						function renderFrame() {
-						requestAnimationFrame(renderFrame);
+    (error)=>{
+        alert("error: File failed to upload");
+    },
 
-						x = 0;
+    ()=>{
+        getDownloadURL(UploadTask.snapshot.ref).then((downloadURL)=>{
+            SaveURLtoRealTimeDB(downloadURL);
+            });
+        }
+        );
+    }
 
-						analyser.getByteFrequencyData(dataArray);
+    // Function REALTIME DATABASE
+    function SaveURLtoRealTimeDB(URL){
+        var name = nameBox.value;
+        var ext =extlab.innerHTML
+        set(ref(realdb,"MusicFileLinks/") + name),{
+            musicName:(name+ext),
+            musicURL:URL
+        }
+    }
+    function GetUrlfromRealTimeDB(){
+        var name =nameBox.value;
+        var dbRef =ref(realdb);
+        get(child(dbRef,"MusicFileLinks/"+ name)).then((snapshot)=>{
+            if(snapshot.exists()){
+                music.src=snapshot.val().musicURL
+            }
+        })}
 
-						ctx.fillStyle = "#000";
-						ctx.fillRect(0, 0, WIDTH, HEIGHT);
+    function validateName(){
+        var regex=/[\.#$\[]]/
+        return !(regex.test(nameBox.value));
+    }
+    retrieve.onclick=GetUrlfromRealTimeDB;
+    upload.onclick=UploadProcess;
+</script>
+<script>
 
-						for (var i = 0; i < bufferLength; i++) {
-							barHeight = dataArray[i];
-							
-							var r = barHeight + (25 * (i/bufferLength));
-							var g = 250 * (i/bufferLength);
-							var b = 50;
+</script>
 
-							ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-							ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
 
-							x += barWidth + 1;
-						}
-						}
+<!-- Latest compiled and minified JavaScript -->
 
-						var playPromise = audio.play();
-
-						if (playPromise !== undefined) {
-							playPromise.then(_ => {
-							// Automatic playback started!
-							// Show playing UI.
-							})
-							.catch(error => {
-							// Auto-play was prevented
-							// Show paused UI.
-							});
-						}
-						renderFrame();
-					}
-				}
-			})
-
-			const vm = app.mount("#app")
-		</script>
-		</script>
-	</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </html>
