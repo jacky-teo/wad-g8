@@ -25,7 +25,7 @@ app = Vue.createApp({
                 "Race Into The Night",
                 "Kiss Me More - Doja Cat ft. SZA"
             ], 
-            scenes: ["scene1", "scene2", "scene3", "scene4"]
+            scenes: ["scene1", "scene2", "scene3", "scene4", "scene5"]
         }
     },
     methods: {
@@ -103,6 +103,8 @@ app = Vue.createApp({
                 s = scene3;
             } else if (value == "scene4") {
                 s = scene4;
+            } else if (value == "scene5") {
+                s = scene5;
             }
         }
     },
