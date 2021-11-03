@@ -94,10 +94,6 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         //auto update currently playing track information
         player.addListener('player_state_changed', (state) => {
             console.log(state)
-            // add code here
-            track_id = data.item.id;
-            url = ANALYSIS.replace("{id}", track_id);
-            console.log(callApi("GET", url, null, handleAnalysisResponse));
             currentlyPlaying();
 
             //change button logo according to playing state
