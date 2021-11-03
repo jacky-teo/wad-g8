@@ -107,19 +107,6 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
         })
 
-        player.getCurrentState().then(state => {
-            if (!state) {
-                console.error('User is not playing music through the Web Playback SDK');
-                return;
-            }
-
-            var current_track = state.track_window.current_track;
-            var next_track = state.track_window.next_tracks[0];
-
-            console.log('Currently Playing', current_track);
-            console.log('Playing Next', next_track);
-        });
-
         //listen for click on play-pause button 
         document.getElementById('togglePlay').onclick = function () {
             player.togglePlay();
