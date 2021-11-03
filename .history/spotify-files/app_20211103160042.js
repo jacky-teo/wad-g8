@@ -95,18 +95,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         player.addListener('player_state_changed', (state) => {
             console.log(state)
             currentlyPlaying();
-            player.getCurrentState().then(state => {
-                if (!state) {
-                    console.error('User is not playing music through the Web Playback SDK');
-                    return;
-                }
 
-                var current_track = state.track_window.current_track;
-                var next_track = state.track_window.next_tracks[0];
-
-                console.log('Currently Playing', current_track);
-                console.log('Playing Next', next_track);
-            });
             //change button logo according to playing state
             if (state.paused) {
                 //console.log('paused!!!');
@@ -114,6 +103,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
             } else {
                 playToggle.playToggle = true;
             }
+
         })
 
         //listen for click on play-pause button 
