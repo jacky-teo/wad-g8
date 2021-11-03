@@ -91,55 +91,51 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         //connect new spotify instance
         player.connect();
 
-        //     //auto update currently playing track information
-        //     player.addListener('player_state_changed', (state) => {
-        //         console.log(state)
-        //         currentlyPlaying();
+        //auto update currently playing track information
+        player.addListener('player_state_changed', (state) => {
+            console.log(state)
+            currentlyPlaying();
 
-        //     //change button logo according to playing state
-        //     if (state.paused) {
-        //         //console.log('paused!!!');
-        //         playToggle.playToggle = false;
-        //     } else {
-        //         playToggle.playToggle = true;
-        //     }
-        // });
+            var current_track = state.track_window.current_track;
+            var next_track = state.track_window.next_tracks[0];
 
-        player.addListener('player_state_changed', ({
-            position,
-            duration,
-            track_window: { current_track }
-        }) => {
             console.log('Currently Playing', current_track);
-            console.log('Position in Song', position);
-            console.log('Duration of Song', duration);
+            console.log('Playing Next', next_track);
+        });
+        //change button logo according to playing state
+        if (state.paused) {
+            //console.log('paused!!!');
+            playToggle.playToggle = false;
+        } else {
+            playToggle.playToggle = true;
+        }
+    })
+
+    //listen for click on play-pause button 
+    document.getElementById('togglePlay').onclick = function () {
+        player.togglePlay();
+
+    };
+
+    //prev song
+    document.getElementById('prev').onclick = function () {
+        player.previousTrack().then(() => {
+            //console.log('Set to previous track!');
         });
 
-        //listen for click on play-pause button 
-        document.getElementById('togglePlay').onclick = function () {
-            player.togglePlay();
+    };
 
-        };
+    //next song
+    document.getElementById('next').onclick = function () {
+        player.nextTrack().then(() => {
+            //console.log('Skipped to next track!');
+        });
 
-        //prev song
-        document.getElementById('prev').onclick = function () {
-            player.previousTrack().then(() => {
-                //console.log('Set to previous track!');
-            });
+    };
 
-        };
-
-        //next song
-        document.getElementById('next').onclick = function () {
-            player.nextTrack().then(() => {
-                //console.log('Skipped to next track!');
-            });
-
-        };
-
-        //player instance object
-        //console.log(player);
-    }
+    //player instance object
+    //console.log(player);
+}
 }
 
 //needed
@@ -374,10 +370,10 @@ function handleCurrentlyPlayingResponse() {
             document.getElementById("trackTitle").innerHTML = data.item.name;
             document.getElementById("trackArtist").innerHTML = data.item.artists[0].name;
 
-            // // add code here
-            // track_id = data.item.id;
-            // url = ANALYSIS.replace("{id}", track_id);
-            // callApi("GET", url, null, handleAnalysisResponse);
+            // add code here
+            track_id = data.item.id;
+            url = ANALYSIS.replace("{id}", track_id);
+            callApi("GET", url, null, handleAnalysisResponse);
         }
 
 
