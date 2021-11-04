@@ -11,6 +11,7 @@ var refresh_token = null;
 var currentPlaylist = "";
 
 localStorage.setItem('trackid', '');
+const updatetrackid = localStorage.getItem('trackid')
 
 const AUTHORIZE = "https://accounts.spotify.com/authorize"
 const TOKEN = "https://accounts.spotify.com/api/token";
@@ -361,12 +362,11 @@ function handleCurrentlyPlayingResponse() {
             document.getElementById("albumImage").src = data.item.album.images[0].url;
             document.getElementById("trackTitle").innerHTML = data.item.name;
             document.getElementById("trackArtist").innerHTML = data.item.artists[0].name;
-            track_id = data.item.id;
-            if (localStorage.getItem('trackid') != track_id) {
-                localStorage.setItem('trackid', track_id)
-                url = ANALYSIS.replace("{id}", track_id);
-                callApi("GET", url, null, handleAnalysisResponse);
-            }
+
+            // // add code here
+            // track_id = data.item.id;
+            // url = ANALYSIS.replace("{id}", track_id);
+            // callApi("GET", url, null, handleAnalysisResponse);
         }
 
 
@@ -395,16 +395,16 @@ function handleCurrentlyPlayingResponse() {
     }
 }
 
-function handleAnalysisResponse() {
-    if (this.status == 200) {
-        var data = JSON.parse(this.responseText);
-        console.log(data)
-    }
-    else if (this.status == 401) {
-        refreshAccessToken()
-    }
-    else {
-        console.log(this.responseText);
-        alert(this.responseText);
-    }
-}
+// function handleAnalysisResponse() {
+//     if (this.status == 200) {
+//         var data = JSON.parse(this.responseText);
+//         console.log(data)
+//     }
+//     else if (this.status == 401) {
+//         refreshAccessToken()
+//     }
+//     else {
+//         console.log(this.responseText);
+//         alert(this.responseText);
+//     }
+// }
