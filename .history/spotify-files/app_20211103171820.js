@@ -93,7 +93,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
         //auto update currently playing track information
         player.addListener('player_state_changed', (state) => {
-            //console.log(state)
+            console.log(state)
             currentlyPlaying();
 
             //change button logo according to playing state
@@ -363,10 +363,10 @@ function handleCurrentlyPlayingResponse() {
             document.getElementById("trackTitle").innerHTML = data.item.name;
             document.getElementById("trackArtist").innerHTML = data.item.artists[0].name;
 
-            // add code here
-            track_id = data.item.id;
-            url = ANALYSIS.replace("{id}", track_id);
-            callApi("GET", url, null, handleAnalysisResponse);
+            // // add code here
+            // track_id = data.item.id;
+            // url = ANALYSIS.replace("{id}", track_id);
+            // callApi("GET", url, null, handleAnalysisResponse);
         }
 
 
@@ -395,16 +395,16 @@ function handleCurrentlyPlayingResponse() {
     }
 }
 
-function handleAnalysisResponse() {
-    if (this.status == 200) {
-        var data = JSON.parse(this.responseText);
-        //console.log(data);
-    }
-    else if (this.status == 401) {
-        refreshAccessToken()
-    }
-    else {
-        //console.log(this.responseText);
-        alert(this.responseText);
-    }
-}
+// function handleAnalysisResponse() {
+//     if (this.status == 200) {
+//         var data = JSON.parse(this.responseText);
+//         //console.log(data);
+//     }
+//     else if (this.status == 401) {
+//         refreshAccessToken()
+//     }
+//     else {
+//         //console.log(this.responseText);
+//         alert(this.responseText);
+//     }
+// }
