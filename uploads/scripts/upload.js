@@ -49,9 +49,8 @@ const initApp = () => {
 document.addEventListener("DOMContentLoaded", initApp);
 
 const handleDrop = (e) => {
-    const dt = e.dataTransfer;
-    files = dt.files;
-    fileArray = [...files];
+    const datatransfer = e.dataTransfer;
+    files = datatransfer.files;
     var extention = GetFileExt(files[0])
     var name = GetFileName(files[0])
     nameBox.value=name
@@ -62,7 +61,7 @@ reader.onload = function(){
     music.src = reader.result;
     }
 
-// Dropped file
+// Dropped file and get info from file
     function GetFileExt(file){
         var temp = file.name.split('.');
         var ext = temp.slice(temp.length-1,temp.length);
@@ -76,7 +75,7 @@ reader.onload = function(){
 
 // Upload File
 async function UploadProcess(){ 
-    var fileToUpload =files[0]
+    var fileToUpload =files[0];
     console.log(fileToUpload)
     var fileToUploadName = nameBox.value +  extlab.innerHTML;
     if(!validateName()){
@@ -88,49 +87,48 @@ async function UploadProcess(){
     }
     const storage = getStorage();
     const storageRef =sRef(storage,"users/14Yw7cZuYYNPNXJCPlnyI6bQcit1/"+fileToUploadName);
-    console.log(storageRef)
+    
     const UploadTask = uploadBytesResumable(storageRef,fileToUpload,metaData);
+    console.log(UploadTask)
     UploadTask.on('state-changed',(snapshot)=>{
         var progress= (snapshot.bytesTransferred/snapshot.totalBytes) * 100;
         pbar.innerHTML ='Upload' + progress + "%"
         pbar.style.width= progress+"%"
-    },(error)=>{
+    },
+    (error)=>{
         alert("error: File failed to upload");
-    },()=>{
-        getDownloadURL(UploadTask.snapshot.ref)
-        .then((downloadURL)=>{
+    },
+    ()=>{
+        getDownloadURL(UploadTask.snapshot.ref).then((downloadURL)=>{
             SaveURLtoRealTimeDB(downloadURL);
-            console.log(downloadURL)
-            })
-        .catch(err=>{console.log("T_T")})
+            console.log(downloadURL)})
+            .catch(err=>{console.log("WHNY CANNOT UPLOAD")})
             });
     }
 // Save to REALTIME DB
 const realdb= getDatabase();
-
-function SaveURLtoRealTimeDB(URL){
+    // Function REALTIME DATABASE
+    function SaveURLtoRealTimeDB(URL){
         var name = nameBox.value;
-        var ext =extlab.innerHTML;
-        set(ref(realdb,"users/14Yw7cZuYYNPNXJCPlnyI6bQcit1/"+ name)),{
+        var ext =extlab.innerHTML
+        
+        set(ref(realdb,"MusicFileLinks/"+ name),{
             musicName:(name+ext),
             musicURL:URL
-        }
-        .then(res=>console.log("No error"))
-        .catch(er=>console.log('got error'))
-    }
-function GetUrlfromRealTimeDB(){
-        var name =nameBox.value;
-        var dbRef =ref(realdb);
-        get(child(dbRef,"users/14Yw7cZuYYNPNXJCPlnyI6bQcit1/"+ name))
-        .then((snapshot)=>{
-            if(snapshot.exists()){
-                music.src=snapshot.val().musicURL
-                
-            }
-            
         })
-        .catch(err=>err.message)
     }
+
+function GetUrlfromRealTimeDB(){
+        var name =nameBox.value; // Get name of file
+        var dbRef =ref(realdb); // Refer to realtime DB
+        get(child(dbRef,"MusicFileLinks/"+ name)) // Get the file link
+        .then((snapshot)=>{
+            if(snapshot.exists()){ // if such a file link exist
+                var musicURL=snapshot.val().musicURL
+                var source = document.getElementById('source')
+                source.src=musicURL // change the URL
+                player.load()}})}
+
 function validateName(){
         var regex=/[\.#$\[]]/
         return !(regex.test(nameBox.value));
