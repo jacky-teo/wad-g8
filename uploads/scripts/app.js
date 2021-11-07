@@ -10,13 +10,17 @@
                     islogin: true,
                     loginEmail: '',
                     loginPassword: '',
-                    loginErrorMsg: '',
                     registerFirstName: '',
                     registerLastName: '',
                     registerFullName: '',
                     registerEmail: '',
                     registerPassword: '',
                     registerConfirmPassword: '',
+
+                    isLoginSuccessful: true,
+                    noEmptyFields: true,
+                    loginErrorMsg: "Email and/or Password cannot be empty",
+                    authFailMsg: "Incorrect email and/or password.",
 
                     isFirstNameEmpty: false,
                     isLastNameEmpty: false,
@@ -54,20 +58,25 @@
                 },
                 login() {
                     if (this.loginEmail == '' || this.loginPassword == '') {
-                        this.loginErrorMsg = "Email and/or Password cannot be empty"
-                    }
-                    else{
+                        this.isLoginSuccessful = true;
+                        this.noEmptyFields = false;
+                        console.log('here yet?');
+                
+                    } else{
+                        this.noEmptyFields = true;
                         let email = this.loginEmail,
                             password = this.loginPassword
+
                         const auth = getAuth();
                         signInWithEmailAndPassword(auth, email, password)
                         .then((userCredential) => {
-                        // Signed in
-                        
-                        const user = userCredential.user;
+                            // Signed in
+                            this.isLoginSuccessful = true;
+                            const user = userCredential.user;
                         
                         })
                         .catch((error) => {
+                            this.isLoginSuccessful = false;
                             const errorMessage = error.message;
                             console.log(errorMessage)
                         });
@@ -104,7 +113,7 @@
 
                     } else {
                         console.log('this is correct');
-                        
+
                     }
 
                 },
@@ -131,6 +140,7 @@
             computed: {
                 isSamePassword() {
                     return this.registerConfirmPassword == this.registerPassword;
-                }
+                },
+
             }
         }).mount('#app')
