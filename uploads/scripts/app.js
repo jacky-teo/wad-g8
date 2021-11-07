@@ -72,8 +72,6 @@
                         const auth = getAuth();
                         signInWithEmailAndPassword(auth, email, password)
                         .then((userCredential) => {
-                        // Signed in
-                        const user = userCredential.user;
                             // Signed in
                             this.isLoginSuccessful = true;
                             const user = userCredential.user;
