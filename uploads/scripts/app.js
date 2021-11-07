@@ -27,10 +27,12 @@
                     isEmailEmpty: false,
                     isEmailValid: true,
                     isPasswordEmpty: false,
+                    isPasswordValid: true,
                     isConfirmPasswordEmpty: false,
                     
                     emptyFieldMsg: 'Required.',
                     emailMsg: 'Invalid email.',
+                    passwordMsg: "Password must contain at least 6 characters",
                     confirmPasswordMsg: 'Confirm password must be the same as password.',
                     registerErrorMsg: ''
                 }
@@ -107,8 +109,16 @@
                     } else {
                         this.isEmailValid = true;
                     }
-                    
-                    if (checks.every(check => check === false) && this.isEmailValid) {
+
+                    if (this.isPasswordEmpty === false) {
+                        this.isPasswordValid = this.registerPassword.length >= 6 ? true : false;
+
+                    } else {
+                        this.isPasswordValid = true;
+
+                    }
+
+                    if (checks.every(check => check === false) && this.isEmailValid && this.isSamePassword && this.isPasswordValid) {
                         console.log('registering...');
                         this.register();
 

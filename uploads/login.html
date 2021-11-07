@@ -127,6 +127,9 @@
                         <div v-if="isPasswordEmpty===true" class="form-text text-danger">
                             {{emptyFieldMsg}}
                         </div>
+                        <div v-if="isPasswordValid===false" class="form-text text-danger">
+                            {{passwordMsg}}
+                        </div>
                         <div class="wrap-input100 validate-input m-b-25">
                             <input v-model='registerPassword' class="input100" type="password" name="registerPassword" placeholder="Password" required>
                             <span class="focus-input100"></span>
