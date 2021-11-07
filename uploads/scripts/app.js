@@ -17,6 +17,17 @@
                     registerEmail: '',
                     registerPassword: '',
                     registerConfirmPassword: '',
+
+                    isFirstNameEmpty: false,
+                    isLastNameEmpty: false,
+                    isEmailEmpty: false,
+                    isEmailValid: true,
+                    isPasswordEmpty: false,
+                    isConfirmPasswordEmpty: false,
+                    
+                    emptyFieldMsg: 'Required.',
+                    emailMsg: 'Invalid email.',
+                    confirmPasswordMsg: 'Confirm password must be the same as password.',
                     registerErrorMsg: ''
                 }
             },
@@ -62,6 +73,41 @@
                         });
                     }
                 },
+                validateForm() {
+                    let checks = [
+                        this.isFirstNameEmpty,
+                        this.isLastNameEmpty,
+                        this.isEmailEmpty,
+                        this.isPasswordEmpty,
+                        this.isConfirmPasswordEmpty
+                    ]
+
+                    this.isFirstNameEmpty = this.registerFirstName == '' ? true : false;
+                    this.isLastNameEmpty = this.registerLastName == '' ? true : false;
+                    this.isEmailEmpty = this.registerEmail == '' ? true : false;
+                    this.isPasswordEmpty = this.registerPassword == '' ? true : false;
+                    this.isConfirmPasswordEmpty = this.registerConfirmPassword == '' ? true : false;
+
+                    if (this.isEmailEmpty === false) {
+                        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.registerEmail)) {
+                            this.isEmailValid = true;
+                        } else {
+                            this.isEmailValid = false;
+                        }
+
+                    } else {
+                        this.isEmailValid = true;
+                    }
+
+                    if (checks.every(check => check === false) && this.isEmailValid) {
+                        this.register;
+
+                    } else {
+                        console.log('this is correct');
+                        
+                    }
+
+                },
                 register() {
                 let email = this.registerEmail,
                     password = this.registerPassword
@@ -83,10 +129,8 @@
                 }
             },
             computed: {
-                help() {
-                    // helper function to see if the v-model works
-                    // change the this.<whatever> to see if it pops up even
-                    return this.registerFullName
+                isSamePassword() {
+                    return this.registerConfirmPassword == this.registerPassword;
                 }
             }
         }).mount('#app')
