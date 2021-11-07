@@ -72,15 +72,12 @@
                         const auth = getAuth();
                         signInWithEmailAndPassword(auth, email, password)
                         .then((userCredential) => {
-<<<<<<< HEAD
                         // Signed in
                         const user = userCredential.user;
-=======
                             // Signed in
                             this.isLoginSuccessful = true;
                             const user = userCredential.user;
-                        
->>>>>>> 2c3076ddc4aab534989cba1da37d9cf1a6bedbf1
+
                         })
                         .catch((error) => {
                             this.isLoginSuccessful = false;
