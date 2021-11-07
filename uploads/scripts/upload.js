@@ -86,7 +86,7 @@ async function UploadProcess(){
         contentType: fileToUpload.type
     }
     const storage = getStorage();
-    const storageRef =sRef(storage,"users/14Yw7cZuYYNPNXJCPlnyI6bQcit1/"+fileToUploadName);
+    const storageRef =sRef(storage,"users/14Yw7cZuYYNPNXJCPlnyI6bQcit1/"+fileToUploadName); // To be updated when i can dynamically get the userid (prolly PHP sessions)
     
     const UploadTask = uploadBytesResumable(storageRef,fileToUpload,metaData);
     console.log(UploadTask)
@@ -112,7 +112,7 @@ const realdb= getDatabase();
         var name = nameBox.value;
         var ext =extlab.innerHTML
         
-        set(ref(realdb,"MusicFileLinks/"+ name),{
+        set(ref(realdb,"users/14Yw7cZuYYNPNXJCPlnyI6bQcit1//"+ name),{
             musicName:(name+ext),
             musicURL:URL
         })
@@ -121,7 +121,7 @@ const realdb= getDatabase();
 function GetUrlfromRealTimeDB(){
         var name =nameBox.value; // Get name of file
         var dbRef =ref(realdb); // Refer to realtime DB
-        get(child(dbRef,"MusicFileLinks/"+ name)) // Get the file link
+        get(child(dbRef,"users/14Yw7cZuYYNPNXJCPlnyI6bQcit1/"+ name)) // Get the file link
         .then((snapshot)=>{
             if(snapshot.exists()){ // if such a file link exist
                 var musicURL=snapshot.val().musicURL
