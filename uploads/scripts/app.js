@@ -83,6 +83,12 @@
                     }
                 },
                 validateForm() {
+                    this.isFirstNameEmpty = this.registerFirstName == '' ? true : false;
+                    this.isLastNameEmpty = this.registerLastName == '' ? true : false;
+                    this.isEmailEmpty = this.registerEmail == '' ? true : false;
+                    this.isPasswordEmpty = this.registerPassword == '' ? true : false;
+                    this.isConfirmPasswordEmpty = this.registerConfirmPassword == '' ? true : false;
+
                     let checks = [
                         this.isFirstNameEmpty,
                         this.isLastNameEmpty,
@@ -90,12 +96,6 @@
                         this.isPasswordEmpty,
                         this.isConfirmPasswordEmpty
                     ]
-
-                    this.isFirstNameEmpty = this.registerFirstName == '' ? true : false;
-                    this.isLastNameEmpty = this.registerLastName == '' ? true : false;
-                    this.isEmailEmpty = this.registerEmail == '' ? true : false;
-                    this.isPasswordEmpty = this.registerPassword == '' ? true : false;
-                    this.isConfirmPasswordEmpty = this.registerConfirmPassword == '' ? true : false;
 
                     if (this.isEmailEmpty === false) {
                         if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.registerEmail)) {
@@ -107,13 +107,13 @@
                     } else {
                         this.isEmailValid = true;
                     }
-
+                    
                     if (checks.every(check => check === false) && this.isEmailValid) {
-                        this.register;
+                        console.log('registering...');
+                        this.register();
 
                     } else {
-                        console.log('this is correct');
-
+                        console.log('Registration form inputs are invalid.');
                     }
 
                 },
