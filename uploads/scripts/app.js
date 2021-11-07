@@ -10,13 +10,30 @@
                     islogin: true,
                     loginEmail: '',
                     loginPassword: '',
-                    loginErrorMsg: '',
                     registerFirstName: '',
                     registerLastName: '',
                     registerFullName: '',
                     registerEmail: '',
                     registerPassword: '',
                     registerConfirmPassword: '',
+
+                    isLoginSuccessful: true,
+                    noEmptyFields: true,
+                    loginErrorMsg: "Email and/or Password cannot be empty",
+                    authFailMsg: "Incorrect email and/or password.",
+
+                    isFirstNameEmpty: false,
+                    isLastNameEmpty: false,
+                    isEmailEmpty: false,
+                    isEmailValid: true,
+                    isPasswordEmpty: false,
+                    isPasswordValid: true,
+                    isConfirmPasswordEmpty: false,
+                    
+                    emptyFieldMsg: 'Required.',
+                    emailMsg: 'Invalid email.',
+                    passwordMsg: "Password must contain at least 6 characters",
+                    confirmPasswordMsg: 'Confirm password must be the same as password.',
                     registerErrorMsg: ''
                 }
             },
@@ -43,22 +60,77 @@
                 },
                 login() {
                     if (this.loginEmail == '' || this.loginPassword == '') {
-                        this.loginErrorMsg = "Email and/or Password cannot be empty"
-                    }
-                    else{
+                        this.isLoginSuccessful = true;
+                        this.noEmptyFields = false;
+                        console.log('here yet?');
+                
+                    } else{
+                        this.noEmptyFields = true;
                         let email = this.loginEmail,
                             password = this.loginPassword
+
                         const auth = getAuth();
                         signInWithEmailAndPassword(auth, email, password)
                         .then((userCredential) => {
+<<<<<<< HEAD
                         // Signed in
                         const user = userCredential.user;
+=======
+                            // Signed in
+                            this.isLoginSuccessful = true;
+                            const user = userCredential.user;
+                        
+>>>>>>> 2c3076ddc4aab534989cba1da37d9cf1a6bedbf1
                         })
                         .catch((error) => {
+                            this.isLoginSuccessful = false;
                             const errorMessage = error.message;
                             console.log(errorMessage)
                         });
                     }
+                },
+                validateForm() {
+                    this.isFirstNameEmpty = this.registerFirstName == '' ? true : false;
+                    this.isLastNameEmpty = this.registerLastName == '' ? true : false;
+                    this.isEmailEmpty = this.registerEmail == '' ? true : false;
+                    this.isPasswordEmpty = this.registerPassword == '' ? true : false;
+                    this.isConfirmPasswordEmpty = this.registerConfirmPassword == '' ? true : false;
+
+                    let checks = [
+                        this.isFirstNameEmpty,
+                        this.isLastNameEmpty,
+                        this.isEmailEmpty,
+                        this.isPasswordEmpty,
+                        this.isConfirmPasswordEmpty
+                    ]
+
+                    if (this.isEmailEmpty === false) {
+                        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.registerEmail)) {
+                            this.isEmailValid = true;
+                        } else {
+                            this.isEmailValid = false;
+                        }
+
+                    } else {
+                        this.isEmailValid = true;
+                    }
+
+                    if (this.isPasswordEmpty === false) {
+                        this.isPasswordValid = this.registerPassword.length >= 6 ? true : false;
+
+                    } else {
+                        this.isPasswordValid = true;
+
+                    }
+
+                    if (checks.every(check => check === false) && this.isEmailValid && this.isSamePassword && this.isPasswordValid) {
+                        console.log('registering...');
+                        this.register();
+
+                    } else {
+                        console.log('Registration form inputs are invalid.');
+                    }
+
                 },
                 register() {
                 let email = this.registerEmail,
@@ -81,10 +153,9 @@
                 }
             },
             computed: {
-                help() {
-                    // helper function to see if the v-model works
-                    // change the this.<whatever> to see if it pops up even
-                    return this.registerFullName
-                }
+                isSamePassword() {
+                    return this.registerConfirmPassword == this.registerPassword;
+                },
+
             }
         }).mount('#app')
