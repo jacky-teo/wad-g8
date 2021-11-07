@@ -1,6 +1,6 @@
         import {initializeApp} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js"; //initialize firebase app
-        import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-storage.js" //for firebase storage
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword , signOut } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js"
+        import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL,uploadString} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-storage.js" //for firebase storage
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword , signOut,  } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js"
         import {getDatabase, ref,set,child,update,remove,get } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js"
 
         const app = Vue.createApp({
@@ -52,8 +52,9 @@
                         signInWithEmailAndPassword(auth, email, password)
                         .then((userCredential) => {
                         // Signed in
+                        
                         const user = userCredential.user;
-                        console.log(user)
+                        
                         })
                         .catch((error) => {
                             const errorMessage = error.message;
@@ -64,16 +65,20 @@
                 register() {
                 let email = this.registerEmail,
                     password = this.registerPassword
-
-                    console.log(email)
-                    console.log(password)
                     const auth =getAuth();
                     createUserWithEmailAndPassword(auth,email,password)
                     .then((userCreds)=>{
                         const user = userCreds.user
+                        console.log(user)
+                        const storage = getStorage()
+                        const storageRef =sRef(storage,"public/users/" + user.uid)
+                        const message = this.registerFirstName +' '+this.registerLastName;
+                        uploadString(storageRef, message).then((snapshot) => {
+                            console.log(snapshot)
+                        });
                     })
                     .catch((error)=>{
-                        console.log(error.code)
+                        console.log(error)
                     })
                 }
             },
