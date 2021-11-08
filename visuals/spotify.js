@@ -2,9 +2,9 @@ import * as THREE from 'https://cdn.skypack.dev/three@0.133.1';
 import {GLTFLoader} from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/loaders/GLTFLoader.js";
 
 export var scene5 = new THREE.Scene();
-var loader = new GLTFLoader();
+const loader = new GLTFLoader();
 var obj;
-loader.load("../assets/spotifylogo.gltf", function(gltf){
+loader.load("../objects/spotifylogo.gltf", function(gltf){
     obj = gltf.scene;
     var material = new THREE.MeshBasicMaterial( {color: 0x33ff4e} );
     obj = new THREE.Mesh(obj, material);
