@@ -3,6 +3,7 @@ import { OrbitControls } from 'https://cdn.skypack.dev/three@0.133.1/examples/js
 import { scene2, scaleSphere } from '../visuals/Sphere.js'
 import { scene3, animateSpace } from '../visuals/Space.js'
 import { scene4, changeColors, spinCircle, boxScaling } from '../visuals/RotatingBoxes.js'
+import { scene5, scaleSpotify } from '../visuals/spotify.js'
 
 feather.replace(); 
 
@@ -25,7 +26,7 @@ app = Vue.createApp({
                 "Race Into The Night",
                 "Kiss Me More - Doja Cat ft. SZA"
             ], 
-            scenes: ["scene1", "scene2", "scene3", "scene4"]
+            scenes: ["scene1", "scene2", "scene3", "scene4", "scene5"]
         }
     },
     methods: {
@@ -103,6 +104,8 @@ app = Vue.createApp({
                 s = scene3;
             } else if (value == "scene4") {
                 s = scene4;
+            } else if (value == "scene5") {
+                s = scene5;
             }
         }
     },
@@ -151,6 +154,7 @@ function animate() {
         boxScaling(sUnit);
         changeColors();
         spinCircle();
+        scaleSpotify(sUnit);
     }
 
     renderer.render( s, camera );
