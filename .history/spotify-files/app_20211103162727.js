@@ -1,16 +1,17 @@
+// var redirect_uri = "./index.html";
+// var redirect_uri = "http://localhost/wad-g8/spotify-files/index.html";
 var redirect_uri = "https://vasn.github.io/wad-g8/spotify-files/index.html";
 
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// this should go in the firebase when it's ready 
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 var client_id = "eb7fe60f242a47c99400bbbfae58b595";
 var client_secret = "bd6587ae3ac04e6d94be304b6f5edda7";
+
+// var client_id = "ece08a82494f4921bb6858d4ba594c5d";
+// var client_secret = "79de22a949474655a0d85dca4a46df0b"; // In a real app you should not expose your client_secret to the user
 
 var access_token = null;
 var refresh_token = null;
 var currentPlaylist = "";
-
-localStorage.setItem('trackid', '');
 
 const AUTHORIZE = "https://accounts.spotify.com/authorize"
 const TOKEN = "https://accounts.spotify.com/api/token";
@@ -92,9 +93,20 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
         //auto update currently playing track information
         player.addListener('player_state_changed', (state) => {
-            //console.log(state)
+            console.log(state)
             currentlyPlaying();
+            player.getCurrentState().then(state => {
+                if (!state) {
+                    console.error('User is not playing music through the Web Playback SDK');
+                    return;
+                }
 
+                var current_track = state.track_window.current_track;
+                var next_track = state.track_window.next_tracks[0];
+
+                console.log('Currently Playing', current_track);
+                console.log('Playing Next', next_track);
+            });
             //change button logo according to playing state
             if (state.paused) {
                 //console.log('paused!!!');
@@ -102,7 +114,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
             } else {
                 playToggle.playToggle = true;
             }
-        });
+        })
 
         //listen for click on play-pause button 
         document.getElementById('togglePlay').onclick = function () {
@@ -282,6 +294,7 @@ function removeAllItems(elementId) {
 function play() {
     let playlist_id = document.getElementById("playlists").value;
     let trackindex = document.getElementById("tracks").value;
+
     let body = {};
 
     body.context_uri = "spotify:playlist:" + playlist_id;
@@ -295,7 +308,7 @@ function play() {
 //needed
 function handleApiResponse() {
     if (this.status == 200) {
-        console.log(this.responseText);
+        //console.log(this.responseText);
         setTimeout(currentlyPlaying, 2000);
 
     }
@@ -311,40 +324,40 @@ function handleApiResponse() {
     }
 }
 
-function deviceId() {
-    return document.getElementById("devices").value;
-}
+// function deviceId() {
+//     return document.getElementById("devices").value;
+// }
 
-function fetchTracks() {
-    let playlist_id = document.getElementById("playlists").value;
-    if (playlist_id.length > 0) {
-        url = TRACKS.replace("{{PlaylistId}}", playlist_id);
-        callApi("GET", url, null, handleTracksResponse);
-    }
-}
+// function fetchTracks() {
+//     let playlist_id = document.getElementById("playlists").value;
+//     if (playlist_id.length > 0) {
+//         url = TRACKS.replace("{{PlaylistId}}", playlist_id);
+//         callApi("GET", url, null, handleTracksResponse);
+//     }
+// }
 
-function handleTracksResponse() {
-    if (this.status == 200) {
-        var data = JSON.parse(this.responseText);
-        //console.log(data);
-        removeAllItems("tracks");
-        data.items.forEach((item, index) => addTrack(item, index));
-    }
-    else if (this.status == 401) {
-        refreshAccessToken()
-    }
-    else {
-        //console.log(this.responseText);
-        alert(this.responseText);
-    }
-}
+// function handleTracksResponse() {
+//     if (this.status == 200) {
+//         var data = JSON.parse(this.responseText);
+//         //console.log(data);
+//         removeAllItems("tracks");
+//         data.items.forEach((item, index) => addTrack(item, index));
+//     }
+//     else if (this.status == 401) {
+//         refreshAccessToken()
+//     }
+//     else {
+//         //console.log(this.responseText);
+//         alert(this.responseText);
+//     }
+// }
 
-function addTrack(item, index) {
-    let node = document.createElement("option");
-    node.value = index;
-    node.innerHTML = item.track.name + " (" + item.track.artists[0].name + ")";
-    document.getElementById("tracks").appendChild(node);
-}
+// function addTrack(item, index) {
+//     let node = document.createElement("option");
+//     node.value = index;
+//     node.innerHTML = item.track.name + " (" + item.track.artists[0].name + ")";
+//     document.getElementById("tracks").appendChild(node);
+// }
 
 
 //needed
@@ -356,16 +369,16 @@ function currentlyPlaying() {
 function handleCurrentlyPlayingResponse() {
     if (this.status == 200) {
         var data = JSON.parse(this.responseText);
+        //console.log(data);
         if (data.item != null) {
             document.getElementById("albumImage").src = data.item.album.images[0].url;
             document.getElementById("trackTitle").innerHTML = data.item.name;
             document.getElementById("trackArtist").innerHTML = data.item.artists[0].name;
+
+            // add code here
             track_id = data.item.id;
-            if (localStorage.getItem('trackid') != track_id) {
-                localStorage.setItem('trackid', track_id)
-                url = ANALYSIS.replace("{id}", track_id);
-                callApi("GET", url, null, handleAnalysisResponse);
-            }
+            url = ANALYSIS.replace("{id}", track_id);
+            callApi("GET", url, null, handleAnalysisResponse);
         }
 
 
@@ -394,16 +407,16 @@ function handleCurrentlyPlayingResponse() {
     }
 }
 
-function handleAnalysisResponse() {
-    if (this.status == 200) {
-        var data = JSON.parse(this.responseText);
-        console.log(data)
-    }
-    else if (this.status == 401) {
-        refreshAccessToken()
-    }
-    else {
-        console.log(this.responseText);
-        alert(this.responseText);
-    }
-}
+// function handleAnalysisResponse() {
+//     if (this.status == 200) {
+//         var data = JSON.parse(this.responseText);
+//         //console.log(data);
+//     }
+//     else if (this.status == 401) {
+//         refreshAccessToken()
+//     }
+//     else {
+//         //console.log(this.responseText);
+//         alert(this.responseText);
+//     }
+// }

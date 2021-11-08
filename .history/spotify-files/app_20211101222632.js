@@ -1,16 +1,17 @@
+// var redirect_uri = "./index.html";
+// var redirect_uri = "http://localhost/wad-g8/spotify-files/index.html";
 var redirect_uri = "https://vasn.github.io/wad-g8/spotify-files/index.html";
 
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// this should go in the firebase when it's ready 
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 var client_id = "eb7fe60f242a47c99400bbbfae58b595";
 var client_secret = "bd6587ae3ac04e6d94be304b6f5edda7";
+
+// var client_id = "ece08a82494f4921bb6858d4ba594c5d";
+// var client_secret = "79de22a949474655a0d85dca4a46df0b"; // In a real app you should not expose your client_secret to the user
 
 var access_token = null;
 var refresh_token = null;
 var currentPlaylist = "";
-
-localStorage.setItem('trackid', '');
 
 const AUTHORIZE = "https://accounts.spotify.com/authorize"
 const TOKEN = "https://accounts.spotify.com/api/token";
@@ -92,8 +93,12 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
         //auto update currently playing track information
         player.addListener('player_state_changed', (state) => {
-            //console.log(state)
+            console.log(state)
             currentlyPlaying();
+            // add code here
+            track_id = data.item.id;
+            url = ANALYSIS.replace("{id}", track_id);
+            callApi("GET", url, null, handleAnalysisResponse);
 
             //change button logo according to playing state
             if (state.paused) {
@@ -102,7 +107,9 @@ window.onSpotifyWebPlaybackSDKReady = () => {
             } else {
                 playToggle.playToggle = true;
             }
-        });
+
+
+        })
 
         //listen for click on play-pause button 
         document.getElementById('togglePlay').onclick = function () {
@@ -131,13 +138,13 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     }
 }
 
-//needed
+
 function handleRedirect() {
     let code = getCode();
     fetchAccessToken(code);
     window.history.pushState("", "", redirect_uri); // remove param from url
 }
-//needed
+
 function getCode() {
     let code = null;
     const queryString = window.location.search;
@@ -157,7 +164,7 @@ function requestAuthorization() {
     url += "&scope=user-read-private user-read-email user-modify-playback-state user-read-playback-position user-library-read streaming user-read-playback-state user-read-recently-played playlist-read-private";
     window.location.href = url; // Show Spotify's authorization screen
 }
-//needed
+
 function fetchAccessToken(code) {
     let body = "grant_type=authorization_code";
     body += "&code=" + code;
@@ -166,7 +173,7 @@ function fetchAccessToken(code) {
     body += "&client_secret=" + client_secret;
     callAuthorizationApi(body);
 }
-//needed
+
 function refreshAccessToken() {
     refresh_token = localStorage.getItem("refresh_token");
     let body = "grant_type=refresh_token";
@@ -174,7 +181,7 @@ function refreshAccessToken() {
     body += "&client_id=" + client_id;
     callAuthorizationApi(body);
 }
-//needed
+
 function callAuthorizationApi(body) {
     let xhr = new XMLHttpRequest();
     xhr.open("POST", TOKEN, true);
@@ -184,7 +191,7 @@ function callAuthorizationApi(body) {
 
     xhr.onload = handleAuthorizationResponse;
 }
-//needed
+
 function handleAuthorizationResponse() {
     if (this.status == 200) {
         var data = JSON.parse(this.responseText);
@@ -207,11 +214,11 @@ function handleAuthorizationResponse() {
         alert(this.responseText);
     }
 }
-//needed
+
 function refreshDevices() {
     callApi("GET", DEVICES, null, handleDevicesResponse);
 }
-//needed
+
 function handleDevicesResponse() {
     if (this.status == 200) {
         var data = JSON.parse(this.responseText);
@@ -227,14 +234,14 @@ function handleDevicesResponse() {
         alert(this.responseText);
     }
 }
-//needed
+
 function addDevice(item) {
     let node = document.createElement("option");
     node.value = item.id;
     node.innerHTML = item.name;
     document.getElementById("devices").appendChild(node);
 }
-//needed
+
 function callApi(method, url, body, callback) {
     let xhr = new XMLHttpRequest();
     xhr.open(method, url, true);
@@ -243,11 +250,11 @@ function callApi(method, url, body, callback) {
     xhr.send(body);
     xhr.onload = callback;
 }
-//needed
+
 function refreshPlaylists() {
     callApi("GET", PLAYLISTS, null, handlePlaylistsResponse);
 }
-//needed
+
 function handlePlaylistsResponse() {
     if (this.status == 200) {
         var data = JSON.parse(this.responseText);
@@ -264,14 +271,14 @@ function handlePlaylistsResponse() {
         alert(this.responseText);
     }
 }
-//needed
+
 function addPlaylist(item) {
     let node = document.createElement("option");
     node.value = item.id;
     node.innerHTML = item.name + " (" + item.tracks.total + ")";
     document.getElementById("playlists").appendChild(node);
 }
-//needed
+
 function removeAllItems(elementId) {
     let node = document.getElementById(elementId);
     while (node.firstChild) {
@@ -282,6 +289,7 @@ function removeAllItems(elementId) {
 function play() {
     let playlist_id = document.getElementById("playlists").value;
     let trackindex = document.getElementById("tracks").value;
+
     let body = {};
 
     body.context_uri = "spotify:playlist:" + playlist_id;
@@ -292,10 +300,10 @@ function play() {
     callApi("PUT", PLAY + "?device_id=" + deviceId(), JSON.stringify(body), handleApiResponse);
 }
 
-//needed
+
 function handleApiResponse() {
     if (this.status == 200) {
-        console.log(this.responseText);
+        //console.log(this.responseText);
         setTimeout(currentlyPlaying, 2000);
 
     }
@@ -346,26 +354,19 @@ function addTrack(item, index) {
     document.getElementById("tracks").appendChild(node);
 }
 
-
-//needed
 function currentlyPlaying() {
     callApi("GET", PLAYER + "?market=US", null, handleCurrentlyPlayingResponse);
 }
 
-//needed
+
 function handleCurrentlyPlayingResponse() {
     if (this.status == 200) {
         var data = JSON.parse(this.responseText);
+        //console.log(data);
         if (data.item != null) {
             document.getElementById("albumImage").src = data.item.album.images[0].url;
             document.getElementById("trackTitle").innerHTML = data.item.name;
             document.getElementById("trackArtist").innerHTML = data.item.artists[0].name;
-            track_id = data.item.id;
-            if (localStorage.getItem('trackid') != track_id) {
-                localStorage.setItem('trackid', track_id)
-                url = ANALYSIS.replace("{id}", track_id);
-                callApi("GET", url, null, handleAnalysisResponse);
-            }
         }
 
 
@@ -397,13 +398,13 @@ function handleCurrentlyPlayingResponse() {
 function handleAnalysisResponse() {
     if (this.status == 200) {
         var data = JSON.parse(this.responseText);
-        console.log(data)
+        //console.log(data);
     }
     else if (this.status == 401) {
         refreshAccessToken()
     }
     else {
-        console.log(this.responseText);
+        //console.log(this.responseText);
         alert(this.responseText);
     }
 }

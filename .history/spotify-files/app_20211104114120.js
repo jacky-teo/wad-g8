@@ -356,6 +356,7 @@ function currentlyPlaying() {
 function handleCurrentlyPlayingResponse() {
     if (this.status == 200) {
         var data = JSON.parse(this.responseText);
+        console.log(data);
         if (data.item != null) {
             document.getElementById("albumImage").src = data.item.album.images[0].url;
             document.getElementById("trackTitle").innerHTML = data.item.name;
