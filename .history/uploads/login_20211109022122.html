@@ -106,9 +106,9 @@
                             <input v-model='registerFirstName' class="input100" type="text" name="registerFirstName"
                                 placeholder="First Name" required>
                             <span class="focus-input100"></span>
-                        </div>
-                        <div v-if="isFirstNameEmpty===true" class="form-text text-danger">
-                            {{emptyFieldMsg}}
+                            <div v-if="isFirstNameEmpty===true" class="form-text text-danger">
+                                {{emptyFieldMsg}}
+                            </div>
                         </div>
                         <div v-if="isLastNameEmpty===true" class="form-text text-danger">
                             {{emptyFieldMsg}}
