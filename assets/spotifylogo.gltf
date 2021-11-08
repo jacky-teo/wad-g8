@@ -195,7 +195,7 @@
     "buffers" : [
         {
             "byteLength" : 121576,
-            "uri" : "spotifylogo.bin"
+            "uri" : "./spotifylogo.bin"
         }
     ]
 }
