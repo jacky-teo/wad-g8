@@ -142,14 +142,13 @@
                         <div v-if="isPasswordValid===false" class="form-text text-danger">
                             {{passwordMsg}}
                         </div>
-
+                        <div v-if="isSamePassword===false" class="form-text text-danger">
+                            {{confirmPasswordMsg}}
+                        </div>
                         <div class="wrap-input100 m-b-25">
                             <input class="input100" type="password" v-model="registerConfirmPassword"
                                 placeholder="Confirm Password" required>
                             <span class="focus-input100"></span>
-                        </div>
-                        <div v-if="isSamePassword===false" class="form-text text-danger">
-                            {{confirmPasswordMsg}}
                         </div>
                         <div class="text-center text-danger">
                             <span>{{registerErrorMsg}}</span>

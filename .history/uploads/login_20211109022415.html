@@ -110,6 +110,7 @@
                         <div v-if="isFirstNameEmpty===true" class="form-text text-danger">
                             {{emptyFieldMsg}}
                         </div>
+
                         <div class="wrap-input100 m-b-20">
                             <input v-model='registerLastName' class="input100" type="text" name="registerLastName"
                                 placeholder="Last Name" required>
@@ -119,21 +120,15 @@
                             {{emptyFieldMsg}}
                         </div>
 
-                        <div class="wrap-input100 m-b-20">
-                            <input v-model='registerEmail' class="input100" type="text" name="registerEmail"
-                                placeholder="Email Address" required>
-                            <span class="focus-input100"></span>
-                        </div>
                         <div v-if="isEmailValid===false" class="form-text text-danger">
                             {{emailMsg}}
                         </div>
                         <div v-if="isEmailEmpty===true" class="form-text text-danger">
                             {{emptyFieldMsg}}
                         </div>
-
-                        <div class="wrap-input100 m-b-25">
-                            <input v-model='registerPassword' class="input100" type="password" name="registerPassword"
-                                placeholder="Password" required>
+                        <div class="wrap-input100 m-b-20">
+                            <input v-model='registerEmail' class="input100" type="text" name="registerEmail"
+                                placeholder="Email Address" required>
                             <span class="focus-input100"></span>
                         </div>
                         <div v-if="isPasswordEmpty===true" class="form-text text-danger">
@@ -142,14 +137,18 @@
                         <div v-if="isPasswordValid===false" class="form-text text-danger">
                             {{passwordMsg}}
                         </div>
-
                         <div class="wrap-input100 m-b-25">
-                            <input class="input100" type="password" v-model="registerConfirmPassword"
-                                placeholder="Confirm Password" required>
+                            <input v-model='registerPassword' class="input100" type="password" name="registerPassword"
+                                placeholder="Password" required>
                             <span class="focus-input100"></span>
                         </div>
                         <div v-if="isSamePassword===false" class="form-text text-danger">
                             {{confirmPasswordMsg}}
+                        </div>
+                        <div class="wrap-input100 m-b-25">
+                            <input class="input100" type="password" v-model="registerConfirmPassword"
+                                placeholder="Confirm Password" required>
+                            <span class="focus-input100"></span>
                         </div>
                         <div class="text-center text-danger">
                             <span>{{registerErrorMsg}}</span>
