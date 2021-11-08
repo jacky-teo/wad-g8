@@ -1,8 +1,8 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.133.1';
-import {GLTFLoader} from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/loaders/GLTFLoader.js";
+import { GLTFLoader } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/loaders/GLTFLoader.js";
 
 export var scene5 = new THREE.Scene();
-const loader = new THREE.GLTFLoader();
+const loader = new GLTFLoader();
 var obj;
 loader.load("../objects/spotifylogo.gltf", function(gltf){
     obj = gltf.scene;
