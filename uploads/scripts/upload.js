@@ -1,8 +1,7 @@
 import {initializeApp} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js"; //initialize firebase app
 import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-storage.js" //for firebase storage
 import {getDatabase, ref,set,child,update,remove,get } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js"
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js"
-
+import { getAuth, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js"
 
 
 const firebaseConfig = {
@@ -105,9 +104,10 @@ async function UploadProcess(){
             .catch(err=>{console.log("WHNY CANNOT UPLOAD")})
             });
     }
+    
 // Save to REALTIME DB
-let filesrc= ''
-const realdb= getDatabase();
+let filesrc = ''
+const realdb = getDatabase();
     // Function REALTIME DATABASE
     function SaveURLtoRealTimeDB(URL){
         var name = nameBox.value;

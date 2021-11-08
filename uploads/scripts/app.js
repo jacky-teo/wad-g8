@@ -1,6 +1,6 @@
         import {initializeApp} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js"; //initialize firebase app
         import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL,uploadString} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-storage.js" //for firebase storage
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword , signOut,  } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js"
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword , signOut, onAuthStateChanged, onIdTokenChanged} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js"
         import {getDatabase, ref,set,child,update,remove,get } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js"
 
         const app = Vue.createApp({
@@ -34,7 +34,8 @@
                     emailMsg: 'Invalid email.',
                     passwordMsg: "Password must contain at least 6 characters",
                     confirmPasswordMsg: 'Confirm password must be the same as password.',
-                    registerErrorMsg: ''
+                    registerErrorMsg: '',
+                    auth: ''
                 }
             },
             created(){               
@@ -49,6 +50,42 @@
                 measurementId: "G-LKVP0JH4YH"
                     };
                 const app = initializeApp(firebaseConfig);
+                
+                this.auth = getAuth();
+            
+                // onAuthStateChanged(auth, (user) => {
+                // if (user) {
+                //     // User is signed in, see docs for a list of available properties
+                //     console.log(user.uid);
+                //     console.log('I am valid!');
+
+                // } else {
+                //     // User is signed out
+                //     console.log('user must login again');
+                //     window.location.href = './login.html';
+                // }
+                // });
+                
+                // check token validity and redirect user
+                onIdTokenChanged(this.auth, function(user) {
+                    if (user) {
+                      // User is signed in or token was refreshed.
+                      if (!window.location.href.includes("upload.html")) {
+                            console.log(user.uid);
+                            window.location.href = './upload.html';
+
+                        }
+                        
+                        //data passing here??
+
+                    } else {
+                        if (!window.location.href.includes("login.html")) {
+                            console.log('user must login again');
+                            window.location.href = './login.html'
+                        }
+                    }
+                  });
+
             },
             methods: {
                 registerClick() {
@@ -69,12 +106,11 @@
                         let email = this.loginEmail,
                             password = this.loginPassword
 
-                        const auth = getAuth();
-                        signInWithEmailAndPassword(auth, email, password)
+                        signInWithEmailAndPassword(this.auth, email, password)
                         .then((userCredential) => {
                             // Signed in
                             this.isLoginSuccessful = true;
-                            const user = userCredential.user;
+                            this.user = userCredential.user;
 
                         })
                         .catch((error) => {
@@ -130,8 +166,7 @@
                 register() {
                 let email = this.registerEmail,
                     password = this.registerPassword
-                    const auth =getAuth();
-                    createUserWithEmailAndPassword(auth,email,password)
+                    createUserWithEmailAndPassword(this.auth, email, password)
                     .then((userCreds)=>{
                         const user = userCreds.user
                         console.log(user)
@@ -145,6 +180,17 @@
                     .catch((error)=>{
                         console.log(error)
                     })
+                },
+                signout() {
+                    signOut(this.auth)
+                  .then(() => {
+                    // Sign-out successful.
+                    console.log('sign out liao');
+                    })
+                    .catch((error) => {
+                    // An error happened.
+                        console.log(error);
+                    });
                 }
             },
             computed: {
