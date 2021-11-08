@@ -56,14 +56,14 @@
                 },
                 returnLogin() {
                     this.islogin = true
-                    this.loginErrorMsg = ''
+                    this.isLoginSuccessful = true;
+                    this.noEmptyFields = true;
                 },
                 login() {
                     if (this.loginEmail == '' || this.loginPassword == '') {
                         this.isLoginSuccessful = true;
                         this.noEmptyFields = false;
-                        console.log('here yet?');
-                
+                        
                     } else{
                         this.noEmptyFields = true;
                         let email = this.loginEmail,
