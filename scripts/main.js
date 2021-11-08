@@ -3,6 +3,7 @@ import { OrbitControls } from 'https://cdn.skypack.dev/three@0.133.1/examples/js
 import { scene2, scaleSphere } from '../visuals/Sphere.js'
 import { scene3, animateSpace } from '../visuals/Space.js'
 import { scene4, changeColors, spinCircle, boxScaling } from '../visuals/RotatingBoxes.js'
+import { scene5, scaleSpotify } from '../visuals/spotify.js'
 
 feather.replace(); 
 
@@ -153,6 +154,7 @@ function animate() {
         boxScaling(sUnit);
         changeColors();
         spinCircle();
+        scaleSpotify(sUnit);
     }
 
     renderer.render( s, camera );
