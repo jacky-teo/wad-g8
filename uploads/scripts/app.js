@@ -1,6 +1,6 @@
         import {initializeApp} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js"; //initialize firebase app
         import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL,uploadString} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-storage.js" //for firebase storage
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword , signOut, onAuthStateChanged, onIdTokenChanged} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js"
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword , signOut, onIdTokenChanged} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js"
         import {getDatabase, ref,set,child,update,remove,get } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js"
 
         const app = Vue.createApp({
@@ -51,34 +51,20 @@
                     };
                 const app = initializeApp(firebaseConfig);
                 
+                //create auth instance
                 this.auth = getAuth();
-            
-                // onAuthStateChanged(auth, (user) => {
-                // if (user) {
-                //     // User is signed in, see docs for a list of available properties
-                //     console.log(user.uid);
-                //     console.log('I am valid!');
-
-                // } else {
-                //     // User is signed out
-                //     console.log('user must login again');
-                //     window.location.href = './login.html';
-                // }
-                // });
                 
-                // check token validity and redirect user
+                // listens to change in token status
                 onIdTokenChanged(this.auth, function(user) {
                     if (user) {
                       // User is signed in or token was refreshed.
+                      sessionStorage.setItem('userID', user.uid);
                       if (!window.location.href.includes("upload.html")) {
-                            console.log(user.uid);
                             window.location.href = './upload.html';
-
                         }
-                        
-                        //data passing here??
 
                     } else {
+                        sessionStorage.removeItem('userID')
                         if (!window.location.href.includes("login.html")) {
                             console.log('user must login again');
                             window.location.href = './login.html'
@@ -185,7 +171,6 @@
                     signOut(this.auth)
                   .then(() => {
                     // Sign-out successful.
-                    console.log('sign out liao');
                     })
                     .catch((error) => {
                     // An error happened.
