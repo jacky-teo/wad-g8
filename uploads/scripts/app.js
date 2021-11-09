@@ -4,7 +4,6 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, si
 import { getDatabase, ref, set, child, update, remove, get } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js"
 
 const app = Vue.createApp({
-
     data() {
         return {
             islogin: true,
