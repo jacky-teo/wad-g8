@@ -11,28 +11,26 @@ app.component('navbar', {
     },
     computed: {
         links() {
-            //href links if at home page
-            if (window.location.href.includes("./index.html")) {
-                return {
-                    homeLink: "./index.html",
-                    spotifyLink: "spotify-files/index.html",
-                    uploadLink: "./uploads/login.html"
-                }
-                
             //href links if at spotify page
-            } else if (window.location.href.includes("spotify-files/index.html")) {
+            if (window.location.href.includes("spotify-files/index.html")) {
                 return {
-                    homeLink: "./index.html",
-                    spotifyLink: "spotify-files/index.html",
-                    uploadLink: "./uploads/login.html"
+                    homeLink: "../index.html",
+                    spotifyLink: "",
+                    uploadLink: "../uploads/login.html"
+                } 
+            //href links if at home page
+            } else if (window.location.href.includes("wad-g8/index.html")) {
+                    return {
+                        homeLink: "",
+                        spotifyLink: "spotify-files/index.html",
+                        uploadLink: "./uploads/login.html"
                 }
-
             //href links if at upload page
             } else {
                 return {
-                    homeLink: "./index.html",
-                    spotifyLink: "spotify-files/index.html",
-                    uploadLink: "./uploads/login.html"
+                    homeLink: "../index.html",
+                    spotifyLink: "../spotify-files/index.html",
+                    uploadLink: ""
                 }
             }
         }

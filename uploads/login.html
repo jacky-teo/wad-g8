@@ -31,11 +31,12 @@
 </head>
 
 <body>
-    <div id="compApp">
-        <navbar></navbar>
-    </div>
-
+    
     <div id='uploadApp' class="container-fluid" style="padding:0;">
+        <div id="compApp">
+            <navbar></navbar>
+        </div>
+    
 
         <!-- LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN -->
         <div v-if='islogin===true' id="login" class="limiter md-100">
@@ -190,7 +191,7 @@
     <!--===============================================================================================-->
     <script src="../spotify-files/vendor/countdowntime/countdowntime.js"></script>
 
-    <script type='module' src='scripts/app.js'></script>
+    <script type='module' src='./scripts/app.js'></script>
 
     <script src="../scripts/navbar.js"></script>
 
