@@ -31,11 +31,8 @@
 </head>
 
 <body @onload="isUserAuthenticated">
-    <div id="app">
-        <navbar></navbar>
-    </div>
 
-    <div id='uploadApp' class="container-fluid" style="padding:0;">
+    <div id='app' class="container-fluid" style="padding:0;">
 
         <!-- LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN -->
         <div v-if='islogin===true' id="login" class="limiter md-100">
@@ -110,8 +107,7 @@
                                 placeholder="First Name" required>
                             <span class="focus-input100"></span>
                         </div>
-                        <div v-if="isFirstNameEmpty===true" style='margin-top:-15px; margin-bottom:15px'
-                            class="form-text text-danger">
+                        <div v-if="isFirstNameEmpty===true" class="form-text text-danger">
                             {{emptyFieldMsg}}
                         </div>
                         <div class="wrap-input100 m-b-20">
@@ -119,8 +115,7 @@
                                 placeholder="Last Name" required>
                             <span class="focus-input100"></span>
                         </div>
-                        <div v-if="isLastNameEmpty===true" class="form-text text-danger"
-                            style='margin-top:-15px; margin-bottom:15px'>
+                        <div v-if="isLastNameEmpty===true" class="form-text text-danger">
                             {{emptyFieldMsg}}
                         </div>
 
@@ -129,12 +124,10 @@
                                 placeholder="Email Address" required>
                             <span class="focus-input100"></span>
                         </div>
-                        <div v-if="isEmailValid===false" class="form-text text-danger"
-                            style='margin-top:-15px; margin-bottom:15px'>
+                        <div v-if="isEmailValid===false" class="form-text text-danger">
                             {{emailMsg}}
                         </div>
-                        <div v-if="isEmailEmpty===true" class="form-text text-danger"
-                            style='margin-top:-15px; margin-bottom:15px'>
+                        <div v-if="isEmailEmpty===true" class="form-text text-danger">
                             {{emptyFieldMsg}}
                         </div>
 
@@ -143,12 +136,10 @@
                                 placeholder="Password" required>
                             <span class="focus-input100"></span>
                         </div>
-                        <div v-if="isPasswordEmpty===true" class="form-text text-danger"
-                            style='margin-top:-15px; margin-bottom:15px'>
+                        <div v-if="isPasswordEmpty===true" class="form-text text-danger">
                             {{emptyFieldMsg}}
                         </div>
-                        <div v-if="isPasswordValid===false" class="form-text text-danger"
-                            style='margin-top:-15px; margin-bottom:15px'>
+                        <div v-if="isPasswordValid===false" class="form-text text-danger">
                             {{passwordMsg}}
                         </div>
 
@@ -157,14 +148,13 @@
                                 placeholder="Confirm Password" required>
                             <span class="focus-input100"></span>
                         </div>
-                        <div v-if="isSamePassword===false" class="form-text text-danger"
-                            style='margin-top:-15px; margin-bottom:15px'>
+                        <div v-if="isSamePassword===false" class="form-text text-danger">
                             {{confirmPasswordMsg}}
                         </div>
-                        <div class="text-center text-danger" style='margin-top:-15px; margin-bottom:15px'>
+                        <div class="text-center text-danger">
                             <span>{{registerErrorMsg}}</span>
                         </div>
-                        <div class="mt-5 container-login100-form-btn justify-content-center">
+                        <div class="mt-3 container-login100-form-btn justify-content-center">
                             <input class="login100-form-btn mx-auto d-block" type="button" @click="validateForm()"
                                 value="Register">
                         </div>
@@ -189,9 +179,9 @@
     <!--===============================================================================================-->
     <script src="../spotify-files/vendor/countdowntime/countdowntime.js"></script>
 
-    <script type='module' src='scripts/app.js'></script>
+    <script type='module' src='scripts/app.js'>
 
-    <script src="../scripts/navbar.js"></script>
+    </script>
 
 </body>
 

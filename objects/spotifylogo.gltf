@@ -16,7 +16,7 @@
     "nodes" : [
         {
             "mesh" : 0,
-            "name" : "Path.001_Path.007",
+            "name" : "Path.001_Path",
             "rotation" : [
                 0.7071068286895752,
                 0,
@@ -26,7 +26,7 @@
         },
         {
             "mesh" : 1,
-            "name" : "Path_3.001_Path_3.007",
+            "name" : "Path_3.001_Path_3",
             "rotation" : [
                 0.7071068286895752,
                 0,
@@ -38,7 +38,7 @@
     "materials" : [
         {
             "doubleSided" : true,
-            "name" : "28fa0c.003",
+            "name" : "28fa0c",
             "pbrMetallicRoughness" : {
                 "baseColorFactor" : [
                     0.15625,
@@ -52,7 +52,7 @@
     ],
     "meshes" : [
         {
-            "name" : "Path.001_Path.007",
+            "name" : "Path.001_Path",
             "primitives" : [
                 {
                     "attributes" : {
@@ -66,7 +66,7 @@
             ]
         },
         {
-            "name" : "Path_3.001_Path_3.007",
+            "name" : "Path_3.001_Path_3",
             "primitives" : [
                 {
                     "attributes" : {
