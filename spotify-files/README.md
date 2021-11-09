@@ -1,6 +1,10 @@
 README (♡˙︶˙♡)
 FOR CHANGES IN THE SPOTIFY-FILES ONLY!
 
+9 NOV 2021
+- deleted main.css and util.css because there were many many many many many lines of useless code
+- created test.css (probably should change the name for this but for now it works) it's what the main pages use (spotify - index.html and uploads - login.html)
+
 4 NOV 2021
 there were many pushes prior to this one but uhhh ignore those ...
 - ACTUALLY fixed track analysis using local storage
