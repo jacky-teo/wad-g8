@@ -139,6 +139,7 @@
                             class="form-text text-danger">
                             {{emptyFieldMsg}}
                         </div>
+<<<<<<< HEAD
                         <div class="wrap-input100 validate-input m-b-20">
                             <input v-model='registerLastName'  class="input100" type="text" name="registerLastName" placeholder="Last Name" required>
                             <span class="focus-input100"></span>
@@ -149,6 +150,22 @@
                         </div>
 <<<<<<< HEAD
 
+=======
+                        <div v-if="isLastNameEmpty===true" class="form-text text-danger">
+                            {{emptyFieldMsg}}
+                        </div>
+                        <div class="wrap-input100 m-b-20">
+                            <input v-model='registerLastName' class="input100" type="text" name="registerLastName"
+                                placeholder="Last Name" required>
+                            <span class="focus-input100"></span>
+                        </div>
+                        <div v-if="isEmailEmpty===true" class="form-text text-danger">
+                            {{emptyFieldMsg}}
+                        </div>
+                        <div v-if="isEmailValid===false" class="form-text text-danger">
+                            {{emailMsg}}
+                        </div>
+>>>>>>> parent of 14403bc (adjusted some bu'uns, prettifying the login page)
                         <div class="wrap-input100 m-b-20">
                             <input v-model='registerEmail' class="input100" type="text" name="registerEmail"
                                 placeholder="Email Address" required>
@@ -161,6 +178,7 @@
 >>>>>>> parent of 25a6acd (css files editing test)
                             <span class="focus-input100"></span>
                         </div>
+<<<<<<< HEAD
                         <div v-if="isEmailValid===false" class="form-text text-danger"
                             style='margin-top:-15px; margin-bottom:18px'>
                             {{emailMsg}}
@@ -171,6 +189,14 @@
                         </div>
 <<<<<<< HEAD
 
+=======
+                        <div v-if="isPasswordEmpty===true" class="form-text text-danger">
+                            {{emptyFieldMsg}}
+                        </div>
+                        <div v-if="isPasswordValid===false" class="form-text text-danger">
+                            {{passwordMsg}}
+                        </div>
+>>>>>>> parent of 14403bc (adjusted some bu'uns, prettifying the login page)
                         <div class="wrap-input100 m-b-25">
                             <input v-model='registerPassword' class="input100" type="password" name="registerPassword"
                                 placeholder="Password" required>
@@ -180,6 +206,7 @@
 >>>>>>> parent of 25a6acd (css files editing test)
                             <span class="focus-input100"></span>
                         </div>
+<<<<<<< HEAD
                         <div v-if="isPasswordEmpty===true" class="form-text text-danger"
                             style='margin-top:-15px; margin-bottom:18px'>
                             {{emptyFieldMsg}}
@@ -190,6 +217,11 @@
                         </div>
 <<<<<<< HEAD
 
+=======
+                        <div v-if="isSamePassword===false" class="form-text text-danger">
+                            {{confirmPasswordMsg}}
+                        </div>
+>>>>>>> parent of 14403bc (adjusted some bu'uns, prettifying the login page)
                         <div class="wrap-input100 m-b-25">
 =======
                         <div class="wrap-input100 validate-input m-b-25">
@@ -198,11 +230,15 @@
                                 placeholder="Confirm Password" required>
                             <span class="focus-input100"></span>
                         </div>
+<<<<<<< HEAD
                         <div v-if="isSamePassword===false" class="form-text text-danger"
                             style='margin-top:-15px; margin-bottom:18px'>
                             {{confirmPasswordMsg}}
                         </div>
                         <div class="text-center text-danger" style='margin-top:-15px; margin-bottom:18px'>
+=======
+                        <div class="text-center text-danger">
+>>>>>>> parent of 14403bc (adjusted some bu'uns, prettifying the login page)
                             <span>{{registerErrorMsg}}</span>
                         </div>
 <<<<<<< HEAD
