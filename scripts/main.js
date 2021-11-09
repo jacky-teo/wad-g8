@@ -5,7 +5,7 @@ import { scene3, animateSpace } from '../visuals/Space.js'
 import { scene4, changeColors, spinCircle, boxScaling } from '../visuals/RotatingBoxes.js'
 import { scene5, scaleSpotify } from '../visuals/spotify.js'
 
-feather.replace(); 
+// feather.replace(); 
 
 let s, camera, renderer, app, listener, sound, audioLoader, analyser;
 let scene1, box;

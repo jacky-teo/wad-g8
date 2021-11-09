@@ -184,4 +184,4 @@
                 },
 
             }
-        }).mount('#app')
+        }).mount('#uploadApp')

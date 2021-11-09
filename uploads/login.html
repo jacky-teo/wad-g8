@@ -32,8 +32,11 @@
 </head>
 
 <body @onload="isUserAuthenticated">
+    <div id="app">
+        <navbar></navbar>
+    </div>
 
-    <div id='app' class="container-fluid" style="padding:0;">
+    <div id='uploadApp' class="container-fluid" style="padding:0;">
 
         <!-- LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN -->
         <div v-if='islogin===true' id="login" class="limiter md-100">
@@ -164,9 +167,9 @@
     <!--===============================================================================================-->
     <script src="../spotify-files/vendor/countdowntime/countdowntime.js"></script>
 
-    <script type='module' src='scripts/app.js'>
+    <script type='module' src='scripts/app.js'></script>
 
-    </script>
+    <script src="../scripts/navbar.js"></script>
 
 </body>
 
