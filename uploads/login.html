@@ -81,8 +81,7 @@
                           </div>
 
                         <div class="mt-3 container-login100-form-btn justify-content-center">
-                            <input class="login100-form-btn mx-auto d-block" type="button" @click="login()"
-                                value="Login">
+                            <input class="login100-form-btn" type="button" @click="login()" value="Login">
                         </div>
 
                         <div class="text-center mt-2">
@@ -120,9 +119,16 @@
                         <div class="wrap-input100 m-b-20">
                             <input v-model='registerFirstName' class="input100" type="text" name="registerFirstName"
                                 placeholder="First Name" required>
+<<<<<<< HEAD
 =======
                         <div v-if="isFirstNameEmpty===true" class="form-text text-danger">
                             {{emptyFieldMsg}}
+=======
+                            <span class="focus-input100"></span>
+                            <div v-if="isFirstNameEmpty===true" class="form-text text-danger">
+                                {{emptyFieldMsg}}
+                            </div>
+>>>>>>> parent of 6f86fb7 (adjusted some bu'uns, prettifying the login page)
                         </div>
                         <div class="wrap-input100 validate-input m-b-20">
                             <input v-model='registerFirstName' class="input100" type="text" name="registerFirstName" placeholder="First Name" required>
@@ -199,9 +205,14 @@
                         <div class="text-center text-danger" style='margin-top:-15px; margin-bottom:18px'>
                             <span>{{registerErrorMsg}}</span>
                         </div>
+<<<<<<< HEAD
                         <div class="mt-5 container-login100-form-btn justify-content-center">
                             <input class="login100-form-btn mx-auto d-block" type="button" @click="validateForm()"
                                 value="Register">
+=======
+                        <div class="mt-3 container-login100-form-btn justify-content-center">
+                            <input class="login100-form-btn" type="button" @click="validateForm()" value="Register">
+>>>>>>> parent of 6f86fb7 (adjusted some bu'uns, prettifying the login page)
                         </div>
                     </form>
                 </div>
