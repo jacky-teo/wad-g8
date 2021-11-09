@@ -24,17 +24,7 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
     <!--===============================================================================================-->
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    <!-- <link rel="stylesheet" type="text/css" href="css/util.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css"> -->
->>>>>>> parent of 4d097ae (can remove main/util.css from spotify files now!)
     <link rel="stylesheet" type="text/css" href="css/test.css">
-=======
-    <link rel="stylesheet" type="text/css" href="css/util.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
->>>>>>> parent of 25a6acd (css files editing test)
     <!--===============================================================================================-->
 
 </head>
@@ -61,9 +51,9 @@
                             access to the mentioned data and not any of your personal information.
                         </span>
 
-                        <div class="container-login100-form-btn justify-content-center">
-                            <input class="login100-form-btn" type="button" onclick="requestAuthorization()"
-                                value="Login to Spotify">
+                        <div class="container-login100-form-btn">
+                            <input class="login100-form-btn mt-3 mx-auto d-block" type="button"
+                                onclick="requestAuthorization()" value="Login to Spotify">
                         </div>
                     </form>
                 </div>
@@ -75,11 +65,6 @@
 
         <div id="deviceSection">
             <!-- As a heading -->
-<<<<<<< HEAD
-            <div id="compApp">
-                <navbar></navbar>
-            </div>
-=======
             <nav class="navbar navbar-light bg-transparent">
                 <div class="container-fluid">
                     <span class="navbar-brand mb-0 h1">Audiophiles
@@ -93,11 +78,10 @@
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="../index.html" class="dropdown-item">Home</a>
                                 <a href="#" class="dropdown-item active">Spotify</a>
-                                <a href="../uploads/login.html" class="dropdown-item">Upload</a> 
-                            </div> 
+                                <a href="../uploads/login.html" class="dropdown-item">Upload</a>
+                            </div>
                         </div>
                     </span>
->>>>>>> parent of 25a6acd (css files editing test)
 
                     <div class="topnav-right">
                         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -213,8 +197,6 @@
 
         <!-- Vue.js -->
         <script src="https://unpkg.com/vue@next"></script>
-
-        <script src="../scripts/navbar.js"></script>
 
         <script>
             const playToggle = Vue.createApp({
