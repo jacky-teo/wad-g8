@@ -25,7 +25,12 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="../spotify-files/vendor/daterangepicker/daterangepicker.css">
     <!--===============================================================================================-->
+<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="../spotify-files/css/test.css">
+=======
+    <link rel="stylesheet" type="text/css" href="../spotify-files/css/util.css">
+    <link rel="stylesheet" type="text/css" href="../spotify-files/css/main.css">
+>>>>>>> parent of 25a6acd (css files editing test)
     <!--===============================================================================================-->
 
 </head>
@@ -47,34 +52,28 @@
                             Sign In
                         </span>
 
-                        <div class="wrap-input100 m-b-20">
-                            <input class="input100" type="text" v-model="loginEmail" placeholder="Email Address"
-                                required>
+                        <div class="wrap-input100 validate-input m-b-20">
+                            <input class="input100" type="text" v-model="loginEmail" placeholder="Email Address" required>
                             <span class="focus-input100"></span>
                         </div>
 
-                        <div class="wrap-input100 m-b-25">
-                            <input class="input100" type="password" v-model="loginPassword" placeholder="Password"
-                                required>
+                        <div class="wrap-input100 validate-input m-b-25">
+                            <input class="input100" type="password" v-model="loginPassword" placeholder="Password" required>
                             <span class="focus-input100"></span>
                         </div>
 
                         <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
                             <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-                                <path
-                                    d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                             </symbol>
-                        </svg>
-                        <div v-if="noEmptyFields===false || isLoginSuccessful===false"
-                            class="alert alert-danger d-flex align-items-center" role="alert">
-                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                                <use xlink:href="#exclamation-triangle-fill" />
-                            </svg>
+                          </svg>
+                        <div v-if="noEmptyFields===false || isLoginSuccessful===false" class="alert alert-danger d-flex align-items-center" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
                             <div>
                                 <span v-if="noEmptyFields===false">{{loginErrorMsg}}</span>
                                 <span v-if="isLoginSuccessful===false">{{authFailMsg}}</span>
                             </div>
-                        </div>
+                          </div>
 
                         <div class="mt-3 container-login100-form-btn justify-content-center">
                             <input class="login100-form-btn mx-auto d-block" type="button" @click="login()"
@@ -105,29 +104,44 @@
                         <span class="login100-form-title p-b-25 text-center">
                             Register
                         </span>
+<<<<<<< HEAD
 
                         <div class="wrap-input100 m-b-20">
                             <input v-model='registerFirstName' class="input100" type="text" name="registerFirstName"
                                 placeholder="First Name" required>
+=======
+                        <div v-if="isFirstNameEmpty===true" class="form-text text-danger">
+                            {{emptyFieldMsg}}
+                        </div>
+                        <div class="wrap-input100 validate-input m-b-20">
+                            <input v-model='registerFirstName' class="input100" type="text" name="registerFirstName" placeholder="First Name" required>
+>>>>>>> parent of 25a6acd (css files editing test)
                             <span class="focus-input100"></span>
                         </div>
                         <div v-if="isFirstNameEmpty===true" style='margin-top:-15px; margin-bottom:18px'
                             class="form-text text-danger">
                             {{emptyFieldMsg}}
                         </div>
-                        <div class="wrap-input100 m-b-20">
-                            <input v-model='registerLastName' class="input100" type="text" name="registerLastName"
-                                placeholder="Last Name" required>
+                        <div class="wrap-input100 validate-input m-b-20">
+                            <input v-model='registerLastName'  class="input100" type="text" name="registerLastName" placeholder="Last Name" required>
                             <span class="focus-input100"></span>
                         </div>
                         <div v-if="isLastNameEmpty===true" class="form-text text-danger"
                             style='margin-top:-15px; margin-bottom:18px'>
                             {{emptyFieldMsg}}
                         </div>
+<<<<<<< HEAD
 
                         <div class="wrap-input100 m-b-20">
                             <input v-model='registerEmail' class="input100" type="text" name="registerEmail"
                                 placeholder="Email Address" required>
+=======
+                        <div v-if="isEmailValid===false" class="form-text text-danger">
+                            {{emailMsg}}
+                        </div>
+                        <div class="wrap-input100 validate-input m-b-20">
+                            <input v-model='registerEmail' class="input100" type="text" name="registerEmail" placeholder="Email Address" required>
+>>>>>>> parent of 25a6acd (css files editing test)
                             <span class="focus-input100"></span>
                         </div>
                         <div v-if="isEmailValid===false" class="form-text text-danger"
@@ -138,10 +152,15 @@
                             style='margin-top:-15px; margin-bottom:18px'>
                             {{emptyFieldMsg}}
                         </div>
+<<<<<<< HEAD
 
                         <div class="wrap-input100 m-b-25">
                             <input v-model='registerPassword' class="input100" type="password" name="registerPassword"
                                 placeholder="Password" required>
+=======
+                        <div class="wrap-input100 validate-input m-b-25">
+                            <input v-model='registerPassword' class="input100" type="password" name="registerPassword" placeholder="Password" required>
+>>>>>>> parent of 25a6acd (css files editing test)
                             <span class="focus-input100"></span>
                         </div>
                         <div v-if="isPasswordEmpty===true" class="form-text text-danger"
@@ -152,8 +171,12 @@
                             style='margin-top:-15px; margin-bottom:18px'>
                             {{passwordMsg}}
                         </div>
+<<<<<<< HEAD
 
                         <div class="wrap-input100 m-b-25">
+=======
+                        <div class="wrap-input100 validate-input m-b-25">
+>>>>>>> parent of 25a6acd (css files editing test)
                             <input class="input100" type="password" v-model="registerConfirmPassword"
                                 placeholder="Confirm Password" required>
                             <span class="focus-input100"></span>
