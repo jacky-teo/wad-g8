@@ -1,11 +1,6 @@
 README (♡˙︶˙♡)
 FOR CHANGES IN THE SPOTIFY-FILES ONLY!
 
-9 NOV 2021
-- deleted main.css and util.css because there were many many many lines of useless code
-- created test.css (probably should change the name) but it's what the main pages are using now i guess
-- i should probably look at the useless js files soon too
-
 4 NOV 2021
 there were many pushes prior to this one but uhhh ignore those ...
 - ACTUALLY fixed track analysis using local storage
