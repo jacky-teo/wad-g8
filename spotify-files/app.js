@@ -10,6 +10,18 @@ import { getDatabase, ref, set, child, update, remove, get } from "https://www.g
 
 
 var client_id,client_secret
+const firebaseConfig = {
+    apiKey: "AIzaSyDRVQ7r6TGsQhZGvVIXws7y5PTPqlvC2yo",
+    authDomain: "audiophile-eff2c.firebaseapp.com",
+    databaseURL: "https://audiophile-eff2c-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "audiophile-eff2c",
+    storageBucket: "audiophile-eff2c.appspot.com",
+    messagingSenderId: "141435951049",
+    appId: "1:141435951049:web:6308bd4b9fe95fb49bba18",
+    measurementId: "G-LKVP0JH4YH"
+};
+const app = initializeApp(firebaseConfig);
+
 
 const app = initializeApp(firebaseConfig);
 // Get a reference to the database service
