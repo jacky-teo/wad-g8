@@ -26,10 +26,92 @@
 </head>
 
 <body>
-    <div id="compApp">
+    <!-- <div id="compApp">
         <navbar></navbar>
+    </div> -->
+
+    <!-- this is jus me trying hard to beautify this page -->
+    <div class="container">
+        
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <span>Your Song Collection</span>
+                <table class="table mt-2">
+                    <thead>
+                      <tr>
+                        <th scope="col">Song Title</th>
+                        <th scope="col">Artist</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><a>Song 1</a></td>
+                        <td>A1</td>
+                        <td><button class="btn btn-sm btn-danger">remove</button></td>
+                      </tr>
+                      <tr>
+                        <td><a>Song 2</a></td>
+                        <td>A2</td>
+                        <td><button class="btn btn-sm btn-danger">remove</button></td>
+                      </tr>
+                      <tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <h5>Drop New Songs!</h5>
+                <!-- DRAG AND DROP | DRAG AND DROP | DRAG AND DROP |-->
+                <section class="droparea">
+                    <i class='fas fa-headphones'></i>
+                    <p>Drop your music here!</p>
+                </section>
+                <div>
+                    <div class="row g-3 align-items-center mt-2">
+                        <div class="col-auto">
+                          <label for="songTitle" class="col-form-label">Song Title</label>
+                        </div>
+                        <div class="col-auto">
+                          <input type="text" id="songTitle" class="form-control" aria-describedby="titleHelp">
+                        </div>
+                        <div class="col-auto">
+                          <span id="titleHelp" class="form-text">
+                            Should not contain '.'
+                          </span>
+                        </div>
+                    </div>
+                    <div class="row g-3 align-items-center mt-2">
+                        <div class="col-auto">
+                          <label for="artist" class="col-form-label">Artist</label>
+                        </div>
+                        <div class="col-auto">
+                          <input type="text" id="artist" class="form-control" aria-describedby="artistHelp">
+                        </div>
+                        <div class="col-auto">
+                          <span id="artistHelp" class="form-text">
+                            Should not contain '.'
+                          </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <audio id='music' controls autoplay>
+                <source id='source' src="#" type="audio/mpeg">
+            </audio>
+        </div>
     </div>
+
     <div id="uploadApp">
+
+    <!--OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD-->
     <div class="container">
         
         <div class="row text-center">
@@ -43,6 +125,7 @@
 
             <input type="text" class="form-control" placeholder="File Name" id='fileName'>
         </div>
+
         <label id='extlab'></label>
          <div class="progress">
                 <div class="progress-bar" role="progressbar" id="pbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
