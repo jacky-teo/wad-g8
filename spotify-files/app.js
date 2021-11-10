@@ -1,36 +1,3 @@
-//// FIREBASE COMPONENT //////
-// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js"; //initialize firebase app
-// import { getDatabase, ref, set, child, update, remove, get } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js"
-
-
-// var client_id,client_secret
-
-// const app = initializeApp(firebaseConfig);
-// // Get a reference to the database service
-// const database = getDatabase(app);
-// var reference =ref(realdb); // Refer to realtime DB
-//     get(child(reference, "users/clientId" )) // Get the ClientId
-//     .then((snapshot)=>{
-//         if(snapshot.exists()){
-//             if(snapshot.exists()){
-//                client_id= snapshot.val()
-//             }
-//         }
-//     })
-//     .catch(err=>console.log(err.message))
-
-//     get(child(reference, "users/client_secret" )) // Get the ClientId
-//         .then((snapshot)=>{
-//             if(snapshot.exists()){
-//                 if(snapshot.exists()){
-//                 client_secret= snapshot.val()
-//                 }
-//             }
-//         })
-//     .catch(err=>console.log(err.message))
-
-    
-
 var redirect_uri = "https://vasn.github.io/wad-g8/spotify-files/index.html";
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
