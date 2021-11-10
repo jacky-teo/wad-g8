@@ -1,3 +1,9 @@
+var redirect_uri = "https://vasn.github.io/wad-g8/spotify-files/index.html";
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// this should go in the firebase when it's ready 
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 //// FIREBASE COMPONENT //////
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js"; //initialize firebase app
 import { getDatabase, ref, set, child, update, remove, get } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js"
@@ -28,14 +34,6 @@ var reference =ref(realdb); // Refer to realtime DB
             }
         })
     .catch(err=>console.log(err.message))
-
-    
-
-var redirect_uri = "https://vasn.github.io/wad-g8/spotify-files/index.html";
-
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// this should go in the firebase when it's ready
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 var access_token = null;
@@ -328,11 +326,11 @@ function play() {
 function handleApiResponse() {
     if (this.status == 200) {
         console.log(this.responseText);
-        setTimeout(currentlyPlaying, 500);
+        setTimeout(currentlyPlaying, 2000);
 
     }
     else if (this.status == 204) {
-        setTimeout(currentlyPlaying, 500);
+        setTimeout(currentlyPlaying, 2000);
     }
     else if (this.status == 401) {
         refreshAccessToken()
