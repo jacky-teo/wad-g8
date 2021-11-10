@@ -4,9 +4,9 @@ import { GLTFLoader } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/l
 export var scene5 = new THREE.Scene();
 const loader = new GLTFLoader();
 var obj;
-loader.load("../wad-g8/objects/spotifylogo.gltf", function (gltf) {
+loader.load("../wad-g8/objects/spotifylogo.gltf", function(gltf){
     obj = gltf.scene;
-    var material = new THREE.MeshBasicMaterial({ color: 0x33ff4e });
+    var material = new THREE.MeshBasicMaterial( {color: 0x33ff4e} );
     obj = new THREE.Mesh(obj, material);
     scene5.add(gltf.scene);
 });
@@ -19,5 +19,5 @@ scene5.add(light);
 scene5.add(light.target);
 
 export function scaleSpotify(scale) {
-    scene5.scale.set(scale, scale, scale)
+    scene5.scale.set (scale, scale, scale)
 }
