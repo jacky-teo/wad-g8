@@ -10,7 +10,7 @@ loader.load("../wad-g8/objects/spotifygo.gltf", function (gltf) {
     obj = new THREE.Mesh(obj, material);
     scene5.add(gltf.scene);
 });
-scene5.background = new THREE.Color(0x23D76D);
+scene5.background = new THREE.Color(0x27E576);
 
 var light = new THREE.DirectionalLight(0xffffff, 3.0);
 light.position.set(2, 6, 1);
