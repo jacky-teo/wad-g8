@@ -1,13 +1,14 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.133.1';
 import { OrbitControls } from 'https://cdn.skypack.dev/three@0.133.1/examples/jsm/controls/OrbitControls.js';
 import { scene2, scaleSphere } from '../visuals/Sphere.js'
-import { scene3, animateSpace } from '../visuals/Space.js'
+import { scene3, animateSpace, scaleSpace } from '../visuals/Space.js'
 import { scene4, changeColors, spinCircle, boxScaling } from '../visuals/RotatingBoxes.js'
 import { scene5, scaleSpotify } from '../visuals/spotify.js'
+import { scene6, animateboxes, scaleboxes } from '../visuals/Boxes.js';
 
-feather.replace(); 
+feather.replace();
 
-let s, camera, renderer, app, listener, sound, audioLoader, analyser;
+let s, camera, renderer, app, listener, sound, audioLoader, analyser, controls;
 let scene1, box;
 
 
@@ -26,7 +27,7 @@ app = Vue.createApp({
                 "Race Into The Night",
                 "Kiss Me More - Doja Cat ft. SZA"
             ], 
-            scenes: ["scene1", "scene2", "scene3", "scene4", "scene5"]
+            scenes: ["scene1", "scene2", "scene3", "scene4", "scene5", "scene6"]
         }
     },
     methods: {
@@ -106,6 +107,8 @@ app = Vue.createApp({
                 s = scene4;
             } else if (value == "scene5") {
                 s = scene5;
+            } else if (value == "scene6") {
+                s = scene6;
             }
         }
     },
@@ -137,6 +140,10 @@ function init() {
     box.position.set(0, 0, 150);
     scene1.add(box);
 
+    controls = new OrbitControls( camera, renderer.domElement );
+    controls.enableZoom = false;
+    controls.update();
+
     s = scene1;
 	animate();
 }
@@ -145,17 +152,22 @@ function animate() {
     requestAnimationFrame( animate )
     box.rotation.y += 0.01;
     box.rotation.x += 0.01;
+    animateboxes();
+    animateSpace();
 
     if (analyser != undefined) {
         let sUnit = analyser.getAverageFrequency()/75;
-        box.scale.set( sUnit, sUnit, sUnit )
+        box.scale.set( sUnit, sUnit, sUnit );
         scaleSphere(sUnit);
-        animateSpace(sUnit);
+        scaleSpace(sUnit);
         boxScaling(sUnit);
         changeColors();
         spinCircle();
         scaleSpotify(sUnit);
+        scaleboxes(sUnit);
     }
+
+    controls.update();
 
     renderer.render( s, camera );
 }

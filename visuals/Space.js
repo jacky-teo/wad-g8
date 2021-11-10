@@ -40,14 +40,7 @@ for (let i = 0; i < 300; i++){
     createStar()
 }
 
-export function animateSpace(scale) {
-    if (scale > 1) {
-        torus.scale.set(scale, scale, scale);
-    }
-    torus.rotation.x += 0.01
-    torus.rotation.y += 0.02
-    torus.rotation.z += 0.01
-    
+export function animateSpace() {
     for(var i=0; i<stars.length; i++) {
                     
         let star = stars[i]; 
@@ -59,4 +52,13 @@ export function animateSpace(scale) {
         if(star.position.z>1000) star.position.z-=2000; 
         
     }
+}
+
+export function scaleSpace(scale) {
+    if (scale > 1) {
+        torus.scale.set(scale, scale, scale);
+    }
+    torus.rotation.x += 0.01
+    torus.rotation.y += 0.02
+    torus.rotation.z += 0.01
 }
