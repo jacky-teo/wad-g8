@@ -39,7 +39,7 @@ app.component('navbar', {
             <div class="container-fluid" style="padding:0 15px 0 15px;">
                 <span class="navbar-brand mb-0 h1 text-light">{{appName}}
                     <div class="btn-group">
-                        <button type="button" class="text-dark btn dropdown-toggle" data-bs-toggle="dropdown">
+                        <button type="button" class="text-light btn dropdown-toggle" data-bs-toggle="dropdown">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-list" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
