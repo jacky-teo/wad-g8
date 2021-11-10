@@ -11,18 +11,26 @@ app.component('navbar', {
     },
     computed: {
         links() {
-            if (window.location.href.includes("uploads/")) {
-                return {
-                    homeLink: "../",
-                    spotifyLink: "../spotify-files/",
-                    uploadLink: ""
-                }
-                //href links if at base page
-            } else {
+            //href links if at spotify page
+            if (window.location.href.includes("spotify-files/")) {
                 return {
                     homeLink: "",
-                    spotifyLink: "./spotify-files",
-                    uploadLink: "./uploads/login.html"
+                    spotifyLink: "",
+                    uploadLink: ""
+                }
+                //href links if at home page
+            } else if (window.location.href.includes("wad-g8")) {
+                return {
+                    homeLink: "",
+                    spotifyLink: "/spotify-files/",
+                    uploadLink: ""
+                }
+                //href links if at upload page
+            } else {
+                return {
+                    homeLink: "ha",
+                    spotifyLink: "test",
+                    uploadLink: "pls"
                 }
             }
         }
