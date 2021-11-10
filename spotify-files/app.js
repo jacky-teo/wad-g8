@@ -5,47 +5,46 @@ var redirect_uri = "https://vasn.github.io/wad-g8/spotify-files/index.html";
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 //// FIREBASE COMPONENT //////
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js"; //initialize firebase app
-import { getDatabase, ref, set, child, update, remove, get } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js"
+// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js"; //initialize firebase app
+// import { getDatabase, ref, set, child, update, remove, get } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js"
 
 
-var client_id,client_secret
-const firebaseConfig = {
-    apiKey: "AIzaSyDRVQ7r6TGsQhZGvVIXws7y5PTPqlvC2yo",
-    authDomain: "audiophile-eff2c.firebaseapp.com",
-    databaseURL: "https://audiophile-eff2c-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "audiophile-eff2c",
-    storageBucket: "audiophile-eff2c.appspot.com",
-    messagingSenderId: "141435951049",
-    appId: "1:141435951049:web:6308bd4b9fe95fb49bba18",
-    measurementId: "G-LKVP0JH4YH"
-};
-const app = initializeApp(firebaseConfig);
+var client_id = "eb7fe60f242a47c99400bbbfae58b595",
+    client_secret = "bd6587ae3ac04e6d94be304b6f5edda7"
+// const firebaseConfig = {
+//     apiKey: "AIzaSyDRVQ7r6TGsQhZGvVIXws7y5PTPqlvC2yo",
+//     authDomain: "audiophile-eff2c.firebaseapp.com",
+//     databaseURL: "https://audiophile-eff2c-default-rtdb.asia-southeast1.firebasedatabase.app",
+//     projectId: "audiophile-eff2c",
+//     storageBucket: "audiophile-eff2c.appspot.com",
+//     messagingSenderId: "141435951049",
+//     appId: "1:141435951049:web:6308bd4b9fe95fb49bba18",
+//     measurementId: "G-LKVP0JH4YH"
+// };
+// const app = initializeApp(firebaseConfig);
 
+// // Get a reference to the database service
+// const realdb = getDatabase(app);
+// var reference =ref(realdb); // Refer to realtime DB
+//     get(child(reference, "users/clientId" )) // Get the ClientId
+//     .then((snapshot)=>{
+//         if(snapshot.exists()){
+//             if(snapshot.exists()){
+//                client_id= snapshot.val()
+//             }
+//         }
+//     })
+//     .catch(err=>console.log(err.message))
 
-const app = initializeApp(firebaseConfig);
-// Get a reference to the database service
-const database = getDatabase(app);
-var reference =ref(realdb); // Refer to realtime DB
-    get(child(reference, "users/clientId" )) // Get the ClientId
-    .then((snapshot)=>{
-        if(snapshot.exists()){
-            if(snapshot.exists()){
-               client_id= snapshot.val()
-            }
-        }
-    })
-    .catch(err=>console.log(err.message))
-
-    get(child(reference, "users/client_secret" )) // Get the ClientId
-        .then((snapshot)=>{
-            if(snapshot.exists()){
-                if(snapshot.exists()){
-                client_secret= snapshot.val()
-                }
-            }
-        })
-    .catch(err=>console.log(err.message))
+//     get(child(reference, "users/client_secret" )) // Get the ClientId
+//         .then((snapshot)=>{
+//             if(snapshot.exists()){
+//                 if(snapshot.exists()){
+//                 client_secret= snapshot.val()
+//                 }
+//             }
+//         })
+//     .catch(err=>console.log(err.message))
 
 
 var access_token = null;
@@ -53,6 +52,8 @@ var refresh_token = null;
 var currentPlaylist = "";
 
 localStorage.setItem('trackid', '');
+// var body = document.getElementById('body')
+// body.addEventListener('load',onPageLoad)
 
 const AUTHORIZE = "https://accounts.spotify.com/authorize"
 const TOKEN = "https://accounts.spotify.com/api/token";
@@ -67,6 +68,7 @@ const TRACKS = "https://api.spotify.com/v1/playlists/{{PlaylistId}}/tracks";
 const CURRENTLYPLAYING = "https://api.spotify.com/v1/me/player/currently-playing";
 const SHUFFLE = "https://api.spotify.com/v1/me/player/shuffle";
 const ANALYSIS = "  https://api.spotify.com/v1/audio-analysis/{id}";
+
 
 function onPageLoad() {
     if (window.location.search.length > 0) {
