@@ -32,8 +32,8 @@ const app = Vue.createApp({
             emptyFieldMsg: 'Required',
             emailMsg: 'Invalid email',
             passwordMsg: "Password must contain at least 6 characters",
+            regFailMsg: '',
             confirmPasswordMsg: 'Confirm password must be the same as password',
-            registerErrorMsg: '',
             auth: ''
         }
     },
@@ -155,6 +155,7 @@ const app = Vue.createApp({
                 .then((userCreds) => {
                     const user = userCreds.user
                     console.log(user)
+                    this.regFailMsg = ''
                     const storage = getStorage()
                     const storageRef = sRef(storage, "public/users/" + user.uid)
                     const message = this.registerFirstName + ' ' + this.registerLastName;
@@ -163,7 +164,8 @@ const app = Vue.createApp({
                     });
                 })
                 .catch((error) => {
-                    console.log(error)
+                    console.log(error);
+                    this.regFailMsg = 'Email already exists.';
                 })
         },
         signout() {
