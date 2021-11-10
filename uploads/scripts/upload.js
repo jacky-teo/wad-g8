@@ -1,6 +1,6 @@
 import {initializeApp} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js"; //initialize firebase app
 import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-storage.js" //for firebase storage
-import {getDatabase, ref,set,child,update,remove,get } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js"
+import {getDatabase, ref,set,child,update,remove,get, onValue} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js"
 import { getAuth, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js"
 
 
@@ -16,7 +16,7 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 
-let files,fileArray
+let files
 
 let nameBox = document.getElementById('fileName'),
     upload = document.getElementById('upload'),
@@ -133,8 +133,12 @@ function GetUrlfromRealTimeDB(){
                 console.log(source)
                 source.src= musicURL // change the URL
                 filesrc = musicURL
-                player.load()}})}
-
+                player.load()}})
+        .catch(err=>{
+            console.log(err.message)
+        })
+    }
+        
 function validateName(){
         var regex=/[\.#$\[]]/
         return !(regex.test(nameBox.value));

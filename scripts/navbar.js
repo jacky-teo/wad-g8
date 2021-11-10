@@ -6,7 +6,7 @@ const app = Vue.createApp({
 app.component('navbar', {
     data() {
         return  {
-            appName: 'Audiophile' 
+            appName: 'Audiophile'
         }
     },
     computed: {
