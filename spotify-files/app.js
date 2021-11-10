@@ -296,11 +296,11 @@ function play() {
 function handleApiResponse() {
     if (this.status == 200) {
         console.log(this.responseText);
-        setTimeout(currentlyPlaying, 2000);
+        setTimeout(currentlyPlaying, 500);
 
     }
     else if (this.status == 204) {
-        setTimeout(currentlyPlaying, 2000);
+        setTimeout(currentlyPlaying, 500);
     }
     else if (this.status == 401) {
         refreshAccessToken()
