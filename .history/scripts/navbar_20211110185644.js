@@ -11,19 +11,26 @@ app.component('navbar', {
     },
     computed: {
         links() {
-            // shya: spotify navbar requires the modal to be there so i'm yeeting that code away
-            if (window.location.href.includes("uploads/")) {
+            //href links if at spotify page
+            if (window.location.href.includes("spotify-files/index.html")) {
                 return {
-                    homeLink: "../",
-                    spotifyLink: "../spotify-files/",
+                    homeLink: "",
+                    spotifyLink: "",
                     uploadLink: ""
                 }
-                //href links if at base page
+                //href links if at home page
+            } else if (window.location.href.includes("wad-g8/index.html")) {
+                return {
+                    homeLink: "",
+                    spotifyLink: "wad-g8/spotify-files/",
+                    uploadLink: ""
+                }
+                //href links if at upload page
             } else {
                 return {
                     homeLink: "",
-                    spotifyLink: "./spotify-files",
-                    uploadLink: "./uploads/login.html"
+                    spotifyLink: "",
+                    uploadLink: ""
                 }
             }
         }
