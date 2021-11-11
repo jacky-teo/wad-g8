@@ -1,16 +1,15 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.133.1';
 import { OrbitControls } from 'https://cdn.skypack.dev/three@0.133.1/examples/jsm/controls/OrbitControls.js';
+import { scene1, animateboxes, scaleboxes } from '../visuals/Boxes.js';
 import { scene2, scaleSphere } from '../visuals/Sphere.js'
 import { scene3, animateSpace, scaleSpace } from '../visuals/Space.js'
 import { scene4, changeColors, spinCircle, boxScaling } from '../visuals/RotatingBoxes.js'
 import { scene5, scaleSpotify } from '../visuals/spotify.js'
-import { scene6, animateboxes, scaleboxes } from '../visuals/Boxes.js';
+
 
 feather.replace();
 
 let s, camera, renderer, app, listener, sound, audioLoader, analyser, controls;
-let scene1, box;
-
 
 app = Vue.createApp({
     data() {
@@ -107,9 +106,11 @@ app = Vue.createApp({
                 s = scene4;
             } else if (value == "scene5") {
                 s = scene5;
-            } else if (value == "scene6") {
-                s = scene6;
-            }
+            } 
+            // For u junhui, uncomment it when u add.
+            // else if (value == "scene6") {
+            //     s = scene6;
+            // }
         }
     },
     mounted() {
@@ -131,15 +132,6 @@ function init() {
     renderer = new THREE.WebGLRenderer({canvas: document.querySelector("#c"), antialias: true});
     renderer.setSize( window.innerWidth, window.innerHeight );
 
-    scene1 = new THREE.Scene();
-    
-    //Box
-    let boxG = new THREE.BoxGeometry( 100, 100, 100 );
-    let boxM = new THREE.MeshNormalMaterial();
-    box = new THREE.Mesh(boxG, boxM);
-    box.position.set(0, 0, 150);
-    scene1.add(box);
-
     controls = new OrbitControls( camera, renderer.domElement );
     controls.enableZoom = false;
     controls.update();
@@ -150,8 +142,6 @@ function init() {
 
 function animate() {
     requestAnimationFrame( animate )
-    box.rotation.y += 0.01;
-    box.rotation.x += 0.01;
     animateboxes();
     animateSpace();
 
