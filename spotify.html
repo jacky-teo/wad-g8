@@ -111,7 +111,8 @@
                             <a class="nav-link" href="uploads/login.html">Upload</a>
                         </li>
                         <li>
-                            <a class="nav-link" data-bs-toggle="modal" href="#exampleModalToggle" role="button">
+<div id="modals">
+                            <a class="nav-link" data-bs-toggle="modal" :href="toggleRef" role="button" @click="addCount()">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="text-light bi bi-music-note-list" viewBox="0 0 16 16">
                                     <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z" />
@@ -127,30 +128,32 @@
             </div>
         </nav>
         <!-- Modal -->
-        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+    
+        <div class="modal fade" id="notice" aria-hidden="true" aria-labelledby="noticeLabel"
             tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalToggleLabel">Before We Begin </h5>
+                        <h5 class="modal-title" id="noticeLabel">Before We Begin </h5>
                     </div>
                     <div class="modal-body">
                         Please close all other running instances of Spotify for this application to run smoothly.
                     </div>
                     <div class="modal-footer">
-                        <button @click="modalToggle()" class="login100-form-btn mt-3 mx-auto d-block"
-                            style='background-color:#555555;' data-bs-target="#exampleModalToggle2"
+                        <button class="login100-form-btn mt-3 mx-auto d-block"
+                            style='background-color:#555555;' data-bs-target="#playerModal"
                             data-bs-toggle="modal" data-bs-dismiss="modal">Ok!</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="exampleModalToggle2" tabindex="-1" aria-labelledby="exampleModalLabel"
+    </div>
+        <div class="modal fade" id="playerModal" tabindex="-1" aria-labelledby="playerModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Music Controls</h5>
+                        <h5 class="modal-title" id="playerModalLabel">Music Controls</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
