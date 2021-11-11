@@ -22,7 +22,7 @@ app.component('navbar', {
             } else {
                 return {
                     homeLink: "",
-                    spotifyLink: "./spotify.html",
+                    spotifyLink: "spotify.html",
                     uploadLink: "./uploads/login.html"
                 }
             }
@@ -45,7 +45,7 @@ app.component('navbar', {
                         <a class="nav-link" :href=links.homeLink>Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" :href=links.spotifyLink>Spotify</a>
+                        <a class="nav-link active" aria-current="page" :href=links.spotifyLink>Spotify</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" :href=links.uploadLink>Upload</a>

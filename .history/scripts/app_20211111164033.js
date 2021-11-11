@@ -46,11 +46,13 @@ function onPageLoad() {
         if (access_token == null) {
             // we don't have an access token so present token section
             document.getElementById("deviceSection").style.display = 'none';
+            console.log('noo access');
         }
         else {
             // we have an access token so present device section
             document.getElementById("tokenSection").style.display = 'none';
             document.getElementById("deviceSection").style.display = 'block';
+            console.log('yay access');
 
             refreshDevices();
             refreshPlaylists();

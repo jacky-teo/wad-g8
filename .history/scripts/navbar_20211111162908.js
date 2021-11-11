@@ -11,18 +11,17 @@ app.component('navbar', {
     },
     computed: {
         links() {
-            // href links at uploads directory
             if (window.location.href.includes("uploads/")) {
                 return {
                     homeLink: "../",
                     spotifyLink: "../spotify.html",
                     uploadLink: ""
                 }
-                // href links at base pages
+                //href links if at base page
             } else {
                 return {
                     homeLink: "",
-                    spotifyLink: "./spotify.html",
+                    spotifyLink: "spotify.html",
                     uploadLink: "./uploads/login.html"
                 }
             }
@@ -42,13 +41,13 @@ app.component('navbar', {
             <div class="navbar-collapse collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" :href=links.homeLink>Home</a>
+                        <a class="nav-link" href="./">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" :href=links.spotifyLink>Spotify</a>
+                        <a class="nav-link active" aria-current="page" href="#">Spotify</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" :href=links.uploadLink>Upload</a>
+                        <a class="nav-link" href="uploads/login.html">Upload</a>
                     </li>
                 </ul>
             </div>
