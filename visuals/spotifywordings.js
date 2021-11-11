@@ -18,7 +18,7 @@ light.target.position.set(0, 0, 0);
 scene5.add(light);
 scene5.add(light.target);
 
-export function scaleSpotify(scale) {
+export function scaleSpotifyWording(scale) {
     if (scale > 0.75) {
         scene5.scale.set (scale, scale, scale)
     }
