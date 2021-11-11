@@ -1,9 +1,7 @@
-var redirect_uri = "https://vasn.github.io/wad-g8/spotify-files/index.html";
+var redirect_uri = "https://vasn.github.io/wad-g8/index.html";
 
-// import { client_id, client_secret } from './firebase.js'
+import { client_id, client_secret } from './firebase.js';
 
-var client_id = "eb7fe60f242a47c99400bbbfae58b595",
-    client_secret = "bd6587ae3ac04e6d94be304b6f5edda7"
 
 var access_token = null;
 var refresh_token = null;
@@ -12,10 +10,17 @@ var currentPlaylist = "";
 
 var body = document.getElementById('body');
 var login = document.getElementById('login');
+var playlists = document.getElementById('playlists');
+var tracks = document.getElementById('tracks');
+
+// Add Event Listeners
+body.addEventListener('load', onPageLoad);
+login.addEventListener('click', requestAuthorization);
+playlists.addEventListener('input', fetchTracks);
+playlists.addEventListener('input', play);
+tracks.addEventListener('input', play);
 localStorage.setItem('trackid', '');
 
-// var body = document.getElementById('body')
-// body.addEventListener('load', onPageLoad)
 
 const AUTHORIZE = "https://accounts.spotify.com/authorize"
 const TOKEN = "https://accounts.spotify.com/api/token";
