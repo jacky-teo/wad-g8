@@ -65,6 +65,15 @@ function onPageLoad() {
     }
 }
 
+//playToggle vue instance
+const playToggle = Vue.createApp({
+    data() {
+        return {
+            playToggle: true
+        }
+    }
+}).mount("#playback")
+
 //spotify web sdk
 window.onSpotifyWebPlaybackSDKReady = () => {
     if (access_token != null) {
