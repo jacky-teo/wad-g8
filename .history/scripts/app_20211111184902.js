@@ -415,6 +415,7 @@ function handleAnalysisResponse() {
     if (this.status == 200) {
         var data = JSON.parse(this.responseText);
         console.log(data)
+        console.log("Hi")
     }
     else if (this.status == 401) {
         refreshAccessToken()

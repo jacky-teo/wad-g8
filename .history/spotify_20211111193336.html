@@ -8,8 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <!--===============================================================================================-->
-    <!-- External CSS -->
-    <link rel="stylesheet" href="styles/style.css">
+
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <!--===============================================================================================-->
@@ -30,11 +29,8 @@
 
 </head>
 
-<body onload="onPageLoad()">
+<body id='body' onload="onPageLoad()">
 
-    <div id="app" v-cloak>
-        <canvas id="c" style="z-index:-1;top:0;"></canvas>
-    </div>
 
     <!-- Content Starts Here -->
 
@@ -127,8 +123,8 @@
             </div>
         </nav>
         <!-- Modal -->
-        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-            tabindex="-1">
+        <div v-if="showFirst===true" class="modal fade" id="exampleModalToggle" aria-hidden="true"
+            aria-labelledby="exampleModalToggleLabel" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -145,7 +141,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="exampleModalToggle2" tabindex="-1" aria-labelledby="exampleModalLabel"
+        <div v-else class="modal fade" id="exampleModalToggle2" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
@@ -244,6 +240,19 @@
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
 
     <script>
+        const modalToggle = Vue.createApp({
+            data() {
+                return {
+                    showFirst: true
+                }
+            },
+            methods: {
+                modalClick() {
+                    showFirst = false
+                }
+            }
+        }).mount("#deviceSection")
+
         const playToggle = Vue.createApp({
             data() {
                 return {
@@ -252,12 +261,6 @@
             }
         }).mount("#playback")
     </script>
-
-<!-- Feather Icon -->
-<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-
-<!-- External JS -->
-<script type="module" src="scripts/main.js"></script>
 
 </body>
 
