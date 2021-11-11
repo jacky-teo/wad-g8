@@ -12,12 +12,14 @@ loader.load("../wad-g8/objects/spotifylogo.gltf", function (gltf) {
 });
 scene5.background = new THREE.Color(0x27E576);
 
-var light = new THREE.DirectionalLight(0xffffff, 3.0);
-light.position.set(2, 6, 1);
+var light = new THREE.DirectionalLight(0xffffff, 1.5);
+light.position.set(2, 60, 100);
 light.target.position.set(0, 0, 0);
 scene5.add(light);
 scene5.add(light.target);
 
 export function scaleSpotify(scale) {
-    scene5.scale.set (scale, scale, scale)
+    if (scale > 0.75) {
+        scene5.scale.set (scale, scale, scale)
+    }
 }
