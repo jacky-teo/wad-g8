@@ -49,7 +49,7 @@ const firebaseConfig = {
     measurementId: "G-LKVP0JH4YH"
 };
 const app = initializeApp(firebaseConfig);
-import {} from "../scripts/firebase.js"
+// import {} from "../scripts/firebase.js"
 let files
 let nameBox = document.getElementById('songTitle'),
     upload = document.getElementById('upload'),
