@@ -12,10 +12,9 @@ var currentPlaylist = "";
 
 var body = document.getElementById('body');
 var login = document.getElementById('login');
-localStorage.setItem('trackid', '');
-
-// var body = document.getElementById('body')
-// body.addEventListener('load', onPageLoad)
+const localStorage.setItem('trackid', '');
+var body = document.getElementById('body')
+body.addEventListener('load', onPageLoad)
 
 const AUTHORIZE = "https://accounts.spotify.com/authorize"
 const TOKEN = "https://accounts.spotify.com/api/token";

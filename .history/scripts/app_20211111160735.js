@@ -1,6 +1,6 @@
 var redirect_uri = "https://vasn.github.io/wad-g8/spotify-files/index.html";
 
-// import { client_id, client_secret } from './firebase.js'
+import { client_id, client_secret } from './firebase.js'
 
 var client_id = "eb7fe60f242a47c99400bbbfae58b595",
     client_secret = "bd6587ae3ac04e6d94be304b6f5edda7"
@@ -10,12 +10,17 @@ var refresh_token = null;
 var currentPlaylist = "";
 
 
-var body = document.getElementById('body');
-var login = document.getElementById('login');
-localStorage.setItem('trackid', '');
+var body = document.getElementById('body'),
+    login = document.getElementById('login'),
 
+
+
+
+
+
+    localStorage.setItem('trackid', '');
 // var body = document.getElementById('body')
-// body.addEventListener('load', onPageLoad)
+// body.addEventListener('load',onPageLoad)
 
 const AUTHORIZE = "https://accounts.spotify.com/authorize"
 const TOKEN = "https://accounts.spotify.com/api/token";
