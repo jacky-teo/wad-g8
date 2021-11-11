@@ -27,6 +27,8 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="css/test.css">
     <!--===============================================================================================-->
+    <script src="../scripts/navbar.js"></script>
+    <!--===============================================================================================-->
 
 </head>
 
@@ -38,27 +40,10 @@
 
     <!-- LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN LOGIN -->
     <div id="tokenSection" class="limiter md-100">
-        <nav style='position:fixed' class="navbar navbar-light bg-transparent">
-            <div class="container-fluid">
-                <span class="text-light navbar-brand mb-0 h1">Audiophile
-                    <div class="btn-group">
-                        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="text-light bi bi-list" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                            </svg></button>
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <a href="../" class="dropdown-item">Home</a>
-                            <a href="#" class="dropdown-item active">Spotify</a>
-                            <a href="../uploads/login.html" class="dropdown-item">Upload</a>
-                        </div>
-                    </div>
-                </span>
-
-            </div>
-        </nav>
-        <div style='background-color:black;' class="container-login100">
+        <div id="compApp">
+            <navbar style='position:fixed;'></navbar>
+        </div>
+        <div class="container-login100">
             <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
                 <form class="login100-form validate-form flex-sb flex-w">
                     <span class="login100-form-title p-b-32">
