@@ -31,18 +31,18 @@
 
 <!-- IT IS NOT YET VERTICALLY ALIGNED SO DONT -->
 
-<body>
+<body class="mb-0 h-100 overflow-hidden">
+<!-- <body> -->
   <div class="container-fluid p-0">
 
-
-    <div id="songs" class="bg-light carousel slide carousel-multi-item p-3" data-ride="carousel"
+    <div id="songs" class="bg-light carousel slide carousel-multi-item px-3 py-0 vh-100" data-ride="carousel"
       data-bs-interval="false">
 
       <!--Slides-->
       <div class="carousel-inner" role="listbox">
 
         <!--First slide-->
-        <div class="carousel-item active min-vh-100">
+        <div class="carousel-item active">
           <div class="row">
             <div class='row'>
               <span class="login100-form-title p-b-32">
@@ -88,7 +88,7 @@
           </div>
         </div>
         <!--Second slide-->
-        <div class="carousel-item min-vh-100">
+        <div class="carousel-item">
 
           <div class="card-group">
             <div class="card">
@@ -139,7 +139,7 @@
         </div>
       </div>
       <!--Controls-->
-      <div id="controlBtns" class="mt-4 text-center">
+      <div class="position-fixed bottom-0 start-50 translate-middle-x" id="controlBtns">
         <a style='text-decoration:none;' class="btn-floating btn-lg" href="#songs" data-bs-slide="prev">
           <i class="far fa-arrow-alt-circle-left"></i>
         </a>
