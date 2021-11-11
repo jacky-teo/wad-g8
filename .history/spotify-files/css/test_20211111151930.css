@@ -146,7 +146,15 @@ background-color: #ebebeb;
 @media (min-width: 576px) {  }
 
 
-@media (min-width: 768px) {  }
+@media (min-width: 768px) { 
+
+    .wrap-login100 {
+        background: #fff;
+        border-radius: 10px;
+        position: relative;
+    } 
+
+}
 
 
 @media (min-width: 992px) {  }

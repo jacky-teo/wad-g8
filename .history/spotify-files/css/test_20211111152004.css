@@ -143,15 +143,6 @@ padding: 15px;
 background-color: #ebebeb;
 }
 
-@media (min-width: 576px) {  }
-
-
-@media (min-width: 768px) {  }
-
-
-@media (min-width: 992px) {  }
-
-
 .wrap-login100 {
 width: 560px;
 background: #fff;

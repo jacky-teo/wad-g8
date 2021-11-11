@@ -96,7 +96,11 @@
 <!-- Vue.js -->
 <script src="https://unpkg.com/vue@next"></script>
 
-
+<script>
+    window.addEventListener("resize", function () {
+        if (window.innerWidth < 500) resize.classList.remove("nav--is-open");
+    });
+</script>
 
 <script>
     const playToggle = Vue.createApp({

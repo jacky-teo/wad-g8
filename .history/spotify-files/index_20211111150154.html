@@ -38,8 +38,9 @@
 
 <!-- god bless you shya, content starts here good luck fucking feels like a lab test all over again -->
 
-<div class='container-fluid' style='padding:0;'>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style='background-color:black;'>
+<div class='container-fluid'>
+
+    <nav class="navbar navbar-expand-md navbar-dark" style='background-color:black;'>
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Audiophile</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
@@ -65,23 +66,25 @@
             </div>
         </div>
     </nav>
-    <div style='background-color:black;' class="container-login100">
-        <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-            <form class="login100-form validate-form flex-sb flex-w">
-                <span class="login100-form-title p-b-32">
-                    Audiophiles <img src="./images/icons/spotify.png" style="width:7%;">
-                </span>
-                <span class="txt-3 mb-5 text-justify">
-                    Login with your Spotify account to grant us access to your playlist and song
-                    information. This will allow
-                    you to play songs you love through Spotify's web playback SDK. Don't worry, we only have
-                    access to the mentioned data and not any of your personal information.
-                </span>
-                <div class="container-login100-form-btn">
-                    <input class="login100-form-btn mt-3 mx-auto d-block" type="button" onclick="requestAuthorization()"
-                        value="Login to Spotify">
-                </div>
-            </form>
+    <div class='row content'>
+        <div style='background-color:black;' class="container-login100">
+            <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+                <form class="login100-form validate-form flex-sb flex-w">
+                    <span class="login100-form-title p-b-32">
+                        Audiophiles <img src="./images/icons/spotify.png" style="width:7%;">
+                    </span>
+                    <span class="txt-3 mb-5 text-justify">
+                        Login with your Spotify account to grant us access to your playlist and song
+                        information. This will allow
+                        you to play songs you love through Spotify's web playback SDK. Don't worry, we only have
+                        access to the mentioned data and not any of your personal information.
+                    </span>
+                    <div class="container-login100-form-btn">
+                        <input class="login100-form-btn mt-3 mx-auto d-block" type="button"
+                            onclick="requestAuthorization()" value="Login to Spotify">
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -95,8 +98,6 @@
 
 <!-- Vue.js -->
 <script src="https://unpkg.com/vue@next"></script>
-
-
 
 <script>
     const playToggle = Vue.createApp({
