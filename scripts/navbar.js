@@ -14,14 +14,14 @@ app.component('navbar', {
             if (window.location.href.includes("uploads/")) {
                 return {
                     homeLink: "../",
-                    spotifyLink: "../spotify-files/",
+                    spotifyLink: "../spotify.html",
                     uploadLink: ""
                 }
                 //href links if at base page
             } else {
                 return {
                     homeLink: "",
-                    spotifyLink: "./spotify-files",
+                    spotifyLink: "spotify.html",
                     uploadLink: "./uploads/login.html"
                 }
             }
