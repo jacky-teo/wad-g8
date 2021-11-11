@@ -1,16 +1,16 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.133.1';
 import { OrbitControls } from 'https://cdn.skypack.dev/three@0.133.1/examples/jsm/controls/OrbitControls.js';
+import { scene1, animateboxes, scaleboxes } from '../visuals/Boxes.js';
 import { scene2, scaleSphere } from '../visuals/Sphere.js'
 import { scene3, animateSpace, scaleSpace } from '../visuals/Space.js'
 import { scene4, changeColors, spinCircle, boxScaling } from '../visuals/RotatingBoxes.js'
 import { scene5, scaleSpotify } from '../visuals/spotify.js'
-import { scene6, animateboxes, scaleboxes } from '../visuals/Boxes.js';
+import { scene6, scaleSpotifyWording } from '../visuals/spotifywordings.js'
+
 
 feather.replace();
 
 let s, camera, renderer, app, listener, sound, audioLoader, analyser, controls;
-let scene1, box;
-
 
 app = Vue.createApp({
     data() {
@@ -131,15 +131,6 @@ function init() {
     renderer = new THREE.WebGLRenderer({canvas: document.querySelector("#c"), antialias: true});
     renderer.setSize( window.innerWidth, window.innerHeight );
 
-    scene1 = new THREE.Scene();
-    
-    //Box
-    let boxG = new THREE.BoxGeometry( 100, 100, 100 );
-    let boxM = new THREE.MeshNormalMaterial();
-    box = new THREE.Mesh(boxG, boxM);
-    box.position.set(0, 0, 150);
-    scene1.add(box);
-
     controls = new OrbitControls( camera, renderer.domElement );
     controls.enableZoom = false;
     controls.update();
@@ -150,14 +141,11 @@ function init() {
 
 function animate() {
     requestAnimationFrame( animate )
-    box.rotation.y += 0.01;
-    box.rotation.x += 0.01;
     animateboxes();
     animateSpace();
 
     if (analyser != undefined) {
         let sUnit = analyser.getAverageFrequency()/75;
-        box.scale.set( sUnit, sUnit, sUnit );
         scaleSphere(sUnit);
         scaleSpace(sUnit);
         boxScaling(sUnit);
@@ -165,6 +153,7 @@ function animate() {
         spinCircle();
         scaleSpotify(sUnit);
         scaleboxes(sUnit);
+        scaleSpotifyWording(sUnit);
     }
 
     controls.update();
