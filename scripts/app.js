@@ -79,7 +79,6 @@ const modalDisplay = Vue.createApp({
     methods: {
         addCount: function () {
             this.openCount++;
-            console.log('added count', this.openCount);
         }
     }
 }).mount("#modals")
