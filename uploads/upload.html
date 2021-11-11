@@ -19,10 +19,10 @@
 <link rel="stylesheet" href="drag_drop.css"/>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script type='module' src="scripts/upload.js"></script>
+<script type='module' src="./scripts/upload.js"></script>
 <script type='module' src="scripts/app.js"></script>
-
-<link rel="stylesheet" href="../spotify-files/css/test.css"/>
+<!-- 
+<link rel="stylesheet" href="../spotify-files/css/test.css"/> -->
 </head>
 
 <body>
@@ -141,15 +141,22 @@
         <div class="col-10">
             <h5>Drop New Songs!</h5>
             <!-- DRAG AND DROP | DRAG AND DROP | DRAG AND DROP |-->
-            <section class="droparea">
+            <!-- <section class="droparea">
                 <i class='fas fa-headphones'></i>
                 <p>Drop your music here!</p>
-            </section>
+            </section> -->
+            <div class="drop-zone">
+                <div class='fas fa-headphones'></div>
+                <p>Drop file here or click to upload</p>
+                <input type="file" name="myFile" class="drop-input">
+            </div>
+
             <div>
               <div class="row justify-content-center">
                 <div class="row g-3 align-items-center mt-2">
                     <div class="col-auto">
                       <label for="songTitle" class="col-form-label">Song Title</label>
+                      <label id='extlab'></label>
                     </div>
                     <div class="col-auto">
                       <input type="text" id="songTitle" class="form-control" aria-describedby="titleHelp">
@@ -184,6 +191,8 @@
                 <source id='source' src="#" type="audio/mpeg">
             </audio>
         </div>
+        <button id='upload' class='btn btn-warning'>Upload</button>
+        <button id='retrieve' class='btn btn-success'>Retrieve</button>
     </div>
 </div>
 
