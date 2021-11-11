@@ -1,30 +1,24 @@
 var redirect_uri = "https://vasn.github.io/wad-g8/spotify.html";
 
-// vas's redirect
-// var redirect_uri = "http://localhost/is216/wad-g8/spotify.html";
+import { client_id, client_secret } from './firebase.js';
 
-// import { client_secret } from './firebase.js';
-
-var client_id = "eb7fe60f242a47c99400bbbfae58b595";
-var client_secret = "bd6587ae3ac04e6d94be304b6f5edda7";
 
 var access_token = null;
 var refresh_token = null;
 var currentPlaylist = "";
 
+
+var body = document.getElementById('body');
+var login = document.getElementById('login');
+var playlists = document.getElementById('playlists');
+var tracks = document.getElementById('tracks');
+
 // Add Event Listeners
-document.getElementById('login').addEventListener('click', function(){
-    requestAuthorization();
-});
-document.getElementById('playlists').addEventListener('input', function(){
-    fetchTracks();
-});
-document.getElementById('playlists').addEventListener('input', function(){
-    play();
-});
-document.getElementById('tracks').addEventListener('input', function(){
-    play();
-});
+body.addEventListener('load', onPageLoad);
+login.addEventListener('click', requestAuthorization);
+playlists.addEventListener('input', fetchTracks);
+playlists.addEventListener('input', play);
+tracks.addEventListener('input', play);
 localStorage.setItem('trackid', '');
 
 
@@ -314,6 +308,7 @@ function handleApiResponse() {
     if (this.status == 200) {
         console.log(this.responseText);
         setTimeout(currentlyPlaying, 2000);
+
     }
     else if (this.status == 204) {
         setTimeout(currentlyPlaying, 2000);
@@ -334,7 +329,7 @@ function deviceId() {
 function fetchTracks() {
     let playlist_id = document.getElementById("playlists").value;
     if (playlist_id.length > 0) {
-        let url = TRACKS.replace("{{PlaylistId}}", playlist_id);
+        url = TRACKS.replace("{{PlaylistId}}", playlist_id);
         callApi("GET", url, null, handleTracksResponse);
     }
 }
@@ -414,7 +409,6 @@ function handleAnalysisResponse() {
     if (this.status == 200) {
         var data = JSON.parse(this.responseText);
         console.log(data)
-        console.log("Hi")
     }
     else if (this.status == 401) {
         refreshAccessToken()
