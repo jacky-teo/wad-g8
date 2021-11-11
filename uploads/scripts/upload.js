@@ -14,10 +14,9 @@ const firebaseConfig = {
     appId: "1:141435951049:web:6308bd4b9fe95fb49bba18",
     measurementId: "G-LKVP0JH4YH"
 };
-const app = initializeApp(firebaseConfig);
-
+// const app = initializeApp(firebaseConfig);
+import {} from "../scripts/firebase.js"
 let files
-
 let nameBox = document.getElementById('fileName'),
     upload = document.getElementById('upload'),
     pbar = document.getElementById('pbar'),
@@ -47,9 +46,6 @@ const initApp = () => {
 
 document.addEventListener("DOMContentLoaded", initApp);
 
-//get user ID from session storage
-const id = sessionStorage.getItem('userID');
-
 const handleDrop = (e) => {
     const datatransfer = e.dataTransfer;
     files = datatransfer.files;
@@ -59,6 +55,15 @@ const handleDrop = (e) => {
     extlab.innerHTML = extention;
     reader.readAsDataURL(files[0])
 }
+// || DRAG AND DROP || DRAG AND DROP || DRAG AND DROP || //
+
+
+
+//get user ID from session storage
+const id = sessionStorage.getItem('userID');
+
+
+
 reader.onload = function(){
     music.src = reader.result;
     }
