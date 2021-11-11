@@ -79,7 +79,26 @@ const app = Vue.createApp({
         returnLogin() {
             this.islogin = true
             this.isLoginSuccessful = true;
+            //refresh login error message and input fields
             this.noEmptyFields = true;
+            this.loginEmail = '';
+            this.loginPassword = '';
+            
+            //refresh registration error messages 
+            this.isFirstNameEmpty = false;
+            this.registerFirstName = '';
+            this.isLastNameEmpty = false;
+            this.registerLastName = '';
+            this.isEmailEmpty = false;
+            this.registerEmail = '';
+            this.isPasswordEmpty = false;
+            this.registerPassword = '';
+            this.isConfirmPasswordEmpty = false;
+            this.registerConfirmPassword = '';
+
+            this.isEmailValid = true;
+            this.isPasswordValid = true;
+
         },
         login() {
             if (this.loginEmail == '' || this.loginPassword == '') {
