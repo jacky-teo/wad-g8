@@ -5,7 +5,7 @@ import { scene2, scaleSphere } from '../visuals/Sphere.js'
 import { scene3, animateSpace, scaleSpace } from '../visuals/Space.js'
 import { scene4, changeColors, spinCircle, boxScaling } from '../visuals/RotatingBoxes.js'
 import { scene5, scaleSpotify } from '../visuals/spotify.js'
-import { scene6, scaleSpotifyWording } from '../visuals/spotify.js'
+import { scene6, scaleSpotifyWording } from '../visuals/spotifywordings.js'
 
 
 feather.replace();
