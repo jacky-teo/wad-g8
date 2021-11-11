@@ -106,44 +106,25 @@
                         <li class="nav-item">
                             <a class="nav-link" href="uploads/login.html">Upload</a>
                         </li>
-                        <li>
-                            <a class="nav-link" data-bs-toggle="modal" href="#exampleModalToggle" role="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="text-light bi bi-music-note-list" viewBox="0 0 16 16">
-                                    <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z" />
-                                    <path fill-rule="evenodd" d="M12 3v10h-1V3h1z" />
-                                    <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z" />
-                                    <path fill-rule="evenodd"
-                                        d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z" />
-                                </svg> <span class='text-light'>Music Controls</span>
-                            </a>
-                        </li>
                     </ul>
+                </div>
+                <div class="topnav-right">
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="text-light bi bi-music-note-list" viewBox="0 0 16 16">
+                            <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z" />
+                            <path fill-rule="evenodd" d="M12 3v10h-1V3h1z" />
+                            <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z" />
+                            <path fill-rule="evenodd"
+                                d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                    </button>
                 </div>
             </div>
         </nav>
         <!-- Modal -->
-        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-            tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalToggleLabel">Before We Begin </h5>
-                    </div>
-                    <div class="modal-body">
-                        Please close all other running instances of Spotify for this application to run smoothly.
-                    </div>
-                    <div class="modal-footer">
-                        <button @click="modalToggle()" class="login100-form-btn mt-3 mx-auto d-block"
-                            style='background-color:#555555;' data-bs-target="#exampleModalToggle2"
-                            data-bs-toggle="modal" data-bs-dismiss="modal">Ok!</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="exampleModalToggle2" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Music Controls</h5>
@@ -153,6 +134,11 @@
                         <div class="container">
                             <div id="deviceSection" class="row">
                                 <div class="col">
+                                    <div class="mb-2">
+                                        <label for="devices" class="form-label">Please only have one instance of Spotify
+                                            running!</label>
+                                    </div>
+
                                     <div class="mb-2 d-none">
                                         <label for="devices" class="form-label">Devices</label>
                                         <select id="devices" class="form-control">
@@ -225,7 +211,6 @@
             </div>
         </div>
     </div>
-
 
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

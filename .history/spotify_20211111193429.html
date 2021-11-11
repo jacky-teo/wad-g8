@@ -123,8 +123,8 @@
             </div>
         </nav>
         <!-- Modal -->
-        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-            tabindex="-1">
+        <div v-if="showFirst===true" class="modal fade" id="exampleModalToggle" aria-hidden="true"
+            aria-labelledby="exampleModalToggleLabel" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -141,7 +141,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="exampleModalToggle2" tabindex="-1" aria-labelledby="exampleModalLabel"
+        <div v-else class="modal fade" id="exampleModalToggle2" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
@@ -240,6 +240,19 @@
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
 
     <script>
+        const modalToggle = Vue.createApp({
+            data() {
+                return {
+                    counter: 0
+                }
+            },
+            methods: {
+                modalClick() {
+                    counter += 1
+                }
+            }
+        }).mount("#deviceSection")
+
         const playToggle = Vue.createApp({
             data() {
                 return {

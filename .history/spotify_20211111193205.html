@@ -134,9 +134,9 @@
                         Please close all other running instances of Spotify for this application to run smoothly.
                     </div>
                     <div class="modal-footer">
-                        <button @click="modalToggle()" class="login100-form-btn mt-3 mx-auto d-block"
-                            style='background-color:#555555;' data-bs-target="#exampleModalToggle2"
-                            data-bs-toggle="modal" data-bs-dismiss="modal">Ok!</button>
+                        <button class="login100-form-btn mt-3 mx-auto d-block" style='background-color:#555555;'
+                            data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                            data-bs-dismiss="modal">Ok!</button>
                     </div>
                 </div>
             </div>
@@ -240,6 +240,19 @@
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
 
     <script>
+        const modalToggle = Vue.createApp({
+            data() {
+                return {
+                    showFirst: true
+                }
+            },
+            methods: {
+                modalClick() {
+                    showFirst = false
+                }
+            }
+        }).mount("#modal")
+
         const playToggle = Vue.createApp({
             data() {
                 return {
