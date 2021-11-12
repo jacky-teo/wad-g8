@@ -18,6 +18,8 @@ const firebaseConfig = {
     measurementId: "G-LKVP0JH4YH"
 };
 const app = initializeApp(firebaseConfig);
+const realdb = getDatabase();
+
 let files,
     songTitle = document.getElementById('songTitle'),
     artist = document.getElementById('artist'),
@@ -136,7 +138,7 @@ async function UploadProcess(){
 /////////////////////////////////
 ///// SAVE FILE TO REALTIME /////
 /////////////////////////////////
-const realdb = getDatabase();
+
     // Function REALTIME DATABASE
     function SaveURLtoRealTimeDB(URL){
         var name = songTitle.value + " - "+ artist.value;
@@ -157,6 +159,7 @@ const realdb = getDatabase();
 ///////////////////////////////////////
 ///// RETRIEVE ALL FROM REALTIME //////
 ///////////////////////////////////////
+var arr = []
 function getAllData(){
         var dbRef =ref(realdb); // Refer to realtime DB
         get(child(dbRef,"users/" + id ))
@@ -166,18 +169,45 @@ function getAllData(){
                 musicList.push(childSnapshot.val());
             });
             addToMusicList(musicList)
+            arr=musicList
         })
         .catch(err=>{
             alert('Failed to retrieve information please try again')
         })
 }
+
+var client_secret =[]
+
+function getClientSecret(){
+        var dbRef =ref(realdb); // Refer to realtime DB
+        get(child(dbRef,"users/client_secret"))
+        .then((snapshot)=>{
+            console.log("I MADE IT")
+            client_secret.push(snapshot._node.value_)
+            })
+        .catch(err=>{
+            alert('Failed to retrieve information please try again')
+        })
+}
+
+
+function printArr(){
+    console.log(arr)
+    console.log(client_secret[0])
+}
+
+retrieve.addEventListener('click',printArr)
+retrieve.addEventListener('click',getClientSecret)
 ///////////////////////////////////////////
 /////////// Create A DROPDOWN /////////////
 ///////////////////////////////////////////
+
 function addToMusicList(musicData){
     musicSelection.innerHTML =""
     for(let info of musicData){
         musicSelection.innerHTML += "<option value='" + info.musicURL+ "' > "+ info.musicName+"</option>"
+        arr.push(info)
     }
 }
+
 upload.addEventListener('click',UploadProcess)
