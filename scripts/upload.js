@@ -1,7 +1,7 @@
 import {initializeApp} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js"; //initialize firebase app
 import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-storage.js" //for firebase storage
 import {getDatabase, ref,set,child,update,remove,get, onValue} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js"
-import { getAuth, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js"
+
 
 //get user ID from session storage
 const id = sessionStorage.getItem('userID');
@@ -181,4 +181,3 @@ function addToMusicList(musicData){
     }
 }
 upload.addEventListener('click',UploadProcess)
-
