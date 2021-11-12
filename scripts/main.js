@@ -147,7 +147,6 @@ function animate() {
 
     if (analyser != undefined) {
         let sUnit = analyser.getAverageFrequency()/75;
-        box.scale.set( sUnit, sUnit, sUnit );
         scaleSphere(sUnit);
         scaleSpace(sUnit);
         boxScaling(sUnit);

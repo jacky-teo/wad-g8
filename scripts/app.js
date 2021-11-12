@@ -1,8 +1,8 @@
-var redirect_uri = "https://vasn.github.io/wad-g8/spotify.html";
+// var redirect_uri = "https://vasn.github.io/wad-g8/spotify.html";
 
 // vas's redirect
-// var redirect_uri = "http://localhost/is216/wad-g8/spotify.html";
-var redirect_uri = 'http://localhost/wad-g8/spotify.html';
+var redirect_uri = "http://localhost/is216/wad-g8/spotify.html";
+// var redirect_uri = 'http://localhost/wad-g8/spotify.html';
 
 // import { client_secret } from './firebase.js';
 
@@ -150,7 +150,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         };
 
         //player instance object
-        //console.log(player);
+        // console.log(player);
     }
 }
 
