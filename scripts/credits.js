@@ -175,12 +175,12 @@ class LoadModelDemo {
 
     const loader = new THREE.CubeTextureLoader();
     const texture = loader.load([
-        './resources/map3d/posx.png',
-        './resources/map3d/negx.png',
-        './resources/map3d/posy.png',
-        './resources/map3d/negy.png',
-        './resources/map3d/posz.png',
-        './resources/map3d/negz.png',
+        './resources/map3dsecond/posx.png',
+        './resources/map3dsecond/negx.png',
+        './resources/map3dsecond/posy.png',
+        './resources/map3dsecond/negy.png',
+        './resources/map3dsecond/posz.png',
+        './resources/map3dsecond/negz.png',
     ]);
     this._scene.background = texture;
 
