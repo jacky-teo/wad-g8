@@ -30,7 +30,7 @@ app.component('navbar', {
     },
     template: `<nav class="navbar navbar-expand-md navbar-dark fixed-top" style='background-color:black;'>
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Audiophile</a>
+            <a class="navbar-brand" href="./index.html">Audiophile</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
                 aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
