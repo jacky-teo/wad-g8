@@ -31,9 +31,13 @@
 <!-- IT IS NOT YET VERTICALLY ALIGNED SO DONT -->
 
 <body>
-  <div class="container-fluid p-0">
 
-    <div id="songs" class="bg-light carousel slide carousel-multi-item px-3 py-0 vh-100" data-ride="carousel"
+  <div class="container-fluid p-0">
+    <div id="compApp">
+      <navbar></navbar> 
+  </div>
+
+    <div id="songs" class="bg-light carousel slide carousel-multi-item px-3 pt-5 pb-0 vh-100 " data-ride="carousel"
       data-bs-interval="false">
 
       <!--Slides-->
@@ -41,14 +45,15 @@
 
         <!--First slide-->
         <div class="carousel-item active">
-          <div class="row">
+          <div class="row pt-5">
             <div class='row'>
-              <span class="login100-form-title p-b-32">
+              <span class="login100-form-title p-b-32 text-center">
                 Add Your Own Music!
               </span>
             </div>
             <div class='row'>
               <div class='col-5'>
+                <!-- DRAG AND DROP AREA -->
                 <div class="drop-zone mx-auto d-block">
                   <div class='fas fa-headphones'></div>
                   <p>Drop files here or click to choose files</p>
@@ -83,7 +88,7 @@
                     <input type="text" id="artist" class="form-control" aria-describedby="artistHelp">
                     <label style='display: none;' id='extension'></label>
                   </div>
-                  <label for="artist" class="col-form-label">Should not contain '.'</label>
+                  <label for="artist" class="col-form-label text-muted" style="font-size: smaller;">Should not contain '.'</label>
                 </div>
               </div>
             </div>
