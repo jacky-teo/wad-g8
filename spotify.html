@@ -35,14 +35,26 @@
 
     <div id="app" v-cloak>
         <canvas id="c"></canvas>
+        <div class="container position-fixed text-center"
+            style="width: 100%; left:0; right:0; bottom:30px; z-index: 2;">
+            <div class="row">
+                <div class="col-lg-4 py-1 text-center text-white">
+                    <h5>Change Scenes</h5>
+                    <ul id="sceneControls" class="d-flex justify-content-center">
+                        <li v-for="scene in scenes"><a @click="changeScene(scene)"><i data-feather="circle"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Content Starts Here -->
 
-    <div id='tokenSection' class='container-fluid' style='padding:0;'>
+    <div id='tokenSection' class='container-fluid'>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top" style='background-color:black;'>
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Audiophile</a>
+                <a class="navbar-brand" href="./index.html">Audiophile</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
                     aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -54,13 +66,13 @@
                 <div class="navbar-collapse collapse" id="navbarColor01">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="./">Home</a>
+                            <a class="nav-link" href="./index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Spotify</a>
+                            <a class="nav-link active" aria-current="page" href="">Spotify</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="login.html">Upload</a>
+                            <a class="nav-link" href="./login.html">Upload</a>
                         </li>
                     </ul>
                 </div>

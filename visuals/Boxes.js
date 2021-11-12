@@ -18,3 +18,15 @@ export function scaleboxes(scale) {
         cubeMesh.scale.set( scale, scale, scale )
     }
 }
+
+export function scaleBig() {
+    cubeMesh.scale.x += 0.1
+    cubeMesh.scale.y += 0.1
+    cubeMesh.scale.z += 0.1
+}
+
+export function scaleSmall() {
+    cubeMesh.scale.x -= 0.1
+    cubeMesh.scale.y -= 0.1
+    cubeMesh.scale.z -= 0.1
+}
