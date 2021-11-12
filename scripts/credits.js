@@ -227,7 +227,7 @@ class LoadModelDemo {
       this._controls = new BasicCharacterControls(params);
       const anim = new FBXLoader();
       anim.setPath('./resources/models/');
-      anim.load('SillyDancing.fbx', (anim) => {
+      anim.load('GangnamStyle.fbx', (anim) => {
         const m = new THREE.AnimationMixer(fbx);
         this._mixers.push(m);
         const idle = m.clipAction(anim.animations[0]);
