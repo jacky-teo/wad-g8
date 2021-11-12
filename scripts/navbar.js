@@ -11,26 +11,28 @@ app.component('navbar', {
     },
     computed: {
         links() {
-            // href links at uploads directory
-            if (window.location.href.includes("uploads/")) {
+            // href links at upload directory
+            if (window.location.href.includes("upload.html") || window.location.href.includes("login.html")) {
                 return {
-                    homeLink: "../",
-                    spotifyLink: "../spotify.html",
-                    uploadLink: ""
+                    homeLink: "./index.html",
+                    spotifyLink: "./spotify.html",
+                    uploadLink: "",
+                    creditsLink: "./credits.html"
                 }
-                // href links at base pages
+            // href links at home page
             } else {
                 return {
                     homeLink: "",
                     spotifyLink: "./spotify.html",
-                    uploadLink: "./uploads/login.html"
+                    uploadLink: "./login.html",
+                    creditsLink: "./credits.html"
                 }
             }
         }
     },
     template: `<nav class="navbar navbar-expand-md navbar-dark fixed-top" style='background-color:black;'>
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Audiophile</a>
+            <a class="navbar-brand" href="./index.html">Audiophile</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
                 aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -49,6 +51,9 @@ app.component('navbar', {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" :href=links.uploadLink>Upload</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" :href=links.creditsLink>Credits</a>
                     </li>
                 </ul>
             </div>
