@@ -144,7 +144,7 @@ class LoadModelDemo {
     const near = 1.0;
     const far = 1000.0;
     this._camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-    this._camera.position.set(0, 10, 75);
+    this._camera.position.set(0, 10, 50);
 
     this._scene = new THREE.Scene();
 
