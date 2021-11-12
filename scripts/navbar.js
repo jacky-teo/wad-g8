@@ -23,7 +23,7 @@ app.component('navbar', {
                 return {
                     homeLink: "",
                     spotifyLink: "./spotify.html",
-                    uploadLink: "./uploads/login.html"
+                    uploadLink: "./login.html"
                 }
             }
         }

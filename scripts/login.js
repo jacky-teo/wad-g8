@@ -183,7 +183,6 @@ const app = Vue.createApp({
                     });
                 })
                 .catch((error) => {
-                    console.log(error);
                     this.regFailMsg = 'Email already exists.';
                 })
         },

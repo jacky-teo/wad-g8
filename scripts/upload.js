@@ -23,8 +23,10 @@ let files,
     artist = document.getElementById('artist'),
     ext= document.getElementById('extension'),
     pbar = document.getElementById('pbar'),
+    pbarContainer = document.getElementById('pbarContainer'),
     upload = document.getElementById('upload'),
     player = document.getElementById('music'),
+    retrieve = document.getElementById('retrieve'),
     filename =document.getElementById('filename'),
     musicSelection = document.getElementById("musicList"),
     reader = new FileReader()
@@ -55,6 +57,7 @@ document.querySelectorAll(".drop-input").forEach((inputElement) => {
     e.preventDefault(); // Prevent Event's Auto
     const data = e.dataTransfer; //Save event's file
     files = data.files; // Assign data's files to file
+
     var extension = GetFileExt(files[0]) // Get File extension
     var name = GetFileName(files[0])
     filename.innerHTML=name // This functions actaully no need le is just to get extension
@@ -86,14 +89,22 @@ function GetFileName(file){
 
 function validateName(){
         var regex=/[\.#$\[]]/
-        return !(regex.test(songTitle.value+ '-' +artist.value ));
+        return !(regex.test(songTitle.value+ ' - ' +artist.value ));
     }
 
 async function UploadProcess(){
+    if(!files){
+        alert("Please Upload A File")
+        return
+    }  
     var fileToUpload = files[0]
     var fileToUploadName = songTitle.value + ' - ' +artist.value;
      if(!validateName()){
         alert('Name cannot contain "[.#$[]]" ')
+        return;
+    }
+    else if(songTitle.value == '' || artist.value =='' ){
+        alert('Please Enter Song Title and Artist" ')
         return;
     }
     const metaData = {
@@ -104,8 +115,9 @@ async function UploadProcess(){
     const UploadTask = uploadBytesResumable(storageRef,fileToUpload,metaData);
     UploadTask.on('state-changed',(snapshot)=>{
         var progress= (snapshot.bytesTransferred/snapshot.totalBytes) * 100;
+        pbarContainer.style.visibility="visible"
         pbar.innerHTML ='Upload ' + progress.toFixed(2) +  "%"
-        pbar.style.width= progress;+"%"
+        pbar.style.width= progress+"%"
     },
     (error)=>{
         alert("Upload Failed Please Try Again"); // Failed to upload Errror
@@ -127,7 +139,7 @@ async function UploadProcess(){
 const realdb = getDatabase();
     // Function REALTIME DATABASE
     function SaveURLtoRealTimeDB(URL){
-        var name = songTitle.value +  artist.value;
+        var name = songTitle.value + " - "+ artist.value;
         var ext =extlab.innerHTML
         
         set(ref(realdb,"users/" + id  +"/"+ name),{
@@ -136,9 +148,10 @@ const realdb = getDatabase();
         })
         .then(res=>{
             alert('Upload Complete')
+            getAllData()
         })
         .catch(err=>{
-            alert('Upload Faile')
+            alert('Upload Failed')
         })
     }
 ///////////////////////////////////////
@@ -162,7 +175,10 @@ function getAllData(){
 /////////// Create A DROPDOWN /////////////
 ///////////////////////////////////////////
 function addToMusicList(musicData){
+    musicSelection.innerHTML =""
     for(let info of musicData){
-        musicSelection.innerHTML += "<option value='" + info.musicURL+ "'>"+ info.musicName+"</option>"
+        musicSelection.innerHTML += "<option value='" + info.musicURL+ "' > "+ info.musicName+"</option>"
     }
 }
+upload.addEventListener('click',UploadProcess)
+
