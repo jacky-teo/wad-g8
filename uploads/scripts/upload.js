@@ -146,7 +146,6 @@ function GetFileName(file){
 // Upload File
 async function UploadProcess(){ 
     var fileToUpload =files[0];
-    console.log(fileToUpload)
     var fileToUploadName = nameBox.value +  extlab.innerHTML;
     if(!validateName()){
         alert('Name cannot contain "[.#$[]]" ')

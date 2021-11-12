@@ -54,16 +54,17 @@
                   <div class='fas fa-headphones'></div>
                   <p>Drop files here or click to choose files</p>
                   <input type="file" name="myFile" class="drop-input">
+                  <div id='filename'></div>
                 </div>
               </div>
               <div class='col-7'>
                 <div class="row g-3 mt-2">
                   <div class="col-auto">
                     <label for="songTitle" class="col-form-label">Song Title</label>
-                    <label id='extlab'></label>
                   </div>
                   <div class="col-auto">
                     <input type="text" id="songTitle" class="form-control" aria-describedby="titleHelp">
+                    <label id='extlab'></label>
                   </div>
                 </div>
                 <div class="row g-3 mt-2">
@@ -73,6 +74,7 @@
                   </div>
                   <div class="col-auto">
                     <input type="text" id="artist" class="form-control" aria-describedby="artistHelp">
+                    <label style='display: none;' id='extension'></label>
                   </div>
                   <label for="artist" class="col-form-label">Should not contain '.'</label>
                 </div>
@@ -80,6 +82,9 @@
             </div>
             <div class='row mt-4'>
               <div class="container-login100-form-btn" style='padding-left:3em;'>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" id="pbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
                 <button id='upload' class='d-inline login100-form-btn'>Upload</button>
                 <button id='retrieve' class='d-inline login100-form-btn'>Retrieve</button>
               </div>
@@ -88,15 +93,13 @@
         </div>
         <!--Second slide-->
         <div class="carousel-item">
-
+            
           <div class="card-group">
             <div class="card">
               <img src="..." class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                  additional content.
-                  This content is a little bit longer.</p>
+                <p class="card-text"><select id='musicList' ></select></p>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
               </div>
             </div>
