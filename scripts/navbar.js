@@ -16,14 +16,16 @@ app.component('navbar', {
                 return {
                     homeLink: "./index.html",
                     spotifyLink: "./spotify.html",
-                    uploadLink: ""
+                    uploadLink: "",
+                    creditsLink: "./credits.html"
                 }
             // href links at home page
             } else {
                 return {
                     homeLink: "",
                     spotifyLink: "./spotify.html",
-                    uploadLink: "./login.html"
+                    uploadLink: "./login.html",
+                    creditsLink: "./credits.html"
                 }
             }
         }
@@ -49,6 +51,9 @@ app.component('navbar', {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" :href=links.uploadLink>Upload</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" :href=links.creditsLink>Credits</a>
                     </li>
                 </ul>
             </div>
