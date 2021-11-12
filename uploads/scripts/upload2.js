@@ -91,7 +91,7 @@ function validateName(){
 
 async function UploadProcess(){
     var fileToUpload = files[0]
-    var fileToUploadName = songTitle.value + '-' +artist.value;
+    var fileToUploadName = songTitle.value + ' - ' +artist.value;
      if(!validateName()){
         alert('Name cannot contain "[.#$[]]" ')
         return;
@@ -108,20 +108,22 @@ async function UploadProcess(){
         pbar.style.width= progress;+"%"
     },
     (error)=>{
-        alert("error: File failed to upload");
+        alert("Upload Failed Please Try Again"); // Failed to upload Errror
     },
     ()=>{
-        getDownloadURL(UploadTask.snapshot.ref).then((downloadURL)=>{
+        getDownloadURL(UploadTask.snapshot.ref)
+        .then((downloadURL)=>{
             SaveURLtoRealTimeDB(downloadURL);
-            console.log(downloadURL)})
-            .catch(err=>{console.log("WHNY CANNOT UPLOAD")})
+            })
+        .catch(err=>{
+                alert("Upload Failed Please Try Again")
+            })
             });
     }
 
 /////////////////////////////////
 ///// SAVE FILE TO REALTIME /////
 /////////////////////////////////
-let filesrc = ''
 const realdb = getDatabase();
     // Function REALTIME DATABASE
     function SaveURLtoRealTimeDB(URL){
@@ -131,6 +133,12 @@ const realdb = getDatabase();
         set(ref(realdb,"users/" + id  +"/"+ name),{
             musicName:(name + ext),
             musicURL:URL
+        })
+        .then(res=>{
+            alert('Upload Complete')
+        })
+        .catch(err=>{
+            alert('Upload Faile')
         })
     }
 ///////////////////////////////////////
@@ -147,12 +155,12 @@ function getAllData(){
             addToMusicList(musicList)
         })
         .catch(err=>{
-            console.log(err.message)
+            alert('Failed to retrieve information please try again')
         })
 }
-///////////////////////////////////////
-/////////// Create A List /////////////
-///////////////////////////////////////
+///////////////////////////////////////////
+/////////// Create A DROPDOWN /////////////
+///////////////////////////////////////////
 function addToMusicList(musicData){
     for(let info of musicData){
         musicSelection.innerHTML += "<option value='" + info.musicURL+ "'>"+ info.musicName+"</option>"
