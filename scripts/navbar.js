@@ -11,14 +11,14 @@ app.component('navbar', {
     },
     computed: {
         links() {
-            // href links at uploads directory
-            if (window.location.href.includes("uploads/")) {
+            // href links at upload directory
+            if (window.location.href.includes("upload.html") || window.location.href.includes("login.html")) {
                 return {
-                    homeLink: "../",
-                    spotifyLink: "../spotify.html",
+                    homeLink: "./index.html",
+                    spotifyLink: "./spotify.html",
                     uploadLink: ""
                 }
-                // href links at base pages
+            // href links at home page
             } else {
                 return {
                     homeLink: "",
