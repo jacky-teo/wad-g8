@@ -92,8 +92,16 @@ const playToggle = Vue.createApp({
     }
 }).mount("#playback")
 
+var position = 0;
+var currState = true;
+var myVar = setInterval(function() {
+    position += currState ? 0 : 100;
+    localStorage.setItem("progress", position)
+} , 100);
+
 //spotify web sdk
 window.onSpotifyWebPlaybackSDKReady = () => {
+
     if (access_token != null) {
         //token unique to different users
         //should get token on behalf of users through user authentication
@@ -132,22 +140,27 @@ window.onSpotifyWebPlaybackSDKReady = () => {
             //console.error(message);
         });
 
-        //connect new spotify instance
-        player.connect();
-
         //auto update currently playing track information
         player.addListener('player_state_changed', (state) => {
-            //console.log(state)
+            if (state != null) {
+                position = state.position;
+                currState = state.paused;
+            }
+
             currentlyPlaying();
 
             //change button logo according to playing state
             if (state.paused) {
-                //console.log('paused!!!');
+                // console.log("Paused!!")
                 playToggle.playToggle = false;
             } else {
+                // console.log("Playing!!")
                 playToggle.playToggle = true;
             }
         });
+
+        //connect new spotify instance
+        player.connect();
 
         //listen for click on play-pause button 
         document.getElementById('togglePlay').onclick = function () {
@@ -175,6 +188,8 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         // console.log(player);
     }
 }
+
+
 
 //needed
 function handleRedirect() {
@@ -405,6 +420,9 @@ function handleCurrentlyPlayingResponse() {
             document.getElementById("trackTitle").innerHTML = data.item.name;
             document.getElementById("trackArtist").innerHTML = data.item.artists[0].name;
             track_id = data.item.id;
+            // let progress = data.progress_ms // HERE IS THE CONSOLE!
+            // localStorage.setItem("progress", progress)
+
             if (localStorage.getItem('trackid') != track_id) {
                 localStorage.setItem('trackid', track_id)
                 url = ANALYSIS.replace("{id}", track_id);
@@ -442,6 +460,7 @@ function handleAnalysisResponse() {
     if (this.status == 200) {
         var data = JSON.parse(this.responseText);
         console.log(data)
+        localStorage.setItem('analysis', JSON.stringify(data))
     }
     else if (this.status == 401) {
         refreshAccessToken()

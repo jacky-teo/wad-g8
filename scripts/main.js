@@ -1,6 +1,7 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.133.1';
 import { OrbitControls } from 'https://cdn.skypack.dev/three@0.133.1/examples/jsm/controls/OrbitControls.js';
-import { scene1, animateboxes, scaleboxes } from '../visuals/Boxes.js';
+
+import { scene1, animateboxes, scaleboxes, scaleBig, scaleSmall } from '../visuals/Boxes.js';
 import { scene2, scaleSphere } from '../visuals/Sphere.js'
 import { scene3, animateSpace, scaleSpace } from '../visuals/Space.js'
 import { scene4, changeColors, spinCircle, boxScaling } from '../visuals/RotatingBoxes.js'
@@ -139,6 +140,15 @@ function init() {
 	animate();
 }
 
+// var lastpause = Date.now();
+// var totaltime = 0;
+
+// function goFunction() {
+//     totaltime += Date.now() - lastpause;
+//     lastpause = Date.now();
+// }
+
+var toDecrease = 0;
 function animate() {
     requestAnimationFrame( animate )
     animateboxes();
@@ -155,6 +165,32 @@ function animate() {
         scaleboxes(sUnit);
         scaleSpotifyWording(sUnit);
     }
+
+    if (localStorage.getItem('analysis') != null) {
+        let analysisData = JSON.parse(localStorage.getItem("analysis"))
+        let progress = Number(localStorage.getItem("progress"))
+        // console.log(analysisData)
+
+        if (progress != null) {
+            // console.log(progress)
+            let beats = analysisData.beats
+            for (let beat of beats) {
+                let start = Math.round(beat.start * 1000)
+                if (start > (progress - 50) && start <= (progress + 50) && toDecrease < 5){
+                    // console.log("BUMTSS" + progress)
+                    // console.log(progress, start)
+                    scaleBig()
+                    toDecrease++
+                } else if (start > (progress + 150) && start <= (progress + 250) && toDecrease>0){
+                    scaleSmall()
+                    toDecrease--
+                }
+            }
+        }
+    }
+
+    // goFunction()
+    // console.log(totaltime)
 
     controls.update();
 
