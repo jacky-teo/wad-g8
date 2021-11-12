@@ -3,6 +3,40 @@ import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} from "ht
 import {getDatabase, ref,set,child,update,remove,get, onValue} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js"
 import { getAuth, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js"
 
+//get user ID from session storage
+const id = sessionStorage.getItem('userID');
+
+
+//VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE 
+//VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE 
+//VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE 
+
+// const user = Vue.createApp({
+//     data() {
+//         return {
+
+//         }
+//     },
+//     created() {
+//         const firebaseConfig = {
+//             apiKey: "AIzaSyDRVQ7r6TGsQhZGvVIXws7y5PTPqlvC2yo",
+//             authDomain: "audiophile-eff2c.firebaseapp.com",
+//             databaseURL: "https://audiophile-eff2c-default-rtdb.asia-southeast1.firebasedatabase.app",
+//             projectId: "audiophile-eff2c",
+//             storageBucket: "audiophile-eff2c.appspot.com",
+//             messagingSenderId: "141435951049",
+//             appId: "1:141435951049:web:6308bd4b9fe95fb49bba18",
+//             measurementId: "G-LKVP0JH4YH"
+//         };
+//         const app = initializeApp(firebaseConfig);
+
+//     }
+// })
+
+//VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE 
+//VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE 
+//VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE VUE 
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyDRVQ7r6TGsQhZGvVIXws7y5PTPqlvC2yo",
@@ -23,7 +57,7 @@ let nameBox = document.getElementById('songTitle'),
     retrieve = document.getElementById('retrieve'),
     player = document.getElementById('music'),
     extlab = document.getElementById('extlab'),
-    reader =new FileReader()
+    reader = new FileReader()
 
 
 // || DRAG AND DROP || DRAG AND DROP || DRAG AND DROP || //
@@ -93,16 +127,9 @@ document.querySelectorAll(".drop-input").forEach((inputElement) => {
 // }
 // || DRAG AND DROP || DRAG AND DROP || DRAG AND DROP || //
 
-
-
-//get user ID from session storage
-const id = sessionStorage.getItem('userID');
-
-
-
 reader.onload = function(){
     music.src = reader.result;
-    }
+}
 
 // Dropped file and get info from file
 function GetFileExt(file){
@@ -119,7 +146,6 @@ function GetFileName(file){
 // Upload File
 async function UploadProcess(){ 
     var fileToUpload =files[0];
-    console.log(fileToUpload)
     var fileToUploadName = nameBox.value +  extlab.innerHTML;
     if(!validateName()){
         alert('Name cannot contain "[.#$[]]" ')

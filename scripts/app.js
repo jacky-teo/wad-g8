@@ -61,6 +61,28 @@ function onPageLoad() {
     }
 }
 
+//modalDisplay
+const modalDisplay = Vue.createApp({
+    data() {
+        return {
+            openCount: 0
+        }
+    },
+    computed: {
+        toggleRef() {
+            if (this.openCount > 0) {
+                return "#playerModal";
+
+            } return "#notice";
+        }
+    },
+    methods: {
+        addCount: function () {
+            this.openCount++;
+        }
+    }
+}).mount("#modals")
+
 //playToggle vue instance
 const playToggle = Vue.createApp({
     data() {

@@ -26,10 +26,8 @@ box-sizing: border-box;
 }
 
 body, html {
+height: 100%;
 font-family: Raleway-Regular, sans-serif;
-}
-
-body {
 background-color:black;
 }
 

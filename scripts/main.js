@@ -5,6 +5,7 @@ import { scene2, scaleSphere } from '../visuals/Sphere.js'
 import { scene3, animateSpace, scaleSpace } from '../visuals/Space.js'
 import { scene4, changeColors, spinCircle, boxScaling } from '../visuals/RotatingBoxes.js'
 import { scene5, scaleSpotify } from '../visuals/spotify.js'
+import { scene6, scaleSpotifyWording } from '../visuals/spotifywordings.js'
 
 
 feather.replace();
@@ -106,11 +107,9 @@ app = Vue.createApp({
                 s = scene4;
             } else if (value == "scene5") {
                 s = scene5;
-            } 
-            // For u junhui, uncomment it when u add.
-            // else if (value == "scene6") {
-            //     s = scene6;
-            // }
+            } else if (value == "scene6") {
+                s = scene6;
+            }
         }
     },
     mounted() {
@@ -154,6 +153,7 @@ function animate() {
         spinCircle();
         scaleSpotify(sUnit);
         scaleboxes(sUnit);
+        scaleSpotifyWording(sUnit);
     }
 
     controls.update();
