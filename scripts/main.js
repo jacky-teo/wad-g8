@@ -193,14 +193,6 @@ function init() {
 	animate();
 }
 
-// var lastpause = Date.now();
-// var totaltime = 0;
-
-// function goFunction() {
-//     totaltime += Date.now() - lastpause;
-//     lastpause = Date.now();
-// }
-
 var toDecrease = 0;
 function animate() {
     requestAnimationFrame( animate )
