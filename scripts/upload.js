@@ -138,6 +138,7 @@ async function UploadProcess(){
 /////////////////////////////////
 ///// SAVE FILE TO REALTIME /////
 /////////////////////////////////
+
     // Function REALTIME DATABASE
     function SaveURLtoRealTimeDB(URL){
         var name = songTitle.value + " - "+ artist.value;
@@ -158,38 +159,21 @@ async function UploadProcess(){
 ///////////////////////////////////////
 ///// RETRIEVE ALL FROM REALTIME //////
 ///////////////////////////////////////
-
-
-var userSongs = [];
+var arr = []
 function getAllData(){
-    var dbRef =ref(realdb); // Refer to realtime DB
-    get(child(dbRef,"users/" + id ))
-    .then((snapshot)=>{
-        var musicURL =[],musicData =[]
-        snapshot.forEach(childSnapshot=>{
-            musicURL.push(childSnapshot.val().musicName+'|'+childSnapshot.val().musicURL)
-            musicData.push(childSnapshot.val())
-        });
-        // addToMusicList(musicData)
-        sessionStorage.setItem('musicURL', musicURL)
+        var dbRef =ref(realdb); // Refer to realtime DB
+        get(child(dbRef,"users/" + id ))
+        .then((snapshot)=>{
+            var musicList = [];
+            snapshot.forEach(childSnapshot=>{
+                musicList.push(childSnapshot.val());
+            });
+            addToMusicList(musicList)
+            arr=musicList
         })
-    .catch(err=>{
-        alert('Failed to retrieve information please try again')
-    })
-    
-}
-
-const musicDataArr = sessionStorage.getItem('musicData');
-const musicURLArr= sessionStorage.getItem('musicURL');
-
-export let musicObjArr = []
-if(sessionStorage.getItem('musicURL')){
-    const musicURLArr = sessionStorage.getItem('musicURL');
-    let musicArr = musicURLArr.split(",")
-    for(let m of musicArr){
-        let info = m.split("|")
-        musicObjArr.push({name:info[0],url:info[1]})
-    }
+        .catch(err=>{
+            alert('Failed to retrieve information please try again')
+        })
 }
 
 var client_secret =[]
@@ -198,6 +182,7 @@ function getClientSecret(){
         var dbRef =ref(realdb); // Refer to realtime DB
         get(child(dbRef,"users/client_secret"))
         .then((snapshot)=>{
+            console.log("I MADE IT")
             client_secret.push(snapshot._node.value_)
             })
         .catch(err=>{
@@ -205,17 +190,24 @@ function getClientSecret(){
         })
 }
 
+
+function printArr(){
+    console.log(arr)
+    console.log(client_secret[0])
+}
+
+retrieve.addEventListener('click',printArr)
+retrieve.addEventListener('click',getClientSecret)
 ///////////////////////////////////////////
 /////////// Create A DROPDOWN /////////////
 ///////////////////////////////////////////
 
-// function addToMusicList(musicData){
-//     musicSelection.innerHTML =""
-//     for(let info of musicData){
-//         musicSelection.innerHTML += "<option value='" + info.musicURL+ "' > "+ info.musicName+ "</option>"
-//         userSongs.push(info)
-//     }
-// }
+function addToMusicList(musicData){
+    musicSelection.innerHTML =""
+    for(let info of musicData){
+        musicSelection.innerHTML += "<option value='" + info.musicURL+ "' > "+ info.musicName+"</option>"
+        arr.push(info)
+    }
+}
 
 upload.addEventListener('click',UploadProcess)
-window.onload=getAllData

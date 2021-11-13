@@ -7,7 +7,7 @@ import { scene3, animateSpace, scaleSpace, scaleBigSpace, scaleSmallSpace } from
 import { scene4, changeColors, spinCircle, boxScaling, scaleBigRotating, scaleSmallRotating } from '../visuals/RotatingBoxes.js'
 import { scene5, scaleSpotify, scaleBigSpotify, scaleSmallSpotify } from '../visuals/spotify.js'
 import { scene6, scaleSpotifyWording, scaleBigWording, scaleSmallWording } from '../visuals/spotifywordings.js'
-import {musicObjArr} from './upload.js'
+
 
 feather.replace();
 
@@ -28,62 +28,10 @@ app = Vue.createApp({
                 "Race Into The Night",
                 "Kiss Me More - Doja Cat ft. SZA"
             ], 
-            scenes: ["scene3", "scene4", "scene5", "scene6", "scene2", "scene1"],
-            userSongs:musicObjArr,
-            userCurrSong:musicObjArr[0].name
+            scenes: ["scene3", "scene4", "scene5", "scene6", "scene2", "scene1"]
         }
     },
     methods: {
-        playUserSongs(){
-             if (listener == undefined) {
-                console.log("Starting Player")
-                let startVol = this.volume;
-                let file = "";
-                // create an AudioListener and add it to the camera
-                listener = new THREE.AudioListener();
-                camera.add( listener );
-
-                // create a global audio source
-                sound = new THREE.Audio( listener );
-
-                // load a sound and set it as the Audio object's buffer
-                audioLoader = new THREE.AudioLoader();
-
-                audioLoader.load( file, function( buffer ) {
-                    sound.setBuffer( buffer );
-                    sound.setLoop( true );
-                    sound.setVolume( startVol );
-                    sound.play();
-                });
-                analyser = new THREE.AudioAnalyser( sound, 32 );
-            } else {
-                sound.play();
-            }
-            this.isPlaying = true;
-        },
-        changeUserSong(e) {
-            if (sound != undefined) {
-                sound.stop();
-            }
-
-            if (listener != undefined) {
-                let startVol = this.volume;
-                let file = e.target.value;
-                let isPlaying = this.isPlaying;
-
-                // load a sound and set it as the Audio object's buffer
-                audioLoader = new THREE.AudioLoader();
-                audioLoader.load( file, function( buffer ) {
-                    sound.setBuffer( buffer );
-                    sound.setLoop( true );
-                    sound.setVolume( startVol );
-                    if (isPlaying) {
-                        sound.play();
-                    }
-                });
-                analyser = new THREE.AudioAnalyser( sound, 32 );
-            }
-        }, 
         playSound(){
             if (listener == undefined) {
                 console.log("Starting Player")
@@ -130,6 +78,7 @@ app = Vue.createApp({
             if (sound != undefined) {
                 sound.stop();
             }
+
             if (listener != undefined) {
                 let startVol = this.volume;
                 let file = "sounds/" + e.target.value + ".mp3";
