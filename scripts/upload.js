@@ -161,11 +161,11 @@ function getAllData(){
         var dbRef =ref(realdb); // Refer to realtime DB
         get(child(dbRef,"users/" + id ))
         .then((snapshot)=>{
-             var musicURL =[]
+            var musicURL =[]
             snapshot.forEach(childSnapshot=>{
                 musicURL.push(childSnapshot.val().musicName+'|'+childSnapshot.val().musicURL)
             });
-          sessionStorage.setItem('musicURL', musicURL)
+            sessionStorage.setItem('musicURL', musicURL)
         })
         .catch(err=>{
             alert('Failed to retrieve information please try again')

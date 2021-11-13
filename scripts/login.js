@@ -58,15 +58,15 @@ const app = Vue.createApp({
             if (user) {
                 // User is signed in or token was refreshed.
                 sessionStorage.setItem('userID', user.uid);
-                if (!window.location.href.includes("upload.html")) {
-                    window.location.href = './upload.html';
+                if (!window.location.href.includes("upload")) {
+                    window.location.href = './upload';
                 }
 
             } else {
                 sessionStorage.removeItem('userID')
-                if (!window.location.href.includes("login.html")) {
+                if (!window.location.href.includes("login")) {
                     console.log('user must login again');
-                    window.location.href = './login.html'
+                    window.location.href = './login'
                 }
             }
         });
