@@ -184,11 +184,13 @@ export let fName =''
 if(sessionStorage.getItem('musicURL')){
     getAllData()
     const musicURLArr = sessionStorage.getItem('musicURL');
+    
     let musicArr = musicURLArr.split(",")
+    
     
     for(let m of musicArr){
         let info = m.split("|")
         musicObjArr.push({name:info[0],url:info[1]})
     }
-    fName = musicObjArr[1].name
+    // fName = musicObjArr[1].name
 }
