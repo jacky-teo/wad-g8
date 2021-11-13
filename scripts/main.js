@@ -22,7 +22,7 @@ app = Vue.createApp({
             currSong: "Way Back Home  - SHAUN feat. Conor Maynard",
             songs: [
                 "Way Back Home  - SHAUN feat. Conor Maynard", 
-                "Creativeminds - Bensound", 
+                "Creative minds - Bensound", 
                 "Never Gonna Give You Up - Rick Astley", 
                 "Stay - The Kid LAROI, Justin Bieber",
                 "Blackbird", 
@@ -31,7 +31,7 @@ app = Vue.createApp({
             ], 
             scenes: ["scene3", "scene4", "scene5", "scene6", "scene2", "scene1"],  
             userSongs:musicObjArr,
-            currUserSong:fName
+            currUserSong:''
         }
     },
     methods: {

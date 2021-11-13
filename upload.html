@@ -101,7 +101,7 @@
                 </div>
                 <div class="col-lg-4 py-1">
                   <div id="controls">
-                    <div id="play" @click="playSound" v-if="!isPlaying"><i data-feather="play"></i></div>
+                    <div id="play" @click="playUserSound" v-if="!isPlaying"><i data-feather="play"></i></div>
                     <div id="pause" @click="pauseSound" v-else><i data-feather="pause"></i></div>
                     <div id="stop" @click="stopSound"><i data-feather="square"></i></div>
                     <input id="volume" type="range" min="0" max="1" step="0.01" v-model="volume" @input="setVolume">
