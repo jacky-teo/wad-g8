@@ -1,4 +1,6 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.118/build/three.module.js';
+
+//Importing of loaders for 3d objects and animation objects
 import {FBXLoader} from 'https://cdn.jsdelivr.net/npm/three@0.118.1/examples/jsm/loaders/FBXLoader.js';
 import {GLTFLoader} from 'https://cdn.jsdelivr.net/npm/three@0.118.1/examples/jsm/loaders/GLTFLoader.js';
 import {OrbitControls} from 'https://cdn.jsdelivr.net/npm/three@0.118/examples/jsm/controls/OrbitControls.js';
@@ -24,6 +26,7 @@ class BasicCharacterControls {
     document.addEventListener('keyup', (e) => this._onKeyUp(e), false);
   }
 
+  //Allows user to user arrowkeys and awsd to control the selected character
   _onKeyDown(event) {
     switch (event.keyCode) {
       case 87: // w
@@ -68,6 +71,7 @@ class BasicCharacterControls {
     }
   }
 
+  //Movement speed for character control
   Update(timeInSeconds) {
     const velocity = this._velocity;
     const frameDecceleration = new THREE.Vector3(
@@ -173,6 +177,7 @@ class LoadModelDemo {
     controls.target.set(0, 20, 0);
     controls.update();
 
+    //To load the skybox cubemap 6sides as a dimensional background
     const loader = new THREE.CubeTextureLoader();
     const texture = loader.load([
         './resources/map3dsecond/posx.png',
@@ -224,6 +229,7 @@ class LoadModelDemo {
         target: fbx,
         camera: this._camera,
       }
+      //control with keys
       this._controls = new BasicCharacterControls(params);
       const anim = new FBXLoader();
       anim.setPath('./resources/models/');
@@ -259,20 +265,20 @@ class LoadModelDemo {
     });
   }
 
+  //Adapt to resize
   _OnWindowResize() {
     this._camera.aspect = window.innerWidth / window.innerHeight;
     this._camera.updateProjectionMatrix();
     this._threejs.setSize(window.innerWidth, window.innerHeight);
   }
 
+  //Constant update of frames for animation
   _RAF() {
     requestAnimationFrame((t) => {
       if (this._previousRAF === null) {
         this._previousRAF = t;
       }
-
       this._RAF();
-
       this._threejs.render(this._scene, this._camera);
       this._Step(t - this._previousRAF);
       this._previousRAF = t;
@@ -284,7 +290,6 @@ class LoadModelDemo {
     if (this._mixers) {
       this._mixers.map(m => m.update(timeElapsedS));
     }
-
     if (this._controls) {
       this._controls.Update(timeElapsedS);
     }
