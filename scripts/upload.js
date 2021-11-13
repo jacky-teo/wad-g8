@@ -37,22 +37,14 @@ let files,
 //////////////////////
 // Drag and Drop JS //
 //////////////////////
-
-////// OLD //////
 document.querySelectorAll(".drop-input").forEach((inputElement) => {
   const dropZoneElement = inputElement.closest(".drop-zone");
   dropZoneElement.addEventListener("click", (e) => {
     inputElement.click();
-
   });
   inputElement.addEventListener("change", (e) => {
-    files = inputElement.files
-    var extension = GetFileExt(files[0]) // Get File extension
-    var name = GetFileName(files[0])
-    filename.innerHTML=name // This functions actaully no need le is just to get extension
-    ext.innerHTML =extension;
-    reader.readAsDataURL(files[0])//Read the current file as a URL
-
+    if (inputElement.files.length) {
+    }
   });
   dropZoneElement.addEventListener("dragover", (e) => {
     e.preventDefault();
@@ -67,6 +59,7 @@ document.querySelectorAll(".drop-input").forEach((inputElement) => {
     e.preventDefault(); // Prevent Event's Auto
     const data = e.dataTransfer; //Save event's file
     files = data.files; // Assign data's files to file
+
     var extension = GetFileExt(files[0]) // Get File extension
     var name = GetFileName(files[0])
     filename.innerHTML=name // This functions actaully no need le is just to get extension
@@ -155,7 +148,6 @@ async function UploadProcess(){
         .then(res=>{
             alert('Upload Complete')
             getAllData()
-            location.reload();
         })
         .catch(err=>{
             alert('Upload Failed')
