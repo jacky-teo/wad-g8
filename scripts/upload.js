@@ -91,8 +91,13 @@ function GetFileName(file){
 ///////////////////////
 
 function validateName(){
-        var regex=/[\.#$\[]]/
-        return !(regex.test(songTitle.value+ ' - ' +artist.value ));
+        var invalid="/[\.#$\[]/],"
+        var address = songTitle.value + ' - ' +artist.value
+        for(let ch of invalid){
+            if(address.includes(ch)){
+                return address.includes(ch)
+            }
+        }
     }
 
 async function UploadProcess(){
@@ -102,8 +107,8 @@ async function UploadProcess(){
     }  
     var fileToUpload = files[0]
     var fileToUploadName = songTitle.value + ' - ' +artist.value;
-     if(!validateName()){
-        alert('Name cannot contain "[.#$[]]" ')
+     if(validateName()){
+        alert('Name cannot contain "[.#$[]]",')
         return;
     }
     else if(songTitle.value == '' || artist.value =='' ){
@@ -129,6 +134,7 @@ async function UploadProcess(){
         getDownloadURL(UploadTask.snapshot.ref)
         .then((downloadURL)=>{
             SaveURLtoRealTimeDB(downloadURL);
+            location.reload()
             })
         .catch(err=>{
                 alert("Upload Failed Please Try Again")
@@ -170,6 +176,7 @@ function getAllData(){
                 musicURL.push(childSnapshot.val().musicName+'|'+childSnapshot.val().musicURL)
             });
             sessionStorage.setItem('musicURL', musicURL)
+            
         })
         .catch(err=>{
             alert('Failed to retrieve information please try again')
@@ -188,11 +195,9 @@ if(sessionStorage.getItem('musicURL')){
     getAllData()
     const musicURLArr = sessionStorage.getItem('musicURL');
     let musicArr = musicURLArr.split(",")
-    
-    
     for(let m of musicArr){
         let info = m.split("|")
         musicObjArr.push({name:info[0],url:info[1]})
     }
-    fName = musicObjArr[1].name
+    
 }
