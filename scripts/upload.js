@@ -180,7 +180,11 @@ function getAllData(){
         .catch(err=>{
             alert('Failed to retrieve information please try again')
         })
+        TimeOut()
         
+}
+function TimeOut(){
+    setTimeout(1, ()=>{location.reload()})
 }
 
 if(sessionStorage.getItem('userID')){
