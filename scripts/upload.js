@@ -67,9 +67,6 @@ document.querySelectorAll(".drop-input").forEach((inputElement) => {
     reader.readAsDataURL(files[0])//Read the current file as a URL
   });
 });
-reader.onload = function(){
-    music.src = reader.result;
-}
 
 ///////////////////////
 /// GET FILE NAMES ////
@@ -164,50 +161,33 @@ function getAllData(){
         var dbRef =ref(realdb); // Refer to realtime DB
         get(child(dbRef,"users/" + id ))
         .then((snapshot)=>{
-            var musicList = [];
+             var musicURL =[]
             snapshot.forEach(childSnapshot=>{
-                musicList.push(childSnapshot.val());
+                musicURL.push(childSnapshot.val().musicName+'|'+childSnapshot.val().musicURL)
             });
-            addToMusicList(musicList)
-            arr=musicList
+          sessionStorage.setItem('musicURL', musicURL)
         })
         .catch(err=>{
             alert('Failed to retrieve information please try again')
         })
 }
-
-var client_secret =[]
-
-function getClientSecret(){
-        var dbRef =ref(realdb); // Refer to realtime DB
-        get(child(dbRef,"users/client_secret"))
-        .then((snapshot)=>{
-            console.log("I MADE IT")
-            client_secret.push(snapshot._node.value_)
-            })
-        .catch(err=>{
-            alert('Failed to retrieve information please try again')
-        })
-}
-
-
-function printArr(){
-    console.log(arr)
-    console.log(client_secret[0])
-}
-
-retrieve.addEventListener('click',printArr)
-retrieve.addEventListener('click',getClientSecret)
-///////////////////////////////////////////
-/////////// Create A DROPDOWN /////////////
-///////////////////////////////////////////
-
-function addToMusicList(musicData){
-    musicSelection.innerHTML =""
-    for(let info of musicData){
-        musicSelection.innerHTML += "<option value='" + info.musicURL+ "' > "+ info.musicName+"</option>"
-        arr.push(info)
+if(sessionStorage.getItem('userID')){
+    getAllData()
+    if(upload){
+        upload.addEventListener('click',UploadProcess)
     }
+        
 }
-
-upload.addEventListener('click',UploadProcess)
+export let musicObjArr = []
+export let fName =''
+if(sessionStorage.getItem('musicURL')){
+    getAllData()
+    const musicURLArr = sessionStorage.getItem('musicURL');
+    let musicArr = musicURLArr.split(",")
+    
+    for(let m of musicArr){
+        let info = m.split("|")
+        musicObjArr.push({name:info[0],url:info[1]})
+    }
+    fName = musicObjArr[1].name
+}
