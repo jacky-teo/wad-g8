@@ -278,7 +278,9 @@ class LoadModelDemo {
       if (this._previousRAF === null) {
         this._previousRAF = t;
       }
+
       this._RAF();
+
       this._threejs.render(this._scene, this._camera);
       this._Step(t - this._previousRAF);
       this._previousRAF = t;
@@ -290,6 +292,7 @@ class LoadModelDemo {
     if (this._mixers) {
       this._mixers.map(m => m.update(timeElapsedS));
     }
+
     if (this._controls) {
       this._controls.Update(timeElapsedS);
     }
