@@ -66,7 +66,7 @@
                 <div class="container-login100-form-btn text-center" >
                     <button id='upload' class='d-inline login100-form-btn mt-2'>Upload</button>
                     <button id='retrieve' class='d-inline login100-form-btn mt-2'>Retrieve</button>
-                    <div id='appLogin' class="pt-2">
+                    <div id='appLogin' class="pt-2 text-start" style="padding-left: 92px">
                         <button  class='d-inline login100-form-btn' @click='signout'>Logout</button>
                     </div>
                 </div>
@@ -92,7 +92,9 @@
                   </div>
                   <label for="artist" class="col-form-label text-muted" style="font-size: smaller;">Should not contain '.'</label>
                 </div>
-                <div style="padding-top: 116px;">
+
+                <!-- audio player -->
+                <div style="padding-top: 115px;">
                   <audio id='music' class="w-100" controls autoplay>
                     <source id='source' src="#" type="audio/mpeg">
                 </audio>
@@ -102,6 +104,7 @@
             
           </div>
         </div>
+        
         <!--Second slide-->
         <div class="carousel-item">
             <div id="app" v-cloak>
