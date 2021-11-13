@@ -43,8 +43,12 @@ document.querySelectorAll(".drop-input").forEach((inputElement) => {
     inputElement.click();
   });
   inputElement.addEventListener("change", (e) => {
-    if (inputElement.files.length) {
-    }
+    files = inputElement.files
+    var extension = GetFileExt(files[0]) // Get File extension
+    var name = GetFileName(files[0])
+    filename.innerHTML=name // This functions actaully no need le is just to get extension
+    ext.innerHTML =extension;
+    reader.readAsDataURL(files[0])//Read the current file as a URL  
   });
   dropZoneElement.addEventListener("dragover", (e) => {
     e.preventDefault();
@@ -172,7 +176,6 @@ function getAllData(){
         })
 }
 if(sessionStorage.getItem('userID')){
-    window.onload=getAllData
     getAllData()
     if(upload){
         upload.addEventListener('click',UploadProcess)
@@ -185,6 +188,7 @@ if(sessionStorage.getItem('musicURL')){
     getAllData()
     const musicURLArr = sessionStorage.getItem('musicURL');
     let musicArr = musicURLArr.split(",")
+    
     
     for(let m of musicArr){
         let info = m.split("|")
