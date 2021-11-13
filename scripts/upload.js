@@ -180,6 +180,7 @@ function getAllData(){
         })
 }
 if(sessionStorage.getItem('userID')){
+    window.onload=getAllData
     getAllData()
     if(upload){
         upload.addEventListener('click',UploadProcess)
