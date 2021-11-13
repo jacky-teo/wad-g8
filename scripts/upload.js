@@ -134,12 +134,12 @@ async function UploadProcess(){
         getDownloadURL(UploadTask.snapshot.ref)
         .then((downloadURL)=>{
             SaveURLtoRealTimeDB(downloadURL);
-            location.reload()
             })
         .catch(err=>{
                 alert("Upload Failed Please Try Again")
             })
             });
+    location.reload()
     }
 
 /////////////////////////////////
@@ -176,21 +176,20 @@ function getAllData(){
                 musicURL.push(childSnapshot.val().musicName+'|'+childSnapshot.val().musicURL)
             });
             sessionStorage.setItem('musicURL', musicURL)
-            
         })
         .catch(err=>{
             alert('Failed to retrieve information please try again')
         })
+        
 }
+
 if(sessionStorage.getItem('userID')){
     getAllData()
     if(upload){
         upload.addEventListener('click',UploadProcess)
     }
-    location.reload()
 }
 export let musicObjArr = []
-export let fName =''
 if(sessionStorage.getItem('musicURL')){
     getAllData()
     const musicURLArr = sessionStorage.getItem('musicURL');
@@ -199,5 +198,5 @@ if(sessionStorage.getItem('musicURL')){
         let info = m.split("|")
         musicObjArr.push({name:info[0],url:info[1]})
     }
-    location.reload()
 }
+// reload
