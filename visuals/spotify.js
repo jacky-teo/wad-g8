@@ -23,3 +23,15 @@ export function scaleSpotify(scale) {
         scene5.scale.set (scale, scale, scale)
     }
 }
+
+export function scaleBigSpotify() {
+    scene5.scale.x += 0.1
+    scene5.scale.y += 0.1
+    scene5.scale.z += 0.1
+}
+
+export function scaleSmallSpotify() {
+    scene5.scale.x -= 0.1
+    scene5.scale.y -= 0.1
+    scene5.scale.z -= 0.1
+}

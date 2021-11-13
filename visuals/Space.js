@@ -2,6 +2,12 @@ import * as THREE from 'https://cdn.skypack.dev/three@0.133.1';
 
 export let  scene3 = new THREE.Scene();
 
+const loader = new THREE.TextureLoader();
+// let bgTexture = loader.load('assets/starfield.jpg' , function(texture)
+//             {   
+//                 scene3.background = texture;  
+//             });
+
 const geometry = new THREE.SphereGeometry( 75, 32, 16 );
 const material = new THREE.MeshLambertMaterial( { color: 0xF5F5DC } );
 const sphere = new THREE.Mesh( geometry, material );
@@ -52,13 +58,32 @@ export function animateSpace() {
         if(star.position.z>1000) star.position.z-=2000; 
         
     }
+    
+    torus.rotation.x += 0.01
+    torus.rotation.y += 0.02
+    torus.rotation.z += 0.01
 }
 
 export function scaleSpace(scale) {
     if (scale > 1) {
         torus.scale.set(scale, scale, scale);
     }
-    torus.rotation.x += 0.01
-    torus.rotation.y += 0.02
-    torus.rotation.z += 0.01
+}
+
+export function scaleBigSpace() {
+    sphere.scale.x += 0.025
+    sphere.scale.y += 0.025
+    sphere.scale.z += 0.025
+    torus.scale.x += 0.1
+    torus.scale.y += 0.1
+    torus.scale.z += 0.1
+}
+
+export function scaleSmallSpace() {
+    sphere.scale.x -= 0.025
+    sphere.scale.y -= 0.025
+    sphere.scale.z -= 0.025
+    torus.scale.x -= 0.1
+    torus.scale.y -= 0.1
+    torus.scale.z -= 0.1
 }

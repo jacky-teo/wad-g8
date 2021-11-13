@@ -1,6 +1,7 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.133.1';
 
 export let  scene1 = new THREE.Scene();
+scene1.background = new THREE.Color(0xff9100);
 
 const geometry = new THREE.BoxGeometry( 100, 100, 100 );
 const material = new THREE.MeshNormalMaterial();
@@ -19,13 +20,13 @@ export function scaleboxes(scale) {
     }
 }
 
-export function scaleBig() {
+export function scaleBigBoxes() {
     cubeMesh.scale.x += 0.1
     cubeMesh.scale.y += 0.1
     cubeMesh.scale.z += 0.1
 }
 
-export function scaleSmall() {
+export function scaleSmallBoxes() {
     cubeMesh.scale.x -= 0.1
     cubeMesh.scale.y -= 0.1
     cubeMesh.scale.z -= 0.1

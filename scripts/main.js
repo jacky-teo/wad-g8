@@ -1,12 +1,12 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.133.1';
 import { OrbitControls } from 'https://cdn.skypack.dev/three@0.133.1/examples/jsm/controls/OrbitControls.js';
 
-import { scene1, animateboxes, scaleboxes, scaleBig, scaleSmall } from '../visuals/Boxes.js';
-import { scene2, scaleSphere } from '../visuals/Sphere.js'
-import { scene3, animateSpace, scaleSpace } from '../visuals/Space.js'
-import { scene4, changeColors, spinCircle, boxScaling } from '../visuals/RotatingBoxes.js'
-import { scene5, scaleSpotify } from '../visuals/spotify.js'
-import { scene6, scaleSpotifyWording } from '../visuals/spotifywordings.js'
+import { scene1, animateboxes, scaleboxes, scaleBigBoxes, scaleSmallBoxes } from '../visuals/Boxes.js';
+import { scene2, animateSphere, scaleSphere, scaleBigSphere, scaleSmallSphere, moveParticleLight } from '../visuals/Sphere.js'
+import { scene3, animateSpace, scaleSpace, scaleBigSpace, scaleSmallSpace } from '../visuals/Space.js'
+import { scene4, changeColors, spinCircle, boxScaling, scaleBigRotating, scaleSmallRotating } from '../visuals/RotatingBoxes.js'
+import { scene5, scaleSpotify, scaleBigSpotify, scaleSmallSpotify } from '../visuals/spotify.js'
+import { scene6, scaleSpotifyWording, scaleBigWording, scaleSmallWording } from '../visuals/spotifywordings.js'
 
 
 feather.replace();
@@ -28,7 +28,7 @@ app = Vue.createApp({
                 "Race Into The Night",
                 "Kiss Me More - Doja Cat ft. SZA"
             ], 
-            scenes: ["scene1", "scene2", "scene3", "scene4", "scene5", "scene6"]
+            scenes: ["scene3", "scene4", "scene5", "scene6", "scene2", "scene1"]
         }
     },
     methods: {
@@ -136,7 +136,7 @@ function init() {
     controls.enableZoom = false;
     controls.update();
 
-    s = scene1;
+    s = scene3;
 	animate();
 }
 
@@ -153,6 +153,9 @@ function animate() {
     requestAnimationFrame( animate )
     animateboxes();
     animateSpace();
+    animateSphere();
+    moveParticleLight();
+    spinCircle();
 
     if (analyser != undefined) {
         let sUnit = analyser.getAverageFrequency()/75;
@@ -160,7 +163,6 @@ function animate() {
         scaleSpace(sUnit);
         boxScaling(sUnit);
         changeColors();
-        spinCircle();
         scaleSpotify(sUnit);
         scaleboxes(sUnit);
         scaleSpotifyWording(sUnit);
@@ -179,10 +181,20 @@ function animate() {
                 if (start > (progress - 50) && start <= (progress + 50) && toDecrease < 5){
                     // console.log("BUMTSS" + progress)
                     // console.log(progress, start)
-                    scaleBig()
+                    scaleBigBoxes()
+                    scaleBigSphere()
+                    scaleBigSpace()
+                    scaleBigRotating()
+                    scaleBigSpotify()
+                    scaleBigWording()
                     toDecrease++
                 } else if (start > (progress + 150) && start <= (progress + 250) && toDecrease>0){
-                    scaleSmall()
+                    scaleSmallBoxes()
+                    scaleSmallSphere()
+                    scaleSmallSpace()
+                    scaleSmallRotating()
+                    scaleSmallSpotify()
+                    scaleSmallWording()
                     toDecrease--
                 }
             }

@@ -23,3 +23,15 @@ export function scaleSpotifyWording(scale) {
         scene6.scale.set (scale, scale, scale)
     }
 }
+
+export function scaleBigWording() {
+    scene6.scale.x += 0.1
+    scene6.scale.y += 0.1
+    scene6.scale.z += 0.1
+}
+
+export function scaleSmallWording() {
+    scene6.scale.x -= 0.1
+    scene6.scale.y -= 0.1
+    scene6.scale.z -= 0.1
+}

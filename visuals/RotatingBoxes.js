@@ -17,12 +17,12 @@ var torusGeo = new THREE.TorusGeometry( 200, 3, 16, 200);
 var torusMat = new THREE.MeshNormalMaterial();
 var donut1 = new THREE.Mesh( torusGeo , torusMat );
 
-var torusGeo2 = new THREE.TorusGeometry( 10, 1, 16, 200);
-var torusMat2 = new THREE.MeshNormalMaterial();
+// var torusGeo2 = new THREE.TorusGeometry( 100, 3, 16, 200);
+// var torusMat2 = new THREE.MeshNormalMaterial();
 var donut2 = new THREE.Mesh( torusGeo , torusMat );
 
-var torusGeo3 = new THREE.TorusGeometry( 10, 1, 16, 200);
-var torusMat = new THREE.MeshNormalMaterial();
+// var torusGeo3 = new THREE.TorusGeometry( 10, 1, 16, 200);
+// var torusMat = new THREE.MeshNormalMaterial();
 var donut3 = new THREE.Mesh( torusGeo , torusMat );
 
 
@@ -148,4 +148,32 @@ export function spinCircle(){
     }
 
     
+}
+
+export function scaleBigRotating() {
+    donut1.scale.x += 0.1
+    donut1.scale.y += 0.1
+    donut1.scale.z += 0.1
+
+    donut2.scale.x += 0.025
+    donut2.scale.y += 0.025
+    donut2.scale.z += 0.025
+
+    donut3.scale.x += 0.025
+    donut3.scale.y += 0.025
+    donut3.scale.z += 0.025
+}
+
+export function scaleSmallRotating() {
+    donut1.scale.x -= 0.1
+    donut1.scale.y -= 0.1
+    donut1.scale.z -= 0.1
+
+    donut2.scale.x -= 0.025
+    donut2.scale.y -= 0.025
+    donut2.scale.z -= 0.025
+
+    donut3.scale.x -= 0.025
+    donut3.scale.y -= 0.025
+    donut3.scale.z -= 0.025
 }
