@@ -181,6 +181,7 @@ function getAllData(){
         .catch(err=>{
             alert('Failed to retrieve information please try again')
         })
+        location.reload()
 }
 if(sessionStorage.getItem('userID')){
     getAllData()
