@@ -12,35 +12,42 @@ app.component('navbar', {
     computed: {
         links() {
             // href links at upload directory
-            if (window.location.href.includes("upload.html") || window.location.href.includes("login.html")) {
+            if (window.location.href.includes("upload") || window.location.href.includes("login")) {
                 return {
-                    homeLink: "./index.html",
-                    spotifyLink: "./spotify.html",
+                    homeLink: "./",
+                    spotifyLink: "./spotify",
                     uploadLink: "",
-                    creditsLink: "./credits.html"
+                    creditsLink: "./credits"
                 }
                 // href links at spotify page
-            } else if (window.location.href.includes("spotify.html")) {
+            } else if (window.location.href.includes("spotify")) {
                 return {
-                    homeLink: "./index.html",
+                    homeLink: "./",
                     spotifyLink: "",
-                    uploadLink: "./login.html",
-                    creditsLink: "./credits.html"
+                    uploadLink: "./login",
+                    creditsLink: "./credits"
+                }
+            } else if (window.location.href.includes("credits")) {
+                return {
+                    homeLink: "./",
+                    spotifyLink: "",
+                    uploadLink: "./login",
+                    creditsLink: ""
                 }
             }
             else {
                 return {
                     homeLink: "",
-                    spotifyLink: "./spotify.html",
-                    uploadLink: "./login.html",
-                    creditsLink: "./credits.html"
+                    spotifyLink: "./spotify",
+                    uploadLink: "./login",
+                    creditsLink: "./credits"
                 }
             }
         }
     },
     template: `<nav class="navbar navbar-expand-md navbar-dark fixed-top" style='background-color:black;'>
         <div class="container-fluid">
-            <a class="navbar-brand" href="./index.html">Audiophile</a>
+            <a class="navbar-brand" href="./">Audiophile</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
                 aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -61,7 +68,7 @@ app.component('navbar', {
                         <a class="nav-link" :href=links.uploadLink>Upload</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" :href=links.creditsLink>🤡</a>
+                        <a class="nav-link" :href=links.creditsLink>Credits</a>
                     </li>
                 </ul>
             </div>
