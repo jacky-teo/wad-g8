@@ -181,25 +181,23 @@ function getAllData(){
         .catch(err=>{
             alert('Failed to retrieve information please try again')
         })
-        location.reload()
 }
 if(sessionStorage.getItem('userID')){
     getAllData()
     if(upload){
         upload.addEventListener('click',UploadProcess)
     }
-        
+    location.reload()
 }
 export let musicObjArr = []
 export let fName =''
 if(sessionStorage.getItem('musicURL')){
     getAllData()
     const musicURLArr = sessionStorage.getItem('musicURL');
-    
     let musicArr = musicURLArr.split(",")
     for(let m of musicArr){
         let info = m.split("|")
         musicObjArr.push({name:info[0],url:info[1]})
     }
-    
+    location.reload()
 }
