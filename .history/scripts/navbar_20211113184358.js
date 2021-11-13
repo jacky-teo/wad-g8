@@ -19,7 +19,7 @@ app.component('navbar', {
                     uploadLink: "",
                     creditsLink: "./credits.html"
                 }
-                // href links at spotify page
+                // href links at home page
             } else if (window.location.href.includes("spotify.html")) {
                 return {
                     homeLink: "./index.html",
@@ -61,7 +61,7 @@ app.component('navbar', {
                         <a class="nav-link" :href=links.uploadLink>Upload</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" :href=links.creditsLink>🤡</a>
+                        <a class="nav-link" :href=links.creditsLink>Credits</a>
                     </li>
                 </ul>
             </div>

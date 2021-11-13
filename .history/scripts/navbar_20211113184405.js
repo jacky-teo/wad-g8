@@ -61,7 +61,7 @@ app.component('navbar', {
                         <a class="nav-link" :href=links.uploadLink>Upload</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" :href=links.creditsLink>🤡</a>
+                        <a class="nav-link" :href=links.creditsLink>Credits</a>
                     </li>
                 </ul>
             </div>

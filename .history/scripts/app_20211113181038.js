@@ -49,11 +49,13 @@ function onPageLoad() {
         access_token = localStorage.getItem("access_token");
         if (access_token == null) {
             // we don't have an access token so present token section
+            document.getElementById("deviceSection").style.display = 'none';
             document.getElementById('app').style.display = 'none';
         }
         else {
-            // we have an access token so present app section
+            // we have an access token so present device section
             document.getElementById("tokenSection").style.display = 'none';
+            document.getElementById("deviceSection").style.display = 'block';
             document.getElementById('app').style.display = 'block';
 
             refreshDevices();
