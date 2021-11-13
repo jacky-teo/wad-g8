@@ -3,7 +3,7 @@
 // vas's redirect
 // redirect_uri = "http://localhost/is216/wad-g8/spotify.html";
 // shya's redirect
-var redirect_uri = 'http://localhost/wad-g8/spotify.html';
+var redirect_uri = 'http://localhost/is216/wad-g8/spotify';
 
 // import { client_secret } from './firebase.js';
 
