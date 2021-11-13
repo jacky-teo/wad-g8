@@ -7,7 +7,7 @@ import { scene3, animateSpace, scaleSpace, scaleBigSpace, scaleSmallSpace } from
 import { scene4, changeColors, spinCircle, boxScaling, scaleBigRotating, scaleSmallRotating } from '../visuals/RotatingBoxes.js'
 import { scene5, scaleSpotify, scaleBigSpotify, scaleSmallSpotify } from '../visuals/spotify.js'
 import { scene6, scaleSpotifyWording, scaleBigWording, scaleSmallWording } from '../visuals/spotifywordings.js'
-
+//this is the most updated one 
 
 feather.replace();
 
