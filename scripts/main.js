@@ -38,7 +38,7 @@ app = Vue.createApp({
     methods: {
         playUserSound(){
             if (listener == undefined) {
-                console.log("Starting Player")
+                // console.log("Starting Player")
                 let startVol = this.volume;
                 let file = this.currUserSong
                 // create an AudioListener and add it to the camera
