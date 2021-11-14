@@ -95,21 +95,19 @@ To get a local copy up and running follow these simple example steps.
 
 ### Installation
 
-1. Create a new client application at [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/login)
-1. Get your client ID and client secret within our application dashboard.
-2. Clone the repo
+1. Clone the repo / Download (Code > Download ZIP)
    ```sh
    git clone https://github.com/Vasn/wad-g8.git
    ```
-<!-- ONLY DONE UP TILL HERE!!!!!!!!!!!!!!!!!!!! -->
-3. Enter your client id..... Client secret... in here in there...
+2. Open scripts/app.js, replace the redirect URI variable with the location of your spotify.html (without the .html) in your web root
    ```sh
-   CLIENT_ID = "abcd"
+   var redirect_uri = "http://localhost/wad-g8/spotify.html";
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+2. Open WAMP/MAMP with folder in web directory and open in browser
+   ```sh
+   http://localhost/is216/wad-g8/
    ```
+4. Done!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -137,8 +135,56 @@ According to Spotify, there is over 1,300 different music genres. While music ge
 
 
 <!-- ROADMAP -->
-## Roadmap
-
+## Development Roadmap (from top to bottom)
+- [X] Learning Three.js / APIs / Firebase
+- [X] 3d Scene #1
+- [X] 3d Scene #2
+- [X] Spotify API
+    - [X] Spotify Login
+    - [X] Spotify API Call
+- [X] 3d Scene #3
+- [X] 3d Scene #4
+- [X] Spotify API
+    - [X] Music Controls
+    - [X] Progress Bars
+- [X] 3d Scene #5
+- [X] 3d Scene #6
+- [X] Navigation Bar
+    - [X] Content Structuring
+    - [X] Navbar Design
+    - [X] Navbar Component
+- [X] Music Controls
+    - [X] Play/Pause
+    - [X] Stop
+    - [X] Volume Scrubber
+    - [X] Vue.Js Functions and Data
+- [X] Music Dropdown
+- [X] Scene Change Controls
+    - [X] Vue.js Functions and Data
+    - [X] Scene Integration into One Camera and One Renderer
+    - [X] Scene Animations
+- [X] Audio Analyzer
+- [X] Spotify Page Integration
+    - [X] Audio Analyser API call Data Manipulation
+    - [X] Scene Animations
+- [X] Home Mobile Responsiveness
+- [X] Spotify Mobile Responsiveness
+- [X] Three.js Scene Mobile Responsiveness
+- [X] Firebase
+    - [X] User Authentication (Register/Login)
+    - [X] Realtime Database
+    - [X] Blob Storage
+- [X] Upload Page Integration
+    - [X] Merge with Scenes
+    - [X] Merge with Dropdown list
+    - [X] Merge with Audio Analyzer
+- [X] Credits Scene
+    - [X] Design
+    - [X] Modeling
+    - [X] Integrating with Three.js
+    - [X] Navbar Integration
+- [X] Debugging
+- [X] Heroku Deployment
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
