@@ -142,6 +142,8 @@ async function UploadProcess() {
         });
 }
 
+
+
 /////////////////////////////////
 ///// SAVE FILE TO REALTIME /////
 /////////////////////////////////
@@ -167,8 +169,7 @@ function SaveURLtoRealTimeDB(URL) {
 ///////////////////////////////////////
 ///// RETRIEVE ALL FROM REALTIME //////
 ///////////////////////////////////////
-var arr = []
-function getAllData() {
+export function getAllData() {
     var dbRef = ref(realdb); // Refer to realtime DB
     get(child(dbRef, "users/" + id))
         .then((snapshot) => {
@@ -181,19 +182,16 @@ function getAllData() {
         .catch(err => {
             alert('Failed to retrieve information please try again')
         })
-    TimeOut()
-
-}
-function TimeOut() {
-    setTimeout(2000, () => { location.reload() })
 }
 
 if (sessionStorage.getItem('userID')) {
-    getAllData()
     if (upload) {
         upload.addEventListener('click', UploadProcess)
     }
 }
+
+// You can call it in somewhere //
+
 export let musicObjArr = []
 if (sessionStorage.getItem('musicURL')) {
     const musicURLArr = sessionStorage.getItem('musicURL');
@@ -203,4 +201,5 @@ if (sessionStorage.getItem('musicURL')) {
         musicObjArr.push({ name: info[0], url: info[1] })
     }
 }
+
 // reload

@@ -9,6 +9,8 @@ import { scene5, scaleSpotify, scaleBigSpotify, scaleSmallSpotify } from '../vis
 import { scene6, scaleSpotifyWording, scaleBigWording, scaleSmallWording } from '../visuals/spotifywordings.js'
 import {musicObjArr} from './upload.js'
 
+
+
 feather.replace();
 
 let s, camera, renderer, app, listener, sound, audioLoader, analyser, controls;
@@ -167,7 +169,9 @@ app = Vue.createApp({
     },
     mounted() {
         init();
-    }
+    },
+
+
 })
 
 app.mount("#app");

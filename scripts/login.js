@@ -2,6 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase
 import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL, uploadString } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-storage.js" //for firebase storage
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onIdTokenChanged } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js"
 import { getDatabase, ref, set, child, update, remove, get } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js"
+import{getAllData }from './upload'
 
 const app = Vue.createApp({
     data() {
@@ -58,6 +59,7 @@ const app = Vue.createApp({
             if (user) {
                 // User is signed in or token was refreshed.
                 sessionStorage.setItem('userID', user.uid);
+                getAllData()
                 if (!window.location.href.includes("upload")) {
                     window.location.href = './upload';
                 }
@@ -189,6 +191,7 @@ const app = Vue.createApp({
             signOut(this.auth)
                 .then(() => {
                     sessionStorage.removeItem('musicURL')
+                    window.localStorage.removeItem('refresh');
                     // Sign-out successful.
                 })
                 .catch((error) => {
