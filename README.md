@@ -133,7 +133,8 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 ## Roadmap
 
 - Home
-    - Loaded with pre-installed music to play and visualize
+    - Loaded with pre-installed music to play and visualize</br>
+    <video width="320" height="240" controls><source src="assets/homestep.mp4" type="video/mp4"></video>
 - Spotify
     - Login to Spotify
         - Play all your favourite hot hits from your Spotify library
