@@ -27,7 +27,7 @@
 
 <body style='background-color:#f8f9fa;'>
   <div id="compApp">
-    <navbar></navbar>
+    <navbar style="padding-left: 3px;"></navbar>
   </div>
   <div class="container-fluid p-0">
     <div id="songs" class="bg-light carousel slide carousel-multi-item pt-5 pb-0 vh-100 " data-ride="carousel"
@@ -55,11 +55,11 @@
                 <div class="mt-2 container-login100-form-btn text-center">
                   <button id='upload' class='d-inline login100-form-btn'>Upload</button>
                   <div id='appLogin' class='d-inline'>
-                    <button class='d-inline login100-form-btn' @click='signout'>Logout</button>
+                    <button class='d-inline login100-form-btn mt-2' @click='signout'>Logout</button>
                   </div>
                 </div>
               </div>
-              <div class='col'>
+              <div class='col' id="uploadInputs">
                 <div class="row g-3 mt-2">
                   <div class="col-2">
                     <label for="songTitle" class="col-form-label">Song Title</label>
