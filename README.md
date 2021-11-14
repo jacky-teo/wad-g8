@@ -144,11 +144,11 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- CONTACT -->
 ## Contact
 
-Vasilis - [@vasnjq](https://www.instagram.com/vasnjq/) - vasilis.ng.2020@scis.smu.edu.sg
-Shya - [@shyatup](https://www.instagram.com/shyatup/) - swquah.2020@scis.smu.edu.sg
-Jacky - [@jackyteojianqi](https://www.instagram.com/jackyteojianqi/) - jacky.teo.2020@scis.smu.edu.sg
-Jun Hui - [@junhuixp](https://www.instagram.com/junhuixp/) - junhui.lee.2020@scis.smu.edu.sg
-Erlynne - [@erlynnehazey](https://www.instagram.com/erlynnehazey/) - erlynneong.2020@scis.smu.edu.sg
+Vasilis - [@vasnjq](https://www.instagram.com/vasnjq/) - vasilis.ng.2020@scis.smu.edu.sg</br>
+Shya - [@shyatup](https://www.instagram.com/shyatup/) - swquah.2020@scis.smu.edu.sg</br>
+Jacky - [@jackyteojianqi](https://www.instagram.com/jackyteojianqi/) - jacky.teo.2020@scis.smu.edu.sg</br>
+Jun Hui - [@junhuixp](https://www.instagram.com/junhuixp/) - junhui.lee.2020@scis.smu.edu.sg</br>
+Erlynne - [@erlynnehazey](https://www.instagram.com/erlynnehazey/) - erlynneong.2020@scis.smu.edu.sg</br>
 
 Project Link: [https://github.com/Vasn/wad-g8](https://github.com/Vasn/wad-g8)
 
