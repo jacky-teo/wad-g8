@@ -203,16 +203,14 @@ class LoadModelDemo {
     this._previousRAF = null;
 
     this._LoadAnimatedModel();
-    //this._LoadAnimatedModelAndPlay(
-    //  './resources/swat/', 'swatguy.fbx', 'Punching.fbx', new THREE.Vector3(0, 0, 5));
-    this._LoadAnimatedModelAndPlay(
-      './resources/models/', 'racer.fbx', 'RobotHipHopDanceRight.fbx', new THREE.Vector3(12, 0, -10));
-    this._LoadAnimatedModelAndPlay(
-      './resources/models/', 'racer.fbx', 'RobotHipHopDanceLeft.fbx', new THREE.Vector3(-12, 0, -10));
-    this._LoadAnimatedModelAndPlay(
-      './resources/models/', 'racer.fbx', 'Breakdance.fbx', new THREE.Vector3(24, 0, -20));
-    this._LoadAnimatedModelAndPlay(
-      './resources/models/', 'racer.fbx', 'Breakdance.fbx', new THREE.Vector3(-24, 0, -20));
+    // this._LoadAnimatedModelAndPlay(
+    //   './resources/models/', 'racer.fbx', 'RobotHipHopDanceRight.fbx', new THREE.Vector3(12, 0, -10));
+    // this._LoadAnimatedModelAndPlay(
+    //   './resources/models/', 'racer.fbx', 'RobotHipHopDanceLeft.fbx', new THREE.Vector3(-12, 0, -10));
+    // this._LoadAnimatedModelAndPlay(
+    //   './resources/models/', 'racer.fbx', 'Breakdance.fbx', new THREE.Vector3(24, 0, -20));
+    // this._LoadAnimatedModelAndPlay(
+    //   './resources/models/', 'racer.fbx', 'Breakdance.fbx', new THREE.Vector3(-24, 0, -20));
     this._RAF();
   }
 
@@ -244,26 +242,26 @@ class LoadModelDemo {
   }
 
   //Characters for displays/movement
-  _LoadAnimatedModelAndPlay(path, modelFile, animFile, offset) {
-    const loader = new FBXLoader();
-    loader.setPath(path);
-    loader.load(modelFile, (fbx) => {
-      fbx.scale.setScalar(0.1);
-      fbx.traverse(c => {
-        c.castShadow = true;
-      });
-      fbx.position.copy(offset);
-      const anim = new FBXLoader();
-      anim.setPath(path);
-      anim.load(animFile, (anim) => {
-        const m = new THREE.AnimationMixer(fbx);
-        this._mixers.push(m);
-        const idle = m.clipAction(anim.animations[0]);
-        idle.play();
-      });
-      this._scene.add(fbx);
-    });
-  }
+  // _LoadAnimatedModelAndPlay(path, modelFile, animFile, offset) {
+  //   const loader = new FBXLoader();
+  //   loader.setPath(path);
+  //   loader.load(modelFile, (fbx) => {
+  //     fbx.scale.setScalar(0.1);
+  //     fbx.traverse(c => {
+  //       c.castShadow = true;
+  //     });
+  //     fbx.position.copy(offset);
+  //     const anim = new FBXLoader();
+  //     anim.setPath(path);
+  //     anim.load(animFile, (anim) => {
+  //       const m = new THREE.AnimationMixer(fbx);
+  //       this._mixers.push(m);
+  //       const idle = m.clipAction(anim.animations[0]);
+  //       idle.play();
+  //     });
+  //     this._scene.add(fbx);
+  //   });
+  // }
 
   //Adapt to resize
   _OnWindowResize() {
