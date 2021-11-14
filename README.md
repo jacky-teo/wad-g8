@@ -19,7 +19,7 @@
     <a href="https://github.com/Vasn/wad-g8"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://audiophiles-wad.herokuapp.com/">View Demo</a>
+    <a href="http://www.smuaudio.tech/">View Demo</a>
     ·
     <a href="https://github.com/Vasn/wad-g8/issues">Report Bug</a>
     ·
@@ -57,7 +57,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://audiophiles-wad.herokuapp.com/)
+[![Product Name Screen Shot][product-screenshot]](http://www.smuaudio.tech/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -186,6 +186,7 @@ According to Spotify, there is over 1,300 different music genres. While music ge
     - [X] Navbar Integration
 - [X] Debugging
 - [X] Heroku Deployment
+- [X] Domain Name
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
