@@ -47,20 +47,17 @@
                         <li v-for="scene in scenes"><a @click="changeScene(scene)"><i data-feather="circle"></i></a>
                         </li>
                         <li>
-                            <div id="modals">
-                                <a class="p-0" data-bs-toggle="modal" :href="toggleRef" role="button"
-                                    @click="addCount()">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                        class="text-light bi bi-music-note-list" viewBox="0 0 16 16">
-                                        <path
-                                            d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z" />
-                                        <path fill-rule="evenodd" d="M12 3v10h-1V3h1z" />
-                                        <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z" />
-                                        <path fill-rule="evenodd"
-                                            d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z" />
-                                    </svg>
-                                </a>
-                            </div>
+                            <a class="p-0" data-bs-toggle="modal" href="#notice" role="button" id="modals">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                    class="text-light bi bi-music-note-list" viewBox="0 0 16 16">
+                                    <path
+                                        d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z" />
+                                    <path fill-rule="evenodd" d="M12 3v10h-1V3h1z" />
+                                    <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z" />
+                                    <path fill-rule="evenodd"
+                                        d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z" />
+                                </svg>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -106,7 +103,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="login100-form-btn mt-3 mx-auto d-block" style='background-color:#555555;'
-                        data-bs-target="#playerModal" data-bs-toggle="modal" data-bs-dismiss="modal">Ok!</button>
+                        data-bs-target="#playerModal" data-bs-toggle="modal" data-bs-dismiss="modal" id="okBtn">Ok!</button>
                 </div>
             </div>
         </div>

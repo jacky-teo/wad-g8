@@ -62,27 +62,14 @@ function onPageLoad() {
     }
 }
 
-//modalDisplay
-const modalDisplay = Vue.createApp({
-    data() {
-        return {
-            openCount: 0
-        }
-    },
-    computed: {
-        toggleRef() {
-            if (this.openCount > 0) {
-                return "#playerModal";
+//show #notice only once 
+var modals = document.getElementById("modals");
+var okBtn = document.getElementById('okBtn');
 
-            } return "#notice";
-        }
-    },
-    methods: {
-        addCount: function () {
-            this.openCount++;
-        }
-    }
-}).mount("#modals")
+okBtn.addEventListener('click', function() {
+    console.log(modals.href);
+    modals.href = "#playerModal";    
+})
 
 //playToggle vue instance
 const playToggle = Vue.createApp({
@@ -430,7 +417,7 @@ function handleCurrentlyPlayingResponse() {
             track_id = data.item.id;
             let progress = data.progress_ms // HERE IS THE CONSOLE!
             localStorage.setItem("progress", progress)
-            console.log(progress)
+            // console.log(progress)
             duration = data.item.duration_ms
 
             if (localStorage.getItem('trackid') != track_id) {
