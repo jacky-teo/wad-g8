@@ -173,7 +173,6 @@ const app = Vue.createApp({
             createUserWithEmailAndPassword(this.auth, email, password)
                 .then((userCreds) => {
                     const user = userCreds.user
-                    console.log(user)
                     this.regFailMsg = ''
                     const storage = getStorage()
                     const storageRef = sRef(storage, "public/users/" + user.uid)
@@ -189,6 +188,7 @@ const app = Vue.createApp({
         signout() {
             signOut(this.auth)
                 .then(() => {
+                    sessionStorage.removeItem('musicURL')
                     // Sign-out successful.
                 })
                 .catch((error) => {

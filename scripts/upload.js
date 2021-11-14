@@ -174,7 +174,7 @@ function getAllData() {
         .then((snapshot) => {
             var musicURL = []
             snapshot.forEach(childSnapshot => {
-                musicURL.push(childSnapshot.val().musicName + '|' + childSnapshot.val().musicURL)
+            musicURL.push(childSnapshot.val().musicName + '|' + childSnapshot.val().musicURL)
             });
             sessionStorage.setItem('musicURL', musicURL)
         })
@@ -185,7 +185,7 @@ function getAllData() {
 
 }
 function TimeOut() {
-    setTimeout(1, () => { location.reload() })
+    setTimeout(2000, () => { location.reload() })
 }
 
 if (sessionStorage.getItem('userID')) {
@@ -196,7 +196,6 @@ if (sessionStorage.getItem('userID')) {
 }
 export let musicObjArr = []
 if (sessionStorage.getItem('musicURL')) {
-    getAllData()
     const musicURLArr = sessionStorage.getItem('musicURL');
     let musicArr = musicURLArr.split(",")
     for (let m of musicArr) {
