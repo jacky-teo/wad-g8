@@ -8,7 +8,6 @@ import { scene4, changeColors, spinCircle, boxScaling, scaleBigRotating, scaleSm
 import { scene5, scaleSpotify, scaleBigSpotify, scaleSmallSpotify } from '../visuals/spotify.js'
 import { scene6, scaleSpotifyWording, scaleBigWording, scaleSmallWording } from '../visuals/spotifywordings.js'
 import {musicObjArr} from './upload.js'
-//this is the most updated one 
 
 feather.replace();
 
@@ -35,7 +34,7 @@ app = Vue.createApp({
         }
     },
     methods: {
-         playUserSound(){
+        playUserSound(){
             if (listener == undefined) {
                 console.log("Starting Player")
                 let startVol = this.volume;

@@ -2,13 +2,14 @@ import * as THREE from 'https://cdn.skypack.dev/three@0.133.1';
 
 export let scene2 = new THREE.Scene();
 const textureLoader = new THREE.TextureLoader();
-scene2.background = textureLoader.load('assets/carbg.jpg' , function(texture)
-            {   
-                scene2.background = texture;  
-            });
+scene2.background = new THREE.Color(0x30383a);
+
+// scene2.background = textureLoader.load('assets/carbg.jpg' , function(texture)
+//             {   
+//                 scene2.background = texture;  
+//             });
 
 let geometry2 = new THREE.SphereGeometry(100, 32, 32);
-// let material2 = new THREE.MeshNormalMaterial();
 
 // let material2 = new THREE.MeshBasicMaterial({wireframe: true});
 
