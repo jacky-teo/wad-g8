@@ -132,10 +132,17 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [] Feature 1
-- [] Feature 2
-- [] Feature 3
-    - [] Nested Feature
+- Home
+    - Loaded with pre-installed music to play and visualize
+- Spotify
+    - Login to Spotify
+        - Play all your favourite hot hits from your Spotify library
+- Upload
+    - Register and login with your Audiophile Account
+        - Upload mp3 files by drag and drop
+            - Play your favourite music locally
+- Credits
+    - Control dancing character with arrow keys in a virtual dimension
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
