@@ -125,7 +125,7 @@ async function UploadProcess() {
     UploadTask.on('state-changed', (snapshot) => {
         var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         pbarContainer.style.visibility = "visible"
-        pbar.innerHTML = 'Upload ' + progress.toFixed(0) + "%"
+        pbar.innerHTML = 'Upload ' + progress.toFixed(1) + "%"
         pbar.style.width = progress + "%"
     },
         (error) => {
