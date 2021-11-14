@@ -130,7 +130,7 @@ To get a local copy up and running follow these simple example steps.
 - Credits
     - Control dancing character with arrow keys in a virtual dimension
 
-How did we came about with this idea? The idea was initally orginated from the old windows media player, we thought that nowadays music comes in the form of just genre and like there isn't much visualization going about, so we came up with an idea similar to how we used to visualize music through using the old media players. Using that as a concept, we tried implementing beats and frequencies to react with the music so as to project the scenes to users on how music can be visualize. Not only that, we brainstormed further, knowing that Spotify is an app that users use most often, we capitalize on that to blend in with our creation, to allow users to visualize music not only from their spotify but also through uploading mp3 files from their devices as well.
+According to Spotify, there is over 1,300 different music genres. While music genres continue to grow, the way that we listen to music has been less immersive. Today's act of listening to music does not involve much interaction or visualization as it did in the past with an old windows media player or a hi-fi system. Taking the concept of old audio visualisers, we have created a web application that allows users to interact with 3D visuals that move and change according to the varying beats and frequencies of the playing song. After further brainstorming, we decided to integrate Spotify into our application as it is a widely recognised music streaming platform. With Spotify integration and the option to upload their own mp3 files, the music that users can choose to play is endless.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
