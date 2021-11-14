@@ -212,8 +212,11 @@ class LoadModelDemo {
     loader.setPath('./resources/models/');
     loader.load('racer.fbx', (fbx) => {
       fbx.scale.setScalar(0.1);
-      fbx.traverse(c => {
-        c.castShadow = true;
+      fbx.traverse( function (child) {
+        if (child.isMesh) {
+          child.castShadow = true;
+          child.receiveShadow = true;
+        }
       });
       const params = {
         target: fbx,
