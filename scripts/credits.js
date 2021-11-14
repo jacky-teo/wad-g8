@@ -180,12 +180,12 @@ class LoadModelDemo {
     //To load the skybox cubemap 6sides as a dimensional background
     const loader = new THREE.CubeTextureLoader();
     const texture = loader.load([
-        './resources/map3dsecond/posx.png',
-        './resources/map3dsecond/negx.png',
-        './resources/map3dsecond/posy.png',
-        './resources/map3dsecond/negy.png',
-        './resources/map3dsecond/posz.png',
-        './resources/map3dsecond/negz.png',
+        './resources/map3d/posx.png',
+        './resources/map3d/negx.png',
+        './resources/map3d/posy.png',
+        './resources/map3d/negy.png',
+        './resources/map3d/posz.png',
+        './resources/map3d/negz.png',
     ]);
     this._scene.background = texture;
 
@@ -212,8 +212,11 @@ class LoadModelDemo {
     loader.setPath('./resources/models/');
     loader.load('racer.fbx', (fbx) => {
       fbx.scale.setScalar(0.1);
-      fbx.traverse(c => {
-        c.castShadow = true;
+      fbx.traverse( function (child) {
+        if (child.isMesh) {
+          child.castShadow = true;
+          child.receiveShadow = true;
+        }
       });
       const params = {
         target: fbx,
