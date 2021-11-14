@@ -63,11 +63,14 @@ function onPageLoad() {
 }
 
 //show #notice only once 
-document.getElementById('okBtn').onclick = function () {
+var
+var okBtn = document.getElementById('okBtn');
 
+
+okBtn.addEventListener('click', function () {
     document.getElementById("modals").href = '#playerModal'
     return false;
-};
+})
 
 //playToggle vue instance
 const playToggle = Vue.createApp({
