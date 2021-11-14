@@ -140,6 +140,7 @@ async function UploadProcess() {
                     alert("Upload Failed Please Try Again")
                 })
         });
+    location.reload()
 }
 
 /////////////////////////////////
@@ -158,7 +159,6 @@ function SaveURLtoRealTimeDB(URL) {
         .then(res => {
             alert('Upload Complete')
             getAllData()
-            location.reload();
         })
         .catch(err => {
             alert('Upload Failed')

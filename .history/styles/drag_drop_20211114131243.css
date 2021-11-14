@@ -1,0 +1,98 @@
+@font-face {
+font-family: Raleway-Regular;
+src: url('../fonts/raleway/Raleway-Regular.ttf');
+}
+
+@font-face {
+font-family: Raleway-Medium;
+src: url('../fonts/raleway/Raleway-Medium.ttf');
+}
+
+@font-face {
+font-family: Raleway-SemiBold;
+src: url('../fonts/raleway/Raleway-SemiBold.ttf');
+}
+
+@font-face {
+font-family: Raleway-Bold;
+src: url('../fonts/raleway/Raleway-Bold.ttf');
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#uploadInputs {
+  font-size: 18px;
+font-family: Raleway-Regular, sans-serif;
+  color: #333;
+  line-height: 1.5rem;
+}
+
+body {
+  background-color: #fff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  margin-top: 1rem;
+}
+
+.droparea {
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 384px;
+  max-width: 100%;
+  height: 160px;
+  border: 4px dashed grey;
+  border-radius: 15px;
+}
+
+.droparea i {
+  font-size: 3rem;
+  flex-grow: 1;
+  padding-top: 1rem;
+}
+
+.green-border {
+  border-color: green;
+}
+
+.drop-zone {
+  max-width: 200px;
+  height: 200px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  cursor: pointer;
+  color: #cccccc;
+  border: 4px dashed #009578;
+  border-radius: 10px;
+}
+
+.drop-zone-over {
+  border-style: solid;
+}
+
+.drop-input{
+  display: none;
+}

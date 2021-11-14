@@ -103,7 +103,7 @@ function validateName() {
 
 async function UploadProcess() {
     if (!files) {
-        document.getElementById('err').innerText = "No files selected"
+        document.getElementById('err').innerText += "No file selected"
         return
     }
     var fileToUpload = files[0]
@@ -140,6 +140,7 @@ async function UploadProcess() {
                     alert("Upload Failed Please Try Again")
                 })
         });
+    location.reload()
 }
 
 /////////////////////////////////
@@ -158,7 +159,6 @@ function SaveURLtoRealTimeDB(URL) {
         .then(res => {
             alert('Upload Complete')
             getAllData()
-            location.reload();
         })
         .catch(err => {
             alert('Upload Failed')

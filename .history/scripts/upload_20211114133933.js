@@ -47,7 +47,6 @@ document.querySelectorAll(".drop-input").forEach((inputElement) => {
         var extension = GetFileExt(files[0]) // Get File extension
         var name = GetFileName(files[0])
         filename.innerHTML = name // This functions actaully no need le is just to get extension
-        document.getElementById('bef_filename').innerText = ''
         ext.innerHTML = extension;
         reader.readAsDataURL(files[0])//Read the current file as a URL  
     });
@@ -103,7 +102,7 @@ function validateName() {
 
 async function UploadProcess() {
     if (!files) {
-        document.getElementById('err').innerText = "No files selected"
+        document.getElementById('err').innerText += "No file selected"
         return
     }
     var fileToUpload = files[0]
@@ -140,6 +139,7 @@ async function UploadProcess() {
                     alert("Upload Failed Please Try Again")
                 })
         });
+    location.reload()
 }
 
 /////////////////////////////////
@@ -158,7 +158,6 @@ function SaveURLtoRealTimeDB(URL) {
         .then(res => {
             alert('Upload Complete')
             getAllData()
-            location.reload();
         })
         .catch(err => {
             alert('Upload Failed')
