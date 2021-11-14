@@ -76,6 +76,10 @@
 * [Spotify Web Playback SDK](https://developer.spotify.com/documentation/web-playback-sdk/)
 * [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
 * [Heroku](https://www.heroku.com/)
+* [Blender](https://www.blender.org/)
+* [Figuro](https://figuro.io/Home/Welcome)
+* [Mixamo](https://www.mixamo.com/#/)
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
