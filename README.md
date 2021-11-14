@@ -134,7 +134,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 - Home
     - Loaded with pre-installed music to play and visualize</br>
-    <video width="320" height="240" controls><source src="assets/homestep.mp4" type="video/mp4"></video>
+    <img src="assets/homestep.png" alt="Logo" width="80" height="80">
 - Spotify
     - Login to Spotify
         - Play all your favourite hot hits from your Spotify library
