@@ -23,7 +23,7 @@ app = Vue.createApp({
             currSong: "Way Back Home  - SHAUN feat. Conor Maynard",
             songs: [
                 "Way Back Home  - SHAUN feat. Conor Maynard", 
-                "Creative minds - Bensound", 
+                "Creativeminds - Bensound", 
                 "Never Gonna Give You Up - Rick Astley", 
                 "Stay - The Kid LAROI, Justin Bieber",
                 "Blackbird", 
