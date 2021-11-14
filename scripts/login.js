@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase
 import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL, uploadString } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-storage.js" //for firebase storage
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onIdTokenChanged } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js"
 import { getDatabase, ref, set, child, update, remove, get } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js"
-import{getAllData }from './upload'
+import{getAllData }from './upload.js'
 
 const app = Vue.createApp({
     data() {
