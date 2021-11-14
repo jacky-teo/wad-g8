@@ -17,7 +17,6 @@
 
 
   <!-- Stylesheet Drag and Drop-->
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
   <link rel="stylesheet" href="./styles/spotify.css" />
@@ -73,21 +72,17 @@
                 </div>
                 <span id='err' class="col-auto form-text text-danger mt-1" style="font-size: medium;"></span>
                 <div class='row'>
-                  <div class='col'>
-                    <div class="mt-2 container-login100-form-btn">
-                      <button id='upload' class='d-inline login100-form-btn'>Upload</button>
-                      <div id='appLogin' class='d-inline'>
-                        <button class='d-inline login100-form-btn mt-2' @click='signout'>Logout</button>
-                      </div>
+                  <div class='col-1'>
 
-                    </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class='col-md-8 col-sm-12 '>
-                    <div class="progress mt-3" id='pbarContainer'>
-                      <div class="progress-bar" role="progressbar" id="pbar" aria-valuenow="0" aria-valuemin="0"
-                        aria-valuemax="100">
+                  <div class="mt-2 container-login100-form-btn">
+                    <button id='upload' class='d-inline login100-form-btn'>Upload</button>
+                    <div id='appLogin' class='d-inline'>
+                      <button class='d-inline login100-form-btn mt-2' @click='signout'>Logout</button>
+                      <div style='width:68%;' class="progress mt-3" id='pbarContainer'>
+                        <div class="progress-bar" role="progressbar" id="pbar" aria-valuenow="0" aria-valuemin="0"
+                          aria-valuemax="100">
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -96,7 +91,6 @@
             </div>
           </div>
         </div>
-
         <!--Second slide-->
         <div class="carousel-item">
           <div id="app" v-cloak>

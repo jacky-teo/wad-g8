@@ -156,7 +156,7 @@ function SaveURLtoRealTimeDB(URL) {
         musicURL: URL
     })
         .then(res => {
-            pbar.innerText = 'Upload Complete!'
+            pbar.innerText = ('Upload Complete')
             getAllData()
             location.reload();
         })
