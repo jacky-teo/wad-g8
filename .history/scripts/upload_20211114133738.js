@@ -47,7 +47,6 @@ document.querySelectorAll(".drop-input").forEach((inputElement) => {
         var extension = GetFileExt(files[0]) // Get File extension
         var name = GetFileName(files[0])
         filename.innerHTML = name // This functions actaully no need le is just to get extension
-        document.getElementById('bef_filename').innerText = ''
         ext.innerHTML = extension;
         reader.readAsDataURL(files[0])//Read the current file as a URL  
     });
@@ -103,17 +102,17 @@ function validateName() {
 
 async function UploadProcess() {
     if (!files) {
-        document.getElementById('err').innerText += "No file selected"
+        document.getElementById('derr').innerText += "Please Upload A File"
         return
     }
     var fileToUpload = files[0]
     var fileToUploadName = songTitle.value + ' - ' + artist.value;
     if (validateName()) {
-        document.getElementById('err').innerText = 'Song title and artist cannot contain "[\,.#$/]",'
+        document.getElementById('err').innerText = 'Name cannot contain "[\,.#$/]",'
         return;
     }
     else if (songTitle.value == '' || artist.value == '') {
-        document.getElementById('err').innerText = 'Song title and artist cannot be blank'
+        document.getElementById('err').innerText = 'Song Title and Artist cannot be blank'
         return;
     }
     const metaData = {

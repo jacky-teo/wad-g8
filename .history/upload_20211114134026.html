@@ -31,49 +31,46 @@
   </div>
   <div class="container-fluid p-0">
     <div id="songs" class="bg-light carousel slide carousel-multi-item pt-5 pb-0 vh-100 " data-ride="carousel"
-      data-bs-interval="false" data-bs-touch='false'>
+      data-bs-interval="false">
 
       <!--Slides-->
       <div class="carousel-inner" role="listbox">
         <!--First slide-->
         <div class="carousel-item active">
-          <div class="row mt-3 pt-5">
+          <div class="row mt-5 pt-5">
             <div class='row mx-auto'>
-              <div class='col-md-5 col-sm-12'>
+              <div class='col-md-5 col-sm-12 order-sm-first order-last  '>
                 <!-- DRAG AND DROP AREA -->
                 <div class="mt-2 drop-zone mx-auto d-block">
                   <div class='fas fa-headphones'></div>
-                  <p id='bef_filename'>Drop files here or click to choose files</p>
                   <input type="file" name="myFile" class="drop-input">
                   <div id='filename'></div>
+                  <p>Drop files here or click to choose files</p>
                 </div>
 
               </div>
               <div class='col' id="uploadInputs">
-                <div class="row g-3 mt-1">
-                  <div class="col-sm-12 col-md-2">
-                    <label for="songTitle" class="form-label">Song Title <span class='text-muted'>*</span></label>
+                <div class="row g-3">
+                  <div class="col-3 col-sm-4">
+                    <label for="songTitle" class="col-form-label">Song Title <span class='text-muted'>*</span></label>
                   </div>
-                  <div class="col-sm-12 col-md-6">
+                  <div class="col-md-6">
                     <input type="text" id="songTitle" class="form-control" aria-describedby="titleHelp">
                     <label id='extlab'></label>
                   </div>
                 </div>
-                <div class="row g-3 mt-1">
-                  <div class="col-sm-12 col-md-2">
-                    <label for="artist" class="form-label">Artist <span class='text-muted'>*</span>
+                <div class="row g-3">
+                  <div class="col-3 col-sm-4">
+                    <label for="artist" class="col-form-label">Artist <span class='text-muted'>*</span>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                   </div>
-                  <div class="col-sm-12 col-md-6">
+                  <div class="col-md-6">
                     <input type="text" id="artist" class="form-control" aria-describedby="artistHelp">
                     <label style='display: none;' id='extension'></label>
                   </div>
                   <span id='err' class="col-auto form-text text-danger mt-1" style="font-size: medium;"></span>
                 </div>
                 <div class='row'>
-                  <div class='col-1'>
-
-                  </div>
                   <div class="mt-2 container-login100-form-btn">
                     <button id='upload' class='d-inline login100-form-btn'>Upload</button>
                     <div id='appLogin' class='d-inline'>

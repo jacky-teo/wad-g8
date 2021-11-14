@@ -47,7 +47,7 @@ document.querySelectorAll(".drop-input").forEach((inputElement) => {
         var extension = GetFileExt(files[0]) // Get File extension
         var name = GetFileName(files[0])
         filename.innerHTML = name // This functions actaully no need le is just to get extension
-        document.getElementById('bef_filename').innerText = ''
+        document.getElementById('before_filename').innerText = ''
         ext.innerHTML = extension;
         reader.readAsDataURL(files[0])//Read the current file as a URL  
     });

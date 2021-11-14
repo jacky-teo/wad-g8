@@ -47,7 +47,6 @@ document.querySelectorAll(".drop-input").forEach((inputElement) => {
         var extension = GetFileExt(files[0]) // Get File extension
         var name = GetFileName(files[0])
         filename.innerHTML = name // This functions actaully no need le is just to get extension
-        document.getElementById('bef_filename').innerText = ''
         ext.innerHTML = extension;
         reader.readAsDataURL(files[0])//Read the current file as a URL  
     });
@@ -109,7 +108,7 @@ async function UploadProcess() {
     var fileToUpload = files[0]
     var fileToUploadName = songTitle.value + ' - ' + artist.value;
     if (validateName()) {
-        document.getElementById('err').innerText = 'Song title and artist cannot contain "[\,.#$/]",'
+        document.getElementById('err').innerText = 'Name cannot contain "[\,.#$/]",'
         return;
     }
     else if (songTitle.value == '' || artist.value == '') {
