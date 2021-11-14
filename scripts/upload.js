@@ -187,6 +187,7 @@ export function getAllData() {
 if (sessionStorage.getItem('userID')) {
     if (upload) {
         upload.addEventListener('click', UploadProcess)
+        getAllData()
     }
 }
 
