@@ -99,15 +99,16 @@ To get a local copy up and running follow these simple example steps.
    ```sh
    git clone https://github.com/Vasn/wad-g8.git
    ```
-2. Open scripts/app.js, replace the redirect URI variable with the location of your spotify.html (without the .html) in your web root
+2. Extract the file and place it into the web root of your server
+3. Open scripts/app.js, replace the redirect URI variable with the location of your spotify.html (without the .html) in your web root
    ```sh
-   var redirect_uri = "http://localhost/wad-g8/spotify.html";
+   var redirect_uri = "http://localhost/wad-g8/spotify";
    ```
-2. Open WAMP/MAMP with folder in web directory and open in browser
+4. Open WAMP/MAMP with folder in web directory and open in browser
    ```sh
-   http://localhost/is216/wad-g8/
+   http://localhost/wad-g8/
    ```
-4. Done!
+5. Done!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
