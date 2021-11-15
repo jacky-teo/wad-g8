@@ -1,5 +1,5 @@
 // smuaudio.tech Redirect
-var redirect_uri = "http://www.smuaudio.tech/spotify";
+var redirect_uri = "https://www.smuaudio.tech/spotify";
 
 // var redirect_uri = "https://vasn.github.io/wad-g8/spotify.html";
 
